@@ -1,12 +1,18 @@
 version: '3.8'
 
 services:
-  mongo:
-    image: mongo:7
+  postgres:
+    image: postgres:16-alpine
+    container_name: fdr-postgres
     ports:
-      - '27017:27017'
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: fdr_user
+      POSTGRES_PASSWORD: fdr_password
+      POSTGRES_DB: fdr_trust_ledger
     volumes:
-      - mongo-data:/data/db
+      - postgres-data:/var/lib/postgresql/data
+      - ./apps/api/src/config/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
 
   api:
     build: ./apps/api
@@ -14,9 +20,9 @@ services:
       - '3001:3001'
     env_file: .env
     depends_on:
-      - mongo
+      - postgres
     environment:
-      MONGODB_URI: mongodb://mongo:27017/fdr-trust-ledger
+      DATABASE_URL: postgres://fdr_user:fdr_password@postgres:5432/fdr_trust_ledger
 
   mock-bank:
     build: ./apps/mock-bank
@@ -31,4 +37,4 @@ services:
       - api
 
 volumes:
-  mongo-data:
+  postgres-data:
