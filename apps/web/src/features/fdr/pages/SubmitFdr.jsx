@@ -10,6 +10,7 @@ import OcrAutofill from '../components/OcrAutofill';
 import FdrForm from '../components/FdrForm';
 import { useToast } from '../../../components/ui/Toast';
 import { BANKS, ROUTES } from '../../../lib/constants';
+import { readPdfOcr } from '../../../lib/fdrOcrReader';
 
 export default function SubmitFdr() {
   const navigate = useNavigate();
@@ -22,6 +23,9 @@ export default function SubmitFdr() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
 
+  const [ocrDefect, setOcrDefect] = useState(null);
+  const [ocrSuccess, setOcrSuccess] = useState(null);
+
   const [formValues, setFormValues] = useState({
     fdrNumber: '',
     bank: BANKS[0],
@@ -32,27 +36,57 @@ export default function SubmitFdr() {
     programYear: '2025-26',
   });
 
-  const handleFileSelect = (selectedFile) => {
+  const handleFileSelect = async (selectedFile) => {
     setFile(selectedFile);
     setIsScanning(true);
     setOcrApplied(false);
+    setOcrDefect(null);
+    setOcrSuccess(null);
 
-    // Simulate OCR text parsing pipeline (1.2 seconds)
-    setTimeout(() => {
+    // Read real PDF contents using client-side OCR reader
+    try {
+      const ocrResult = await readPdfOcr(selectedFile);
       setIsScanning(false);
       setOcrApplied(true);
-      // Realistic pre-filled Indian bank values extracted via OCR
-      setFormValues({
-        fdrNumber: '38947102954',
-        bank: 'State Bank of India',
-        branch: 'Civil Lines, Raipur',
-        amount: '1000000',
-        issueDate: '2025-05-15',
-        maturityDate: '2028-05-15',
-        programYear: 'B.Tech 2025-26',
-      });
-      addToast('OCR extracted details successfully. Please confirm fields.', 'info');
-    }, 1200);
+
+      if (ocrResult.success && ocrResult.fields) {
+        const f = ocrResult.fields;
+        setFormValues((prev) => ({
+          ...prev,
+          bank: f.bank || prev.bank,
+          fdrNumber: f.fdrNumber || prev.fdrNumber,
+          branch: f.branch || prev.branch,
+          amount: f.amount || prev.amount,
+          issueDate: f.issueDate || prev.issueDate,
+          maturityDate: f.maturityDate || prev.maturityDate,
+          programYear: f.programYear || '2025-26',
+        }));
+
+        if (!ocrResult.isCompliant && ocrResult.defects) {
+          setOcrDefect(ocrResult.defects);
+          addToast(`OCR Alert: Non-compliant FDR from ${f.bank} detected.`, 'warning');
+        } else {
+          setOcrSuccess(ocrResult.complianceMessage || `100% Compliant: ${f.bank} FDR validated.`);
+          addToast(`OCR successfully extracted details from ${f.bank}.`, 'success');
+        }
+      } else {
+        addToast('Document uploaded. Please verify fields manually.', 'info');
+      }
+    } catch (err) {
+      setIsScanning(false);
+      addToast('Could not parse document. Please enter details manually.', 'error');
+    }
+  };
+
+  const handleLoadSample = async (filename) => {
+    try {
+      const res = await fetch(`/mock_fdrs/${filename}`);
+      const blob = await res.blob();
+      const mockFile = new File([blob], filename, { type: 'application/pdf' });
+      await handleFileSelect(mockFile);
+    } catch (e) {
+      addToast('Error loading sample document', 'error');
+    }
   };
 
   const handleFieldChange = (field, value) => {
@@ -99,23 +133,83 @@ export default function SubmitFdr() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Column: Document Upload & Simulated OCR Certificate View */}
         <div className="lg:col-span-5 space-y-4">
-          <div className="border border-hairline rounded bg-white p-5">
+          <div className="border border-hairline rounded bg-white p-5 space-y-4">
             <FileUpload
               file={file}
               onFileSelect={handleFileSelect}
               onClear={() => {
                 setFile(null);
                 setOcrApplied(false);
+                setOcrDefect(null);
+                setOcrSuccess(null);
               }}
               label="Original scanned deposit receipt (PDF/Image)"
               helper="System automatically reads FDR certificate numbers, amounts, and validity dates"
             />
+
+            {/* Quick Demo Samples Box */}
+            <div className="pt-3 border-t border-hairline text-xs">
+              <span className="font-semibold text-textSecondary uppercase tracking-wide">Demo Mock Files:</span>
+              <div className="mt-2 grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <button
+                  type="button"
+                  onClick={() => handleLoadSample('FDR_OCR_TEST_DOCUMENT.pdf')}
+                  className="text-left px-2.5 py-1.5 rounded border border-blue-300 bg-blue-50 text-blue-900 hover:bg-blue-100 transition-colors"
+                >
+                  <span className="font-semibold block">✓ 1. Canara Bank</span>
+                  <span className="text-[10px] text-blue-700 block">₹12 Lakh · 2024-2027</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleLoadSample('FDR_VALID_SBI_15LAKH.pdf')}
+                  className="text-left px-2.5 py-1.5 rounded border border-emerald-300 bg-emerald-50 text-emerald-800 hover:bg-emerald-100 transition-colors"
+                >
+                  <span className="font-semibold block">✓ 2. SBI Valid</span>
+                  <span className="text-[10px] text-emerald-700 block">₹15 Lakh · 36 Mo</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleLoadSample('FDR_REJECT_PNB_DEFECTIVE.pdf')}
+                  className="text-left px-2.5 py-1.5 rounded border border-rose-300 bg-rose-50 text-rose-800 hover:bg-rose-100 transition-colors"
+                >
+                  <span className="font-semibold block">✕ 3. PNB Reject</span>
+                  <span className="text-[10px] text-rose-700 block">₹5 Lakh · Expired</span>
+                </button>
+              </div>
+            </div>
           </div>
+
+          {/* OCR Scrutiny Result Banners */}
+          {ocrDefect && (
+            <div className="border border-rose-300 bg-rose-50 rounded p-4 text-xs space-y-1.5">
+              <div className="font-semibold text-rose-800 flex items-center gap-1.5 text-sm">
+                <span>⚠️</span> Non-Compliant FDR Detected by OCR
+              </div>
+              <ul className="list-disc pl-4 space-y-1 text-rose-700">
+                {ocrDefect.map((reason, idx) => (
+                  <li key={idx}>{reason}</li>
+                ))}
+              </ul>
+              <div className="text-[11px] text-rose-600 pt-1 font-mono">
+                Recommendation: Scrutiny rejection anticipated.
+              </div>
+            </div>
+          )}
+
+          {ocrSuccess && (
+            <div className="border border-emerald-300 bg-emerald-50 rounded p-3 text-xs text-emerald-800 flex items-start gap-2">
+              <span className="text-base leading-none">✓</span>
+              <div>
+                <span className="font-semibold">AICTE Compliance Passed: </span>
+                {ocrSuccess}
+              </div>
+            </div>
+          )}
 
           <OcrAutofill
             isScanning={isScanning}
             ocrResult={ocrApplied}
-            onApply={() => handleFileSelect(file || { name: 'FDR_Certificate.pdf', size: 1024 * 512 })}
+            onApply={() => handleFileSelect(file || { name: 'FDR_VALID_SBI_15LAKH.pdf', size: 5470 })}
           />
 
           {/* Certificate Document Preview */}

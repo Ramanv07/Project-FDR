@@ -16,14 +16,16 @@ export default function DocumentPreview({
           <FileText className="w-4 h-4 text-navy-700" />
           <span className="text-xs font-medium text-gray-800">{documentName}</span>
         </div>
-        <button
-          type="button"
-          onClick={() => alert(`Simulating download of ${documentName}`)}
-          className="inline-flex items-center gap-1 text-xs text-navy-700 hover:text-navy-900"
+        <a
+          href={`/mock_fdrs/${documentName}`}
+          download={documentName}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-1 text-xs text-navy-700 hover:text-navy-900 underline"
         >
           <Download className="w-3.5 h-3.5" />
-          Download
-        </button>
+          Download PDF
+        </a>
       </div>
 
       {/* Simulated Scanned Fixed Deposit Certificate Document View */}
