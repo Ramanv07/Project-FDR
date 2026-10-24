@@ -1,0 +1,23 @@
+{
+  "name": "fdr-trust-ledger",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=apps/web",
+    "dev:api": "npm run dev --workspace=apps/api",
+    "dev:bank": "npm run dev --workspace=apps/mock-bank",
+    "dev:all": "concurrently \"npm:dev\" \"npm:dev:api\" \"npm:dev:bank\"",
+    "build": "npm run build --workspace=apps/web",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test": "npm run test --workspace=apps/api"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "eslint": "^9.0.0",
+    "prettier": "^3.2.0"
+  }
+}

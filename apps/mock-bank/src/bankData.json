@@ -1,0 +1,20 @@
+[
+  {
+    "fdrNumber": "31422908764",
+    "bank": "State Bank of India",
+    "branch": "Civil Lines, Raipur",
+    "amount": 1000000,
+    "issueDate": "2024-06-15",
+    "maturityDate": "2027-06-15",
+    "status": "active"
+  },
+  {
+    "fdrNumber": "55219387640",
+    "bank": "Bank of Baroda",
+    "branch": "Napier Town, Jabalpur",
+    "amount": 750000,
+    "issueDate": "2024-01-10",
+    "maturityDate": "2027-01-10",
+    "status": "active"
+  }
+]

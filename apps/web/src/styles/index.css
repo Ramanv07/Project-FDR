@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #1f2937;
+    background-color: #fafaf9;
+  }
+
+  /* Visible focus rings for accessibility */
+  :focus-visible {
+    outline: 2px solid #1F3A5F;
+    outline-offset: 2px;
+  }
+
+  /* Remove default focus for mouse users */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+@layer components {
+  /* Hairline borders used throughout */
+  .border-hairline {
+    border-width: 1px;
+    border-color: #d6d3cd;
+  }
+
+  /* Compact table rows */
+  .table-compact td,
+  .table-compact th {
+    padding: 8px 12px;
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .table-compact th {
+    font-weight: 500;
+    color: #656d76;
+    text-transform: none;
+    background-color: #f5f4f2;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .table-compact tr {
+    border-bottom: 1px solid #eceae6;
+  }
+
+  .table-compact tbody tr:hover {
+    background-color: #f5f4f2;
+    cursor: pointer;
+  }
+
+  /* Status badge base */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 4px;
+    line-height: 18px;
+  }
+
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Section divider for forms */
+  .form-divider {
+    border-top: 1px solid #eceae6;
+    margin: 24px 0 20px;
+  }
+}
+
+/* Transition defaults */
+button,
+a,
+input,
+select,
+textarea {
+  transition: all 150ms ease;
+}
+
+/* Scrollbar styling for tables */
+.overflow-auto::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb {
+  background: #d6d3cd;
+  border-radius: 3px;
+}

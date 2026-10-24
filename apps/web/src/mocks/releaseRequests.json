@@ -1,0 +1,56 @@
+[
+  {
+    "id": "rel-01",
+    "fdrId": "fdr-06",
+    "fdrNumber": "88104629375",
+    "institutionId": "inst-03",
+    "institutionName": "Vidyalankar Institute of Technology, Mumbai",
+    "amount": 500000,
+    "reason": "Program closure approved by AICTE. MBA programme discontinued from 2026-27.",
+    "requestedAt": "2026-02-15",
+    "requestedBy": "Priya Deshmukh",
+    "status": "officer_approved",
+    "currentStep": "section_head",
+    "approvals": [
+      { "step": "officer", "approvedBy": "R.K. Pandey", "approvedAt": "2026-02-18", "remarks": "Verified. Programme closure confirmed." },
+      { "step": "section_head", "approvedBy": null, "approvedAt": null, "remarks": null },
+      { "step": "competent_authority", "approvedBy": null, "approvedAt": null, "remarks": null }
+    ]
+  },
+  {
+    "id": "rel-02",
+    "fdrId": "fdr-17",
+    "fdrNumber": "10982374561",
+    "institutionId": "inst-08",
+    "institutionName": "Government Polytechnic, Lucknow",
+    "amount": 300000,
+    "reason": "FDR matured. Requesting release of security deposit after completion of approval period.",
+    "requestedAt": "2025-07-10",
+    "requestedBy": "Rakesh Verma",
+    "status": "pending",
+    "currentStep": "officer",
+    "approvals": [
+      { "step": "officer", "approvedBy": null, "approvedAt": null, "remarks": null },
+      { "step": "section_head", "approvedBy": null, "approvedAt": null, "remarks": null },
+      { "step": "competent_authority", "approvedBy": null, "approvedAt": null, "remarks": null }
+    ]
+  },
+  {
+    "id": "rel-03",
+    "fdrId": "fdr-10",
+    "fdrNumber": "32817694250",
+    "institutionId": "inst-05",
+    "institutionName": "Maulana Azad NIT, Bhopal",
+    "amount": 1000000,
+    "reason": "Old FDR matured. Renewal submitted (fdr-11). Requesting release of matured deposit.",
+    "requestedAt": "2025-04-01",
+    "requestedBy": "S.K. Jain",
+    "status": "section_head_approved",
+    "currentStep": "competent_authority",
+    "approvals": [
+      { "step": "officer", "approvedBy": "Sunita Reddy", "approvedAt": "2025-04-05", "remarks": "Renewal verified." },
+      { "step": "section_head", "approvedBy": "D.K. Singh", "approvedAt": "2025-04-10", "remarks": "Approved for final authority." },
+      { "step": "competent_authority", "approvedBy": null, "approvedAt": null, "remarks": null }
+    ]
+  }
+]

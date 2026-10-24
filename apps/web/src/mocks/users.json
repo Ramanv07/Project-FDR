@@ -1,0 +1,8 @@
+[
+  { "id": "user-01", "name": "Meena Sharma", "email": "meena@gecraipur.ac.in", "role": "institution", "institutionId": "inst-01", "password": "demo123" },
+  { "id": "user-02", "name": "Arvind Tiwari", "email": "arvind@sritjabalpur.edu.in", "role": "institution", "institutionId": "inst-02", "password": "demo123" },
+  { "id": "user-03", "name": "Priya Deshmukh", "email": "priya@vit.edu.in", "role": "institution", "institutionId": "inst-03", "password": "demo123" },
+  { "id": "user-04", "name": "R.K. Pandey", "email": "rk.pandey@aicte.gov.in", "role": "officer", "institutionId": null, "password": "demo123" },
+  { "id": "user-05", "name": "Sunita Reddy", "email": "s.reddy@aicte.gov.in", "role": "officer", "institutionId": null, "password": "demo123" },
+  { "id": "user-06", "name": "Admin", "email": "admin@aicte.gov.in", "role": "admin", "institutionId": null, "password": "demo123" }
+]

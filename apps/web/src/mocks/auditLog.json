@@ -1,0 +1,62 @@
+[
+  {
+    "id": "audit-01",
+    "timestamp": "2024-06-18T10:00:00Z",
+    "userId": "user-01",
+    "userName": "Meena Sharma",
+    "action": "FDR_SUBMITTED",
+    "recordId": "fdr-01",
+    "details": "FDR 31422908764 submitted for approval year 2024-25",
+    "data": { "fdrNumber": "31422908764", "amount": 1000000, "bank": "State Bank of India" },
+    "previousHash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "id": "audit-02",
+    "timestamp": "2024-06-19T11:30:00Z",
+    "userId": "system",
+    "userName": "Automated Gateway",
+    "action": "BANK_VERIFICATION_SENT",
+    "recordId": "fdr-01",
+    "details": "Dispatch digital inquiry to SBI Core Banking API",
+    "data": { "fdrNumber": "31422908764" },
+    "previousHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "hash": "8a74e50889f0761a3848b89d443224da7bcf61e5927c33f4fa0280eb4eb778d9"
+  },
+  {
+    "id": "audit-03",
+    "timestamp": "2024-06-20T14:15:00Z",
+    "userId": "bank-sbi",
+    "userName": "SBI System Gateway",
+    "action": "BANK_VERIFICATION_RECEIVED",
+    "recordId": "fdr-01",
+    "details": "Bank cryptographic affirmation received and verified",
+    "data": { "status": "confirmed", "fdrNumber": "31422908764", "amount": 1000000 },
+    "previousHash": "8a74e50889f0761a3848b89d443224da7bcf61e5927c33f4fa0280eb4eb778d9",
+    "hash": "7d6438a29e46a784618e7d23a49f5466d6c936b8565a5874212c4f36402ec9aa"
+  },
+  {
+    "id": "audit-04",
+    "timestamp": "2024-06-21T09:45:00Z",
+    "userId": "user-04",
+    "userName": "R.K. Pandey (Officer)",
+    "action": "OFFICER_REVIEW_APPROVED",
+    "recordId": "fdr-01",
+    "details": "Approved institution compliance security deposit",
+    "data": { "decision": "approved", "trustLevel": "bank_confirmed" },
+    "previousHash": "7d6438a29e46a784618e7d23a49f5466d6c936b8565a5874212c4f36402ec9aa",
+    "hash": "a4b5c6d7e8f90123456789abcdef0123456789abcdef0123456789abcdef0123"
+  },
+  {
+    "id": "audit-05",
+    "timestamp": "2025-02-05T12:00:00Z",
+    "userId": "system",
+    "userName": "Integrity Scanner",
+    "action": "DUPLICATE_FLAG_RAISED",
+    "recordId": "fdr-18",
+    "details": "Duplicate FDR number 31422908764 identified across inst-01 and inst-04",
+    "data": { "fdrNumber": "31422908764", "flag": "duplicate" },
+    "previousHash": "a4b5c6d7e8f90123456789abcdef0123456789abcdef0123456789abcdef0123",
+    "hash": "f1e2d3c4b5a697887766554433221100ffeeddccbbaa99887766554433221100"
+  }
+]

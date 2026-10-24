@@ -1,0 +1,47 @@
+[
+  {
+    "id": "breq-01",
+    "fdrId": "fdr-20",
+    "fdrNumber": "33647182905",
+    "institutionName": "Shri Ram Institute of Technology, Jabalpur",
+    "bank": "HDFC Bank",
+    "branch": "Napier Town, Jabalpur",
+    "claimedAmount": 500000,
+    "issueDate": "2024-12-01",
+    "maturityDate": "2027-12-01",
+    "requestedAt": "2026-10-23T14:20:00Z",
+    "status": "pending",
+    "signature": null,
+    "bankConfirmedAmount": null
+  },
+  {
+    "id": "breq-02",
+    "fdrId": "fdr-13",
+    "fdrNumber": "65920471385",
+    "institutionName": "Kongu Engineering College, Erode",
+    "bank": "Indian Overseas Bank",
+    "branch": "Perundurai, Erode",
+    "claimedAmount": 500000,
+    "issueDate": "2024-11-01",
+    "maturityDate": "2027-11-01",
+    "requestedAt": "2026-10-24T09:15:00Z",
+    "status": "pending",
+    "signature": null,
+    "bankConfirmedAmount": null
+  },
+  {
+    "id": "breq-03",
+    "fdrId": "fdr-03",
+    "fdrNumber": "55219387640",
+    "institutionName": "Shri Ram Institute of Technology, Jabalpur",
+    "bank": "Bank of Baroda",
+    "branch": "Napier Town, Jabalpur",
+    "claimedAmount": 1000000,
+    "issueDate": "2024-01-10",
+    "maturityDate": "2027-01-10",
+    "requestedAt": "2024-01-16T10:00:00Z",
+    "status": "mismatch",
+    "signature": "c5f6e89712a43b9d0e123456789abcdef0123456789abcdef0123456789abcde",
+    "bankConfirmedAmount": 750000
+  }
+]

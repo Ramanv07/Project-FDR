@@ -1,0 +1,30 @@
+{
+  "reminderDays": [60, 30, 15, 7],
+  "escalateAfterDays": 7,
+  "channels": {
+    "email": true,
+    "sms": true,
+    "portal": true
+  },
+  "escalationRole": "officer",
+  "recentAlerts": [
+    {
+      "id": "alert-01",
+      "fdrNumber": "44738291056",
+      "institutionName": "Government Engineering College, Raipur",
+      "daysToMaturity": 21,
+      "sentAt": "2026-10-24",
+      "channel": "email",
+      "status": "sent"
+    },
+    {
+      "id": "alert-02",
+      "fdrNumber": "66803142759",
+      "institutionName": "Shri Ram Institute of Technology, Jabalpur",
+      "daysToMaturity": 9,
+      "sentAt": "2026-10-24",
+      "channel": "email + sms",
+      "status": "escalated"
+    }
+  ]
+}
