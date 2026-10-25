@@ -7,6 +7,7 @@ import StatusBadge from '../../../components/data/StatusBadge';
 import HealthScore from '../../../components/data/HealthScore';
 import FdrTimeline from '../components/FdrTimeline';
 import DocumentPreview from '../../../components/data/DocumentPreview';
+import WorkflowTracker from '../../../components/data/WorkflowTracker';
 import Button from '../../../components/ui/Button';
 import Spinner from '../../../components/feedback/Spinner';
 import { formatIndianCurrency, formatDate } from '../../../lib/format';
@@ -92,22 +93,27 @@ export default function FdrDetail() {
       />
 
       {/* Verification Level & Risk Header Banner */}
-      <div className="border border-hairline rounded bg-white p-4 mb-6 flex flex-wrap items-center justify-between gap-4">
+      <div className="border border-hairline rounded-xl bg-white p-4 mb-6 flex flex-wrap items-center justify-between gap-4 card-glass">
         <div className="flex items-center gap-6">
           <div>
-            <span className="text-[11px] text-gray-400 block mb-1">Verification milestone</span>
+            <span className="text-[11px] text-gray-400 block mb-1 font-semibold uppercase tracking-wider">Verification milestone</span>
             <VerificationLevel level={fdr.trustLevel} />
           </div>
           <div className="border-l border-hairline pl-6">
-            <span className="text-[11px] text-gray-400 block mb-1">Ledger status</span>
+            <span className="text-[11px] text-gray-400 block mb-1 font-semibold uppercase tracking-wider">Ledger status</span>
             <StatusBadge status={fdr.status} />
           </div>
         </div>
 
         <div className="flex items-center gap-3">
-          <span className="text-xs text-gray-500">Compliance health:</span>
+          <span className="text-xs text-gray-500 font-medium">Compliance health:</span>
           <HealthScore score={score} reasons={reasons} fdrNumber={fdr.fdrNumber} />
         </div>
+      </div>
+
+      {/* 5-Stage Live Statutory Workflow Visualizer */}
+      <div className="mb-6">
+        <WorkflowTracker fdr={fdr} />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">

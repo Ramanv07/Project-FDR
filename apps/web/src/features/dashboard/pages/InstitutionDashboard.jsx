@@ -8,6 +8,7 @@ import ActionList from '../components/ActionList';
 import DataTable from '../../../components/data/DataTable';
 import StatusBadge from '../../../components/data/StatusBadge';
 import VerificationLevel from '../../../components/data/VerificationLevel';
+import WorkflowTracker from '../../../components/data/WorkflowTracker';
 import Button from '../../../components/ui/Button';
 import { formatIndianCurrency, formatDate, daysUntil } from '../../../lib/format';
 import { ROUTES } from '../../../lib/constants';
@@ -121,6 +122,13 @@ export default function InstitutionDashboard() {
           { label: 'Released deposits', value: releasedCount, subtext: 'Completed lifecycle' },
         ]}
       />
+
+      {/* Primary Deposit Statutory Workflow State */}
+      {fdrs.length > 0 && (
+        <div className="mb-6">
+          <WorkflowTracker fdr={fdrs[0]} />
+        </div>
+      )}
 
       <div className="border border-hairline rounded bg-white p-5">
         <div className="flex items-center justify-between mb-3">

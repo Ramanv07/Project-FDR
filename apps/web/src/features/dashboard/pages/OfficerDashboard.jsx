@@ -7,6 +7,7 @@ import MaturityChart from '../components/MaturityChart';
 import DataTable from '../../../components/data/DataTable';
 import StatusBadge from '../../../components/data/StatusBadge';
 import HealthScore from '../../../components/data/HealthScore';
+import WorkflowTracker from '../../../components/data/WorkflowTracker';
 import Button from '../../../components/ui/Button';
 import Spinner from '../../../components/feedback/Spinner';
 import { formatIndianCurrency, formatDate, daysUntil } from '../../../lib/format';
@@ -159,33 +160,51 @@ export default function OfficerDashboard() {
 
       {/* Row of Counts: Active, Expiring in 30 days, Matured, Renewed, Released, Pending verification */}
       <div className="grid grid-cols-2 md:grid-cols-6 gap-3 mb-6">
-        <div className="border border-hairline rounded bg-white p-3">
-          <p className="text-[11px] text-gray-500 mb-0.5">Active</p>
-          <span className="text-xl font-medium text-gray-900 tabular-nums">{counts.active}</span>
+        <div className="bg-white border border-slate-300 rounded p-3">
+          <p className="text-[11px] font-medium text-slate-500 mb-0.5">Active</p>
+          <span className="text-xl font-bold text-slate-900 tabular-nums">{counts.active}</span>
+          <p className="text-[10px] text-emerald-700 mt-0.5 font-medium">Valid cover</p>
         </div>
-        <div className="border border-hairline rounded bg-white p-3">
-          <p className="text-[11px] text-gray-500 mb-0.5">Expiring in 30d</p>
-          <span className="text-xl font-medium text-status-amber tabular-nums">
+
+        <div className="bg-white border border-amber-300 rounded p-3">
+          <p className="text-[11px] font-medium text-amber-800 mb-0.5">Expiring in 30d</p>
+          <span className="text-xl font-bold text-amber-700 tabular-nums">
             {counts.expiring30}
           </span>
+          <p className="text-[10px] text-amber-700 mt-0.5 font-medium">Needs renewal</p>
         </div>
-        <div className="border border-hairline rounded bg-white p-3">
-          <p className="text-[11px] text-gray-500 mb-0.5">Matured</p>
-          <span className="text-xl font-medium text-status-red tabular-nums">{counts.matured}</span>
+
+        <div className="bg-white border border-red-300 rounded p-3">
+          <p className="text-[11px] font-medium text-red-800 mb-0.5">Matured</p>
+          <span className="text-xl font-bold text-red-700 tabular-nums">{counts.matured}</span>
+          <p className="text-[10px] text-red-700 mt-0.5 font-medium">Lapsed / due</p>
         </div>
-        <div className="border border-hairline rounded bg-white p-3">
-          <p className="text-[11px] text-gray-500 mb-0.5">Renewed</p>
-          <span className="text-xl font-medium text-gray-800 tabular-nums">{counts.renewed}</span>
+
+        <div className="bg-white border border-slate-300 rounded p-3">
+          <p className="text-[11px] font-medium text-slate-500 mb-0.5">Renewed</p>
+          <span className="text-xl font-bold text-slate-800 tabular-nums">{counts.renewed}</span>
+          <p className="text-[10px] text-slate-500 mt-0.5">Chained</p>
         </div>
-        <div className="border border-hairline rounded bg-white p-3">
-          <p className="text-[11px] text-gray-500 mb-0.5">Released</p>
-          <span className="text-xl font-medium text-gray-800 tabular-nums">{counts.released}</span>
+
+        <div className="bg-white border border-slate-300 rounded p-3">
+          <p className="text-[11px] font-medium text-slate-500 mb-0.5">Released</p>
+          <span className="text-xl font-bold text-slate-800 tabular-nums">{counts.released}</span>
+          <p className="text-[10px] text-slate-500 mt-0.5">Closed</p>
         </div>
-        <div className="border border-hairline rounded bg-white p-3">
-          <p className="text-[11px] text-gray-500 mb-0.5">Pending verification</p>
-          <span className="text-xl font-medium text-navy-800 tabular-nums">{counts.pending}</span>
+
+        <div className="bg-white border border-blue-300 rounded p-3">
+          <p className="text-[11px] font-medium text-blue-900 mb-0.5">Pending Scrutiny</p>
+          <span className="text-xl font-bold text-[#1F3A5F] tabular-nums">{counts.pending}</span>
+          <p className="text-[10px] text-blue-700 mt-0.5 font-medium">Officer queue</p>
         </div>
       </div>
+
+      {/* Live 5-Stage Workflow Engine Tracker Showcase */}
+      {fdrs.length > 0 && (
+        <div className="mb-6">
+          <WorkflowTracker fdr={fdrs[0]} />
+        </div>
+      )}
 
       {/* Bar Chart of Maturities by Month */}
       <div className="border border-hairline rounded bg-white p-5 mb-6">

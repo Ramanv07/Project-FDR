@@ -40,66 +40,70 @@ export default function Landing() {
 
       {/* Main content container */}
       <main className="max-w-content mx-auto px-6 py-8">
-        <div className="border border-hairline rounded bg-white p-6 mb-6">
-          <h1 className="text-lg font-medium text-gray-900 mb-2">
-            Fixed Deposit Receipt (FDR) trust & verification ledger
+        <div className="bg-white border border-slate-300 rounded p-6 mb-6">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-[11px] font-bold text-navy-800 uppercase tracking-wider bg-slate-100 border border-slate-200 px-2 py-0.5 rounded">
+              Government Regulatory System
+            </span>
+          </div>
+          <h1 className="text-xl font-bold text-slate-900 mb-2">
+            AICTE Security Deposit & Fixed Deposit Receipt (FDR) Trust Ledger
           </h1>
-          <p className="text-xs text-gray-600 leading-relaxed max-w-3xl">
-            This regulatory infrastructure maintains verified electronic custody of security deposits
-            pledged by approved technical institutions in favour of the AICTE. It features multi-tier
-            OCR extraction, cryptographic bank confirmation protocols, coverage gap detection, and a
-            SHA-256 hash-chained immutable audit ledger.
+          <p className="text-xs text-slate-700 leading-relaxed max-w-3xl">
+            National regulatory repository maintaining verified custody of fixed deposit receipts pledged by approved technical institutions in favour of AICTE. Features PaddleOCR certificate scrutiny, bank verification reconciliation, statutory coverage gap auditing, and SHA-256 tamper-proof ledger logging.
           </p>
         </div>
 
-        {/* Dense overview tables and portals */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="border border-hairline rounded bg-white p-5 flex flex-col justify-between">
+        {/* Portal Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="bg-white border border-slate-300 rounded p-5 flex flex-col justify-between">
             <div>
-              <h2 className="text-sm font-medium text-gray-900 mb-1">Institution portal</h2>
-              <p className="text-xs text-gray-500 mb-4 leading-relaxed">
-                For college principals and finance officers. Upload FDR certificates with auto-fill OCR,
-                monitor maturity dates, submit timely renewals, and request deposit release.
+              <h2 className="text-sm font-bold text-slate-900 mb-1">Technical Institution Portal</h2>
+              <p className="text-xs text-slate-600 mb-4 leading-relaxed">
+                For college principals and finance officials. Upload FDR certificates with automated OCR text extraction, review validity timelines, submit continuous renewals, and apply for deposit release.
               </p>
             </div>
-            <div className="pt-3 border-t border-hairline">
+            <div className="pt-3 border-t border-slate-200">
               <Link to={ROUTES.LOGIN}>
                 <Button variant="secondary" size="sm" className="w-full">
-                  Institution sign in
+                  Institution Sign In
                 </Button>
               </Link>
             </div>
           </div>
 
-          <div className="border border-hairline rounded bg-white p-5 flex flex-col justify-between">
+          <div className="bg-white border border-[#1F3A5F] rounded p-5 flex flex-col justify-between">
             <div>
-              <h2 className="text-sm font-medium text-gray-900 mb-1">AICTE scrutiny office</h2>
-              <p className="text-xs text-gray-500 mb-4 leading-relaxed">
-                For regional and central officers. Search FDR register, review discrepancies across
-                submitted/OCR/bank records, track risk queue scores, and process release approvals.
+              <div className="flex items-center justify-between mb-1">
+                <h2 className="text-sm font-bold text-slate-900">AICTE Scrutiny Office</h2>
+                <span className="text-[10px] font-bold uppercase px-1.5 py-0.5 rounded bg-blue-100 text-[#1F3A5F]">
+                  Authorised
+                </span>
+              </div>
+              <p className="text-xs text-slate-600 mb-4 leading-relaxed">
+                For regional and bureau officers. Three-way reconciliation review (Institution vs OCR vs Bank), health scoring, regulatory coverage gap audit, and three-tier release approvals.
               </p>
             </div>
-            <div className="pt-3 border-t border-hairline">
+            <div className="pt-3 border-t border-slate-200">
               <Link to={ROUTES.LOGIN}>
                 <Button variant="primary" size="sm" className="w-full">
-                  Officer sign in
+                  Officer Sign In
                 </Button>
               </Link>
             </div>
           </div>
 
-          <div className="border border-hairline rounded bg-white p-5 flex flex-col justify-between">
+          <div className="bg-white border border-slate-300 rounded p-5 flex flex-col justify-between">
             <div>
-              <h2 className="text-sm font-medium text-gray-900 mb-1">Simulated bank gateway</h2>
-              <p className="text-xs text-gray-500 mb-4 leading-relaxed">
-                Demonstration utility mimicking core banking API webhooks. Inspect inbound verification
-                requests, issue cryptographically signed confirmations, or report amount discrepancies.
+              <h2 className="text-sm font-bold text-slate-900 mb-1">Core Banking Gateway Simulator</h2>
+              <p className="text-xs text-slate-600 mb-4 leading-relaxed">
+                Inter-bank confirmation console. Inspect inbound verification requests, issue cryptographic confirmations, or report principal amount mismatches.
               </p>
             </div>
-            <div className="pt-3 border-t border-hairline">
+            <div className="pt-3 border-t border-slate-200">
               <Link to={ROUTES.MOCK_BANK}>
                 <Button variant="secondary" size="sm" className="w-full">
-                  Open mock bank
+                  Access Bank Console
                 </Button>
               </Link>
             </div>

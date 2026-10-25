@@ -74,7 +74,7 @@ export async function readPdfOcr(file) {
 
         // 2. FDR Certificate Number
         let fdrNumber = '';
-        const fdrMatch = fullText.match(/(?:FDR Certificate No|FDR No|Receipt No|Certificate No)[:\s\n]*([A-Z0-9-]{8,24})/i);
+        const fdrMatch = fullText.match(/(?:FDR Account Number|FDR Certificate No|FDR No|Receipt No|Certificate No)[:\s\n]*([A-Z0-9-]{6,24})/i);
         if (fdrMatch) {
           fdrNumber = fdrMatch[1].trim();
         } else {

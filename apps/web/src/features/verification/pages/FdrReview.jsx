@@ -5,6 +5,7 @@ import PageHeader from '../../../components/data/PageHeader';
 import CompareColumns from '../components/CompareColumns';
 import VerificationLevel from '../../../components/data/VerificationLevel';
 import StatusBadge from '../../../components/data/StatusBadge';
+import WorkflowTracker from '../../../components/data/WorkflowTracker';
 import FormField from '../../../components/ui/FormField';
 import Textarea from '../../../components/ui/Textarea';
 import Button from '../../../components/ui/Button';
@@ -94,6 +95,9 @@ export default function FdrReview() {
       />
 
       <div className="space-y-6">
+        {/* 5-Stage Live Statutory Workflow Visualizer */}
+        <WorkflowTracker fdr={fdr} />
+
         {/* Three Columns Comparison Component */}
         <CompareColumns submitted={submitted} ocr={ocr} bank={bank} />
 

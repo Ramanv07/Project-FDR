@@ -32,10 +32,10 @@ export function validateFdr(fdr, allFdrs = []) {
     }
   }
 
-  // FDR number format (basic: must be numeric, 8+ digits)
+  // FDR certificate number format (alphanumeric, at least 6 characters)
   if (fdr.fdrNumber) {
-    if (!/^\d{8,}$/.test(fdr.fdrNumber)) {
-      errors.push({ field: 'fdrNumber', message: 'FDR number must be at least 8 digits' });
+    if (fdr.fdrNumber.trim().length < 6) {
+      errors.push({ field: 'fdrNumber', message: 'FDR certificate number must be at least 6 characters' });
     }
   }
 

@@ -5,8 +5,8 @@ export function validateFdrForm(values) {
 
   if (!values.fdrNumber?.trim()) {
     errors.fdrNumber = 'FDR number is required';
-  } else if (!/^\d{8,}$/.test(values.fdrNumber.trim())) {
-    errors.fdrNumber = 'FDR number must contain at least 8 digits';
+  } else if (values.fdrNumber.trim().length < 6) {
+    errors.fdrNumber = 'FDR certificate number must be at least 6 characters';
   }
 
   if (!values.bank?.trim()) {

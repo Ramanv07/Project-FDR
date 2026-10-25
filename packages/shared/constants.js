@@ -25,10 +25,18 @@ export const FDR_STATUS = {
 };
 
 export const TRUST_LEVELS = {
-  SUBMITTED: { key: 'submitted', label: 'Submitted', step: 1 },
-  AI_CHECKED: { key: 'ai_checked', label: 'AI-checked', step: 2 },
-  OFFICER_REVIEWED: { key: 'officer_reviewed', label: 'Officer-reviewed', step: 3 },
-  BANK_CONFIRMED: { key: 'bank_confirmed', label: 'Bank-confirmed', step: 4 },
+  SUBMITTED: { key: 'submitted', label: 'T0: Self-Declared', step: 1, tier: 'T0' },
+  AI_CHECKED: { key: 'ai_checked', label: 'T1: Document-Checked', step: 2, tier: 'T1' },
+  OFFICER_REVIEWED: { key: 'officer_reviewed', label: 'T2a: Officer-Reviewed', step: 3, tier: 'T2' },
+  BANK_CONFIRMED: { key: 'bank_confirmed', label: 'T2b: Bank-Confirmed', step: 4, tier: 'T2' },
+  API_VERIFIED: { key: 'api_verified', label: 'T3: Core-API / NeSL Verified', step: 5, tier: 'T3' },
+};
+
+export const TIERS = {
+  T0: { code: 'T0', title: 'Self-Declared', desc: 'Institution uploaded, pending scrutiny' },
+  T1: { code: 'T1', title: 'Document-Checked', desc: 'AI OCR verified dates, amount & lien clause' },
+  T2: { code: 'T2', title: 'Bank-Confirmed', desc: 'Officer scrutiny & signed bank confirmation' },
+  T3: { code: 'T3', title: 'API-Verified', desc: 'Real-time Core Banking API or NeSL confirmation' },
 };
 
 export const RELEASE_STATUS = {

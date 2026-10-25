@@ -14,6 +14,9 @@ import logging
 # Disable unnecessary verbose checks
 os.environ["PADDLE_PDX_DISABLE_MODEL_SOURCE_CHECK"] = "True"
 os.environ["FLAGS_allocator_strategy"] = "auto_growth"
+os.environ["FLAGS_enable_pir_api"] = "0"
+os.environ["FLAGS_use_mkldnn"] = "0"
+os.environ["FLAGS_use_onednn"] = "0"
 logging.getLogger("ppocr").setLevel(logging.ERROR)
 
 from paddleocr import PaddleOCR
@@ -29,21 +32,29 @@ def run_real_paddleocr(file_path):
     ocr = PaddleOCR(lang="en")
     
     print("Scanning document pixels with Convolutional Neural Network...")
-    results = ocr.ocr(file_path, cls=True)
+    results = list(ocr.predict(file_path))
 
     extracted_lines = []
     print("\n[DETECTED TEXT BOUNDING BOXES & CONFIDENCE]:")
     
-    # Handle single or multi-page results
-    pages = results if isinstance(results, list) else [results]
-    for page_idx, page in enumerate(pages):
-        if not page:
-            continue
-        for line in page:
-            coords = line[0]
-            text, score = line[1]
-            extracted_lines.append(text)
-            print(f"  [Score: {score:.2f}] {text}")
+    for item in results:
+        if isinstance(item, dict):
+            texts = item.get('rec_texts', item.get('rec_text', []))
+            scores = item.get('rec_scores', item.get('rec_score', []))
+            if isinstance(texts, str):
+                texts = [texts]
+            if isinstance(scores, (int, float)):
+                scores = [scores]
+            for idx, text in enumerate(texts):
+                score = scores[idx] if idx < len(scores) else 0.95
+                extracted_lines.append(text)
+                print(f"  [Score: {score:.2f}] {text}")
+        elif isinstance(item, list):
+            for line in item:
+                if len(line) >= 2 and isinstance(line[1], (tuple, list)):
+                    text, score = line[1][0], line[1][1]
+                    extracted_lines.append(text)
+                    print(f"  [Score: {score:.2f}] {text}")
 
     full_text = "\n".join(extracted_lines)
 
