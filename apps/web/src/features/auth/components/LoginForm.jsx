@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../useAuth';
 import FormField from '../../../components/ui/FormField';
 import Input from '../../../components/ui/Input';
-import Select from '../../../components/ui/Select';
 import Button from '../../../components/ui/Button';
 import { ROLES, ROUTES } from '../../../lib/constants';
+import { ShieldCheck, Building2, UserCog, Lock, Mail } from 'lucide-react';
 
 export default function LoginForm() {
   const navigate = useNavigate();
@@ -50,75 +50,99 @@ export default function LoginForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       {error && (
-        <div className="p-3 bg-red-50 border border-status-red rounded text-xs text-status-red">
+        <div className="p-3 bg-rose-50 border border-rose-200 rounded-lg text-xs text-rose-700 font-medium">
           {error}
         </div>
       )}
 
-      <FormField label="Portal role" required>
-        <Select
-          value={role}
-          onChange={(val) => setDemoRole(val)}
-          options={[
-            { value: ROLES.OFFICER, label: 'AICTE Officer' },
-            { value: ROLES.INSTITUTION, label: 'Institution Staff' },
-            { value: ROLES.ADMIN, label: 'System Administrator' },
-          ]}
-        />
-      </FormField>
-
-      <FormField label="Official email address" required>
-        <Input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="name@aicte.gov.in"
-          required
-        />
-      </FormField>
-
-      <FormField label="Password" required>
-        <Input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="••••••••"
-          required
-        />
-      </FormField>
-
-      <Button type="submit" variant="primary" className="w-full mt-2" disabled={isLoading}>
-        {isLoading ? 'Authenticating...' : 'Sign in to portal'}
-      </Button>
-
-      {/* Quick demo credentials toggle */}
-      <div className="pt-4 border-t border-hairline text-center">
-        <p className="text-[11px] text-gray-500 mb-2">Demo pre-sets:</p>
-        <div className="flex justify-center gap-2">
+      {/* Role Selector Tabs */}
+      <div>
+        <label className="block text-xs font-semibold text-slate-700 mb-2">
+          Select Portal Role
+        </label>
+        <div className="grid grid-cols-3 gap-2">
           <button
             type="button"
             onClick={() => setDemoRole(ROLES.OFFICER)}
-            className="text-xs text-navy-700 underline hover:text-navy-900"
+            className={`p-2 rounded-xl border text-xs font-semibold flex flex-col items-center gap-1.5 transition-all ${
+              role === ROLES.OFFICER
+                ? 'bg-blue-50 border-blue-600 text-blue-900 shadow-xs ring-1 ring-blue-600'
+                : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100'
+            }`}
           >
-            Officer
+            <ShieldCheck className="w-4 h-4 text-blue-600" />
+            <span>AICTE Officer</span>
           </button>
-          <span className="text-gray-300">•</span>
+
           <button
             type="button"
             onClick={() => setDemoRole(ROLES.INSTITUTION)}
-            className="text-xs text-navy-700 underline hover:text-navy-900"
+            className={`p-2 rounded-xl border text-xs font-semibold flex flex-col items-center gap-1.5 transition-all ${
+              role === ROLES.INSTITUTION
+                ? 'bg-blue-50 border-blue-600 text-blue-900 shadow-xs ring-1 ring-blue-600'
+                : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100'
+            }`}
           >
-            Institution
+            <Building2 className="w-4 h-4 text-emerald-600" />
+            <span>College / Inst</span>
           </button>
-          <span className="text-gray-300">•</span>
+
           <button
             type="button"
             onClick={() => setDemoRole(ROLES.ADMIN)}
-            className="text-xs text-navy-700 underline hover:text-navy-900"
+            className={`p-2 rounded-xl border text-xs font-semibold flex flex-col items-center gap-1.5 transition-all ${
+              role === ROLES.ADMIN
+                ? 'bg-blue-50 border-blue-600 text-blue-900 shadow-xs ring-1 ring-blue-600'
+                : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100'
+            }`}
           >
-            Admin
+            <UserCog className="w-4 h-4 text-amber-600" />
+            <span>System Admin</span>
           </button>
         </div>
+      </div>
+
+      <FormField label="Official Email ID" required>
+        <div className="relative">
+          <Input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="name@aicte.gov.in"
+            required
+            className="w-full"
+          />
+        </div>
+      </FormField>
+
+      <FormField label="Password" required>
+        <div className="relative">
+          <Input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="••••••••"
+            required
+            className="w-full"
+          />
+        </div>
+      </FormField>
+
+      <Button
+        type="submit"
+        variant="primary"
+        size="lg"
+        className="w-full mt-2"
+        disabled={isLoading}
+        icon={<Lock className="w-4 h-4" />}
+      >
+        {isLoading ? 'Verifying Credentials...' : 'Sign In to Ledger Vault'}
+      </Button>
+
+      <div className="text-center pt-2">
+        <span className="text-[11px] text-slate-400">
+          Demo pre-loaded credentials. Click any role button above to auto-fill.
+        </span>
       </div>
     </form>
   );

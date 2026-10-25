@@ -153,32 +153,40 @@ export default function MockBankConsole() {
   return (
     <div className="min-h-screen bg-surface-50 p-6 max-w-content mx-auto">
       {/* Prominent clearly labeled banner */}
-      <div className="p-4 bg-navy-50 border border-navy-200 rounded mb-6 flex items-start justify-between gap-4">
-        <div className="flex items-start gap-3">
-          <AlertTriangle className="w-5 h-5 text-navy-700 flex-shrink-0 mt-0.5" />
-          <div className="text-xs text-navy-900">
-            <h2 className="font-semibold text-sm">Simulated bank for demonstration</h2>
-            <p className="mt-0.5 leading-relaxed text-gray-600">
-              This sandbox environment emulates core banking APIs and webhook endpoints for financial
-              institutions. Actions taken here generate authentic HMAC cryptographic signatures that
-              transmit directly to the AICTE trust ledger.
+      <div className="p-5 bg-gradient-to-r from-blue-50/80 via-slate-50 to-amber-50/50 border border-slate-200 rounded-2xl mb-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xs">
+        <div className="flex items-start gap-3.5">
+          <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center flex-shrink-0 shadow-xs">
+            <Landmark className="w-5 h-5" />
+          </div>
+          <div>
+            <div className="flex items-center gap-2">
+              <h2 className="font-bold text-sm text-slate-950 font-display">
+                RBI Scheduled Bank / NeSL Simulator Gateway
+              </h2>
+              <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
+                Sandbox CBS
+              </span>
+            </div>
+            <p className="mt-1 text-xs text-slate-600 leading-relaxed max-w-2xl">
+              Emulates Core Banking System (CBS) APIs and NeSL electronic guarantee reconciliation.
+              Confirming or reporting discrepancies issues authentic HMAC cryptographic signatures directly appended to the AICTE trust ledger.
             </p>
           </div>
         </div>
 
-        <Link to={ROUTES.OFFICER_DASHBOARD}>
+        <Link to={ROUTES.OFFICER_DASHBOARD} className="flex-shrink-0">
           <Button variant="primary" size="sm">
-            Return to AICTE portal
+            ← Return to AICTE Portal
           </Button>
         </Link>
       </div>
 
       <PageHeader
-        title="Core banking system simulation"
-        description="Incoming electronic verification inquiries awaiting signature"
+        title="Inter-Bank Verification Gateway"
+        description="Incoming electronic lien verification inquiries dispatched by AICTE scrutiny officers"
       />
 
-      <div className="border border-hairline rounded bg-white p-5">
+      <div className="border border-slate-200 rounded-2xl bg-white p-6 shadow-xs">
         <DataTable
           columns={columns}
           data={requests}

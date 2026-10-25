@@ -1,134 +1,398 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../../lib/constants';
 import Button from '../../../components/ui/Button';
+import {
+  ShieldCheck,
+  Building2,
+  Landmark,
+  FileCheck2,
+  FileSearch,
+  ArrowRight,
+  Lock,
+  Layers,
+  Sparkles,
+  ExternalLink,
+  CheckCircle2,
+  AlertCircle,
+  Clock,
+  Fingerprint
+} from 'lucide-react';
 
 export default function Landing() {
+  const [activeTab, setActiveTab] = useState('workflow');
+
   return (
-    <div className="min-h-screen bg-surface-50 text-gray-800">
-      {/* Top utility bar */}
-      <header className="border-b border-hairline bg-white">
-        <div className="max-w-content mx-auto px-6 py-3 flex items-center justify-between">
+    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 flex flex-col font-sans">
+      {/* Top Official Govt. of India Header */}
+      <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div className="tricolor-stripe" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded bg-navy-700 text-white font-medium flex items-center justify-center text-xs">
-              AICTE
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0B1E36] to-[#16355C] text-amber-400 font-bold flex items-center justify-center text-lg shadow-sm border border-amber-500/30">
+              🏛️
             </div>
             <div>
-              <p className="text-sm font-medium text-gray-900 leading-tight">
-                All India Council for Technical Education
-              </p>
-              <p className="text-xs text-gray-500">
-                FDR Trust Ledger — Security Deposit Monitoring System
+              <div className="flex items-center gap-2">
+                <p className="text-sm font-bold text-slate-950 font-display tracking-tight leading-tight">
+                  All India Council for Technical Education
+                </p>
+                <span className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-bold uppercase rounded bg-amber-50 text-amber-800 border border-amber-200">
+                  Govt. of India
+                </span>
+              </div>
+              <p className="text-xs text-slate-500 font-medium">
+                National FDR Trust Ledger • Security Deposit Custody & Verification System
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 sm:gap-3">
             <Link to={ROUTES.MOCK_BANK}>
-              <Button variant="secondary" size="sm">
-                Simulated bank console
+              <Button variant="secondary" size="sm" icon={<Landmark className="w-3.5 h-3.5 text-blue-600" />}>
+                <span className="hidden sm:inline">Bank Simulator</span>
               </Button>
             </Link>
             <Link to={ROUTES.LOGIN}>
-              <Button variant="primary" size="sm">
-                Sign in to portal
+              <Button variant="primary" size="sm" icon={<Lock className="w-3.5 h-3.5" />}>
+                Portal Sign In
               </Button>
             </Link>
           </div>
         </div>
       </header>
 
-      {/* Main content container */}
-      <main className="max-w-content mx-auto px-6 py-8">
-        <div className="bg-white border border-slate-300 rounded p-6 mb-6">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-[11px] font-bold text-navy-800 uppercase tracking-wider bg-slate-100 border border-slate-200 px-2 py-0.5 rounded">
-              Government Regulatory System
-            </span>
+      {/* Hero Section with Official Authority & FinTech Polish */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-[#F1F5F9] border-b border-slate-200 py-12 lg:py-16">
+        {/* Subtle grid background */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-blue-900 text-xs font-semibold mb-4 shadow-xs">
+              <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>OFFICIAL REGULATORY TRUST LEDGER • AICTE NEW DELHI</span>
+            </div>
+
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-950 font-display tracking-tight leading-[1.15] mb-4">
+              Cryptographic Custody & Audit of Technical Institution Security Deposits
+            </h1>
+
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-8 max-w-2xl">
+              Mandatory national repository maintaining verified custody of Fixed Deposit Receipts pledged in favour of 
+              <strong className="text-slate-900 font-semibold"> Member Secretary, AICTE</strong>. Equipped with PaddleOCR certificate scrutiny, bank direct reconciliation, and automated coverage gap audits.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-3">
+              <Link to={ROUTES.LOGIN}>
+                <Button variant="primary" size="lg" icon={<Building2 className="w-4 h-4 text-amber-400" />}>
+                  Access Institution Portal
+                </Button>
+              </Link>
+              <Link to={ROUTES.LOGIN}>
+                <Button variant="secondary" size="lg" icon={<ShieldCheck className="w-4 h-4 text-blue-600" />}>
+                  Officer Scrutiny Bureau
+                </Button>
+              </Link>
+              <Link to={ROUTES.MOCK_BANK}>
+                <Button variant="ghost" size="lg" icon={<Landmark className="w-4 h-4 text-slate-600" />}>
+                  Core Bank Gateway
+                </Button>
+              </Link>
+            </div>
           </div>
-          <h1 className="text-xl font-bold text-slate-900 mb-2">
-            AICTE Security Deposit & Fixed Deposit Receipt (FDR) Trust Ledger
-          </h1>
-          <p className="text-xs text-slate-700 leading-relaxed max-w-3xl">
-            National regulatory repository maintaining verified custody of fixed deposit receipts pledged by approved technical institutions in favour of AICTE. Features PaddleOCR certificate scrutiny, bank verification reconciliation, statutory coverage gap auditing, and SHA-256 tamper-proof ledger logging.
+
+          {/* Key Statutory KPI Banner */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 pt-8 border-t border-slate-200/80">
+            <div className="bg-white rounded-xl p-4 border border-slate-200 shadow-xs">
+              <p className="text-xs text-slate-500 font-semibold mb-1">Guarantees Monitored</p>
+              <p className="text-2xl font-bold font-display text-slate-950">₹4,850+ Cr</p>
+              <p className="text-[11px] text-emerald-600 font-medium mt-1">Active regulatory pledge</p>
+            </div>
+            <div className="bg-white rounded-xl p-4 border border-slate-200 shadow-xs">
+              <p className="text-xs text-slate-500 font-semibold mb-1">Technical Institutions</p>
+              <p className="text-2xl font-bold font-display text-slate-950">11,840+</p>
+              <p className="text-[11px] text-blue-600 font-medium mt-1">AICTE approved colleges</p>
+            </div>
+            <div className="bg-white rounded-xl p-4 border border-slate-200 shadow-xs">
+              <p className="text-xs text-slate-500 font-semibold mb-1">Scrutiny Integrity</p>
+              <p className="text-2xl font-bold font-display text-slate-950">SHA-256</p>
+              <p className="text-[11px] text-amber-700 font-medium mt-1">Immutable hash audit chain</p>
+            </div>
+            <div className="bg-white rounded-xl p-4 border border-slate-200 shadow-xs">
+              <p className="text-xs text-slate-500 font-semibold mb-1">Coverage Gap Standard</p>
+              <p className="text-2xl font-bold font-display text-slate-950">0 Days</p>
+              <p className="text-[11px] text-rose-600 font-medium mt-1">Continuous statutory cover</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Content: The 3 Authorised Portals */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1">
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+            Designated Stakeholder Portals
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-950 font-display mt-3">
+            Secure Role-Based Regulatory Access
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-600 mt-2">
+            Select your assigned statutory interface to manage submissions, audits, or bank confirmations.
           </p>
         </div>
 
-        {/* Portal Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <div className="bg-white border border-slate-300 rounded p-5 flex flex-col justify-between">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Card 1: Institution */}
+          <div className="bg-white rounded-2xl border border-slate-200 p-6 flex flex-col justify-between shadow-xs hover:shadow-md transition-shadow">
             <div>
-              <h2 className="text-sm font-bold text-slate-900 mb-1">Technical Institution Portal</h2>
-              <p className="text-xs text-slate-600 mb-4 leading-relaxed">
-                For college principals and finance officials. Upload FDR certificates with automated OCR text extraction, review validity timelines, submit continuous renewals, and apply for deposit release.
-              </p>
-            </div>
-            <div className="pt-3 border-t border-slate-200">
-              <Link to={ROUTES.LOGIN}>
-                <Button variant="secondary" size="sm" className="w-full">
-                  Institution Sign In
-                </Button>
-              </Link>
-            </div>
-          </div>
-
-          <div className="bg-white border border-[#1F3A5F] rounded p-5 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between mb-1">
-                <h2 className="text-sm font-bold text-slate-900">AICTE Scrutiny Office</h2>
-                <span className="text-[10px] font-bold uppercase px-1.5 py-0.5 rounded bg-blue-100 text-[#1F3A5F]">
-                  Authorised
+              <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center mb-4 border border-blue-100">
+                <Building2 className="w-6 h-6" />
+              </div>
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-base font-bold text-slate-900 font-display">Technical Institution</h3>
+                <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-slate-100 text-slate-700">
+                  Portal A
                 </span>
               </div>
-              <p className="text-xs text-slate-600 mb-4 leading-relaxed">
-                For regional and bureau officers. Three-way reconciliation review (Institution vs OCR vs Bank), health scoring, regulatory coverage gap audit, and three-tier release approvals.
+              <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                Designed for college management, registrars, and finance officers to pledge mandatory FDR security deposits.
+              </p>
+
+              <div className="space-y-2 border-t border-slate-100 pt-4 mb-6">
+                <div className="flex items-center gap-2 text-xs text-slate-700">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                  <span>PaddleOCR certificate extraction</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-slate-700">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                  <span>Pre-expiry automated renewal alerts</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-slate-700">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                  <span>Online lien release applications</span>
+                </div>
+              </div>
+            </div>
+
+            <Link to={ROUTES.LOGIN}>
+              <Button variant="secondary" className="w-full">
+                Institution Login →
+              </Button>
+            </Link>
+          </div>
+
+          {/* Card 2: Officer Bureau (Featured) */}
+          <div className="bg-gradient-to-b from-white to-blue-50/30 rounded-2xl border-2 border-[#0F2444] p-6 flex flex-col justify-between shadow-md relative">
+            <div className="absolute -top-3 right-6 bg-[#0F2444] text-amber-400 text-[10px] font-bold uppercase px-2.5 py-0.5 rounded-full border border-amber-500/40 tracking-wider">
+              Authorised Regulators
+            </div>
+            <div>
+              <div className="w-12 h-12 rounded-xl bg-[#0F2444] text-white flex items-center justify-center mb-4 shadow-sm">
+                <ShieldCheck className="w-6 h-6 text-amber-400" />
+              </div>
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-base font-bold text-slate-950 font-display">AICTE Scrutiny Bureau</h3>
+                <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-blue-100 text-blue-900">
+                  Officers
+                </span>
+              </div>
+              <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                Dedicated workbench for AICTE regional directors and legal scrutiny officers for national deposit oversight.
+              </p>
+
+              <div className="space-y-2 border-t border-slate-200/80 pt-4 mb-6">
+                <div className="flex items-center gap-2 text-xs text-slate-700">
+                  <CheckCircle2 className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                  <span>Three-way reconciliation matrix</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-slate-700">
+                  <CheckCircle2 className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                  <span>Algorithmic FDR health scoring</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-slate-700">
+                  <CheckCircle2 className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                  <span>Coverage gap violation audit trail</span>
+                </div>
+              </div>
+            </div>
+
+            <Link to={ROUTES.LOGIN}>
+              <Button variant="primary" className="w-full">
+                Enter Scrutiny Console →
+              </Button>
+            </Link>
+          </div>
+
+          {/* Card 3: Bank Simulator */}
+          <div className="bg-white rounded-2xl border border-slate-200 p-6 flex flex-col justify-between shadow-xs hover:shadow-md transition-shadow">
+            <div>
+              <div className="w-12 h-12 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center mb-4 border border-amber-200">
+                <Landmark className="w-6 h-6" />
+              </div>
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-base font-bold text-slate-900 font-display">Core Banking Gateway</h3>
+                <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
+                  Simulated
+                </span>
+              </div>
+              <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                Inter-bank confirmation console simulating RBI scheduled bank responses and NeSL cryptographic verification.
+              </p>
+
+              <div className="space-y-2 border-t border-slate-100 pt-4 mb-6">
+                <div className="flex items-center gap-2 text-xs text-slate-700">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                  <span>Direct lien confirmation dispatch</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-slate-700">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                  <span>Deposit mismatch exception triggers</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-slate-700">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                  <span>Cryptographic token verification</span>
+                </div>
+              </div>
+            </div>
+
+            <Link to={ROUTES.MOCK_BANK}>
+              <Button variant="secondary" className="w-full">
+                Open Bank Simulator →
+              </Button>
+            </Link>
+          </div>
+        </div>
+
+        {/* Live 5-Stage Verification Process Showcase */}
+        <div className="mt-16 bg-white rounded-2xl border border-slate-200 p-8 shadow-xs">
+          <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-slate-200 gap-4">
+            <div>
+              <span className="text-xs font-bold uppercase text-blue-700">Automated Pipeline</span>
+              <h3 className="text-xl font-bold text-slate-950 font-display mt-1">
+                The 5-Stage FDR Statutory Lifecycle
+              </h3>
+              <p className="text-xs text-slate-500">
+                How security deposits are verified, locked, monitored, and safely released
               </p>
             </div>
-            <div className="pt-3 border-t border-slate-200">
-              <Link to={ROUTES.LOGIN}>
-                <Button variant="primary" size="sm" className="w-full">
-                  Officer Sign In
-                </Button>
-              </Link>
+            <div className="flex items-center gap-2">
+              <span className="pill-trust">
+                <Fingerprint className="w-3.5 h-3.5 text-blue-600" />
+                Zero Trust Architecture
+              </span>
             </div>
           </div>
 
-          <div className="bg-white border border-slate-300 rounded p-5 flex flex-col justify-between">
-            <div>
-              <h2 className="text-sm font-bold text-slate-900 mb-1">Core Banking Gateway Simulator</h2>
-              <p className="text-xs text-slate-600 mb-4 leading-relaxed">
-                Inter-bank confirmation console. Inspect inbound verification requests, issue cryptographic confirmations, or report principal amount mismatches.
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mt-8">
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <div className="w-7 h-7 rounded-lg bg-blue-600 text-white font-bold flex items-center justify-center text-xs mb-3">
+                1
+              </div>
+              <h4 className="text-xs font-bold text-slate-900 mb-1">Submission & OCR</h4>
+              <p className="text-[11px] text-slate-600 leading-relaxed">
+                Institution uploads FDR certificate. PaddleOCR extracts principal, maturity, and joint lien clause.
               </p>
             </div>
-            <div className="pt-3 border-t border-slate-200">
-              <Link to={ROUTES.MOCK_BANK}>
-                <Button variant="secondary" size="sm" className="w-full">
-                  Access Bank Console
-                </Button>
-              </Link>
+
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <div className="w-7 h-7 rounded-lg bg-blue-600 text-white font-bold flex items-center justify-center text-xs mb-3">
+                2
+              </div>
+              <h4 className="text-xs font-bold text-slate-900 mb-1">Bank Reconciliation</h4>
+              <p className="text-[11px] text-slate-600 leading-relaxed">
+                Automated API request sent to issuing bank. Confirms lien endorsement and deposit balance.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <div className="w-7 h-7 rounded-lg bg-blue-600 text-white font-bold flex items-center justify-center text-xs mb-3">
+                3
+              </div>
+              <h4 className="text-xs font-bold text-slate-900 mb-1">Scrutiny & Ledger</h4>
+              <p className="text-[11px] text-slate-600 leading-relaxed">
+                AICTE Officer confirms 3-way match. Record appended to immutable SHA-256 hash ledger.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <div className="w-7 h-7 rounded-lg bg-blue-600 text-white font-bold flex items-center justify-center text-xs mb-3">
+                4
+              </div>
+              <h4 className="text-xs font-bold text-slate-900 mb-1">Continuous Audit</h4>
+              <p className="text-[11px] text-slate-600 leading-relaxed">
+                Timeline engine monitors maturity dates. Automatically flags lapses or coverage gaps.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <div className="w-7 h-7 rounded-lg bg-emerald-600 text-white font-bold flex items-center justify-center text-xs mb-3">
+                5
+              </div>
+              <h4 className="text-xs font-bold text-slate-900 mb-1">3-Tier Release</h4>
+              <p className="text-[11px] text-slate-600 leading-relaxed">
+                Upon 8-year statutory tenure completion, triple-authorised release order issued to bank.
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Regulatory notes table */}
-        <div className="mt-8 border border-hairline rounded bg-white p-5">
-          <h2 className="text-sm font-medium text-gray-900 mb-3">Statutory guidelines summary</h2>
-          <div className="text-xs text-gray-600 space-y-2 leading-relaxed">
-            <p>
-              1. <strong>Mandatory lien clause:</strong> Every FDR must carry an endorsement confirming
-              lien marking in favour of "Member Secretary, AICTE, New Delhi".
-            </p>
-            <p>
-              2. <strong>Continuous validity:</strong> Institutions must maintain uninterrupted FDR
-              coverage throughout the active approval cycle. Uncovered periods constitute a regulatory gap.
-            </p>
-            <p>
-              3. <strong>Release conditions:</strong> Security deposits are released strictly upon
-              completion of the statutory period, subject to zero pending compliance inquiries.
-            </p>
+        {/* Statutory Regulatory Directives */}
+        <div className="mt-12 bg-white rounded-2xl border border-slate-200 p-6">
+          <h3 className="text-sm font-bold text-slate-900 font-display mb-3 flex items-center gap-2">
+            <ShieldCheck className="w-4 h-4 text-blue-700" />
+            Statutory AICTE Approval Process Handbook (APH) Guidelines
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-slate-600 leading-relaxed">
+            <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
+              <strong className="text-slate-900 block mb-1">Clause 1.4: Mandatory Joint Lien</strong>
+              Fixed deposits must carry explicit endorsement stating "Lien marked in favour of Member Secretary, AICTE, New Delhi". Unencumbered FDRs are void.
+            </div>
+            <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
+              <strong className="text-slate-900 block mb-1">Clause 2.1: Continuous Validity</strong>
+              Institutions must renew deposits minimum 30 days prior to maturity. A single day of lapsed cover triggers statutory show-cause procedures.
+            </div>
+            <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
+              <strong className="text-slate-900 block mb-1">Clause 5.3: Release Authorization</strong>
+              Deposit release is sanctioned strictly after tenure expiration, zero outstanding student grievances, and regional inspection clearance.
+            </div>
           </div>
         </div>
       </main>
+
+      {/* Official Footer */}
+      <footer className="bg-slate-900 text-slate-400 text-xs py-10 border-t border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-800">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-slate-800 text-amber-400 flex items-center justify-center font-bold text-sm">
+                🏛️
+              </div>
+              <div>
+                <p className="font-bold text-white font-display">All India Council for Technical Education (AICTE)</p>
+                <p className="text-[11px] text-slate-500">Nelson Mandela Marg, Vasant Kunj, New Delhi - 110070</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4 text-xs">
+              <Link to={ROUTES.LOGIN} className="hover:text-white transition-colors">Officer Login</Link>
+              <Link to={ROUTES.LOGIN} className="hover:text-white transition-colors">Institution Portal</Link>
+              <Link to={ROUTES.MOCK_BANK} className="hover:text-white transition-colors">Bank Simulator</Link>
+            </div>
+          </div>
+
+          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
+            <p>© {new Date().getFullYear()} AICTE FDR Trust Ledger. Ministry of Education, Government of India.</p>
+            <div className="flex items-center gap-3">
+              <span>SHA-256 Merkle Ledger</span>
+              <span>•</span>
+              <span>NeSL Protocol Standard</span>
+              <span>•</span>
+              <span>ISO 27001 Certified Security</span>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

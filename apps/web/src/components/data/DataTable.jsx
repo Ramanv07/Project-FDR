@@ -49,10 +49,10 @@ export default function DataTable({
   }
 
   return (
-    <div className={`w-full overflow-x-auto border border-hairline rounded bg-white ${className}`}>
+    <div className={`w-full overflow-x-auto border border-slate-200 rounded-xl bg-white shadow-xs ${className}`}>
       <table className="w-full text-left border-collapse table-compact">
         <thead>
-          <tr className="border-b border-hairline bg-surface-100">
+          <tr className="border-b border-slate-200 bg-slate-50/80">
             {columns.map((col) => (
               <th
                 key={col.accessor || col.header}
