@@ -126,7 +126,7 @@ export default function InstitutionDashboard() {
       {/* Primary Deposit Statutory Workflow State */}
       {fdrs.length > 0 && (
         <div className="mb-6">
-          <WorkflowTracker fdr={fdrs[0]} />
+          <WorkflowTracker fdr={fdrs[0]} allFdrs={fdrs} />
         </div>
       )}
 

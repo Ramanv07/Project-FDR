@@ -16,6 +16,7 @@ import { ROUTES } from '../../../lib/constants';
 export default function OfficerDashboard() {
   const navigate = useNavigate();
   const [fdrs, setFdrs] = useState([]);
+  const [selectedFdrId, setSelectedFdrId] = useState(null);
   const [riskQueue, setRiskQueue] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -27,6 +28,9 @@ export default function OfficerDashboard() {
           riskApi.getRiskQueue(),
         ]);
         setFdrs(allFdrs);
+        if (allFdrs.length > 0 && !selectedFdrId) {
+          setSelectedFdrId(allFdrs[0].id);
+        }
         setRiskQueue(riskData.slice(0, 10)); // Top 10 highest risk
       } finally {
         setLoading(false);
@@ -34,6 +38,11 @@ export default function OfficerDashboard() {
     }
     loadData();
   }, []);
+
+  const currentFdr = useMemo(
+    () => fdrs.find((f) => f.id === selectedFdrId) || fdrs[0],
+    [fdrs, selectedFdrId]
+  );
 
   // Compute stat counts: Active, Expiring in 30 days, Matured, Renewed, Released, Pending verification
   const counts = useMemo(() => {
@@ -214,7 +223,11 @@ export default function OfficerDashboard() {
       {/* Live 5-Stage Workflow Engine Tracker Showcase */}
       {fdrs.length > 0 && (
         <div className="mb-6">
-          <WorkflowTracker fdr={fdrs[0]} />
+          <WorkflowTracker
+            fdr={currentFdr || fdrs[0]}
+            allFdrs={fdrs}
+            onSelectFdr={(id) => setSelectedFdrId(id)}
+          />
         </div>
       )}
 
