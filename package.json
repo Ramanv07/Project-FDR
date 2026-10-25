@@ -10,7 +10,7 @@
     "dev:api": "npm run dev --workspace=apps/api",
     "dev:bank": "npm run dev --workspace=apps/mock-bank",
     "dev:all": "concurrently \"npm:dev\" \"npm:dev:api\" \"npm:dev:bank\"",
-    "build": "npm run build --workspace=apps/web",
+    "build": "npm run build --workspace=apps/web && cp -r dist apps/web/dist 2>/dev/null || xcopy /E /I /Y dist apps\\web\\dist || true",
     "lint": "eslint .",
     "format": "prettier --write .",
     "test": "npm run test --workspace=apps/api"
