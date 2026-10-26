@@ -130,13 +130,13 @@ export default function InstitutionDashboard() {
         </div>
       )}
 
-      <div className="border border-slate-200 rounded-2xl bg-white p-6 shadow-xs">
-        <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+      <div className="border border-slate-200 dark:border-slate-800 rounded-2xl bg-white dark:bg-[#0f172a] p-6 shadow-xs">
+        <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-100 dark:border-slate-800">
           <div>
-            <h2 className="text-base font-bold text-slate-950 font-display">Institution Security Deposit Ledger</h2>
-            <p className="text-xs text-slate-500">Active and archived FDR guarantees pledged to AICTE New Delhi</p>
+            <h2 className="text-base font-bold text-slate-950 dark:text-white font-display">Institution Security Deposit Ledger</h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Active and archived FDR guarantees pledged to AICTE New Delhi</p>
           </div>
-          <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 text-slate-700">
+          <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 dark:bg-[#141f36] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
             {fdrs.length} deposits recorded
           </span>
         </div>

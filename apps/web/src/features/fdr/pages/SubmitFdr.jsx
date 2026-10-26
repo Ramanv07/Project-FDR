@@ -133,7 +133,7 @@ export default function SubmitFdr() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Column: Document Upload & Simulated OCR Certificate View */}
         <div className="lg:col-span-5 space-y-4">
-          <div className="border border-hairline rounded bg-white p-5 space-y-4">
+          <div className="border border-hairline dark:border-slate-800 rounded-xl bg-white dark:bg-[#0f172a] p-5 space-y-4 shadow-xs">
             <FileUpload
               file={file}
               onFileSelect={handleFileSelect}
@@ -148,32 +148,32 @@ export default function SubmitFdr() {
             />
 
             {/* Quick Demo Samples Box */}
-            <div className="pt-3 border-t border-hairline text-xs">
-              <span className="font-semibold text-textSecondary uppercase tracking-wide">Demo Mock Files:</span>
+            <div className="pt-3 border-t border-hairline dark:border-slate-800 text-xs">
+              <span className="font-semibold text-textSecondary dark:text-slate-400 uppercase tracking-wide">Demo Mock Files:</span>
               <div className="mt-2 grid grid-cols-1 sm:grid-cols-3 gap-2">
                 <button
                   type="button"
                   onClick={() => handleLoadSample('FDR_OCR_TEST_DOCUMENT.pdf')}
-                  className="text-left px-2.5 py-1.5 rounded border border-blue-300 bg-blue-50 text-blue-900 hover:bg-blue-100 transition-colors"
+                  className="text-left px-2.5 py-1.5 rounded border border-blue-300 dark:border-blue-900 bg-blue-50 dark:bg-blue-950/40 text-blue-900 dark:text-blue-200 hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors"
                 >
                   <span className="font-semibold block">✓ 1. Canara Bank</span>
-                  <span className="text-[10px] text-blue-700 block">₹12 Lakh · 2024-2027</span>
+                  <span className="text-[10px] text-blue-700 dark:text-blue-300 block">₹12 Lakh · 2024-2027</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => handleLoadSample('FDR_VALID_SBI_15LAKH.pdf')}
-                  className="text-left px-2.5 py-1.5 rounded border border-emerald-300 bg-emerald-50 text-emerald-800 hover:bg-emerald-100 transition-colors"
+                  className="text-left px-2.5 py-1.5 rounded border border-emerald-300 dark:border-emerald-900 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-200 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition-colors"
                 >
                   <span className="font-semibold block">✓ 2. SBI Valid</span>
-                  <span className="text-[10px] text-emerald-700 block">₹15 Lakh · 36 Mo</span>
+                  <span className="text-[10px] text-emerald-700 dark:text-emerald-300 block">₹15 Lakh · 36 Mo</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => handleLoadSample('FDR_REJECT_PNB_DEFECTIVE.pdf')}
-                  className="text-left px-2.5 py-1.5 rounded border border-rose-300 bg-rose-50 text-rose-800 hover:bg-rose-100 transition-colors"
+                  className="text-left px-2.5 py-1.5 rounded border border-rose-300 dark:border-rose-900 bg-rose-50 dark:bg-rose-950/40 text-rose-800 dark:text-rose-200 hover:bg-rose-100 dark:hover:bg-rose-900/50 transition-colors"
                 >
                   <span className="font-semibold block">✕ 3. PNB Reject</span>
-                  <span className="text-[10px] text-rose-700 block">₹5 Lakh · Expired</span>
+                  <span className="text-[10px] text-rose-700 dark:text-rose-300 block">₹5 Lakh · Expired</span>
                 </button>
               </div>
             </div>
@@ -181,23 +181,23 @@ export default function SubmitFdr() {
 
           {/* OCR Scrutiny Result Banners */}
           {ocrDefect && (
-            <div className="border border-rose-300 bg-rose-50 rounded p-4 text-xs space-y-1.5">
-              <div className="font-semibold text-rose-800 flex items-center gap-1.5 text-sm">
+            <div className="border border-rose-300 dark:border-rose-900/60 bg-rose-50 dark:bg-rose-950/30 rounded p-4 text-xs space-y-1.5">
+              <div className="font-semibold text-rose-800 dark:text-rose-300 flex items-center gap-1.5 text-sm">
                 <span>⚠️</span> Non-Compliant FDR Detected by OCR
               </div>
-              <ul className="list-disc pl-4 space-y-1 text-rose-700">
+              <ul className="list-disc pl-4 space-y-1 text-rose-700 dark:text-rose-300">
                 {ocrDefect.map((reason, idx) => (
                   <li key={idx}>{reason}</li>
                 ))}
               </ul>
-              <div className="text-[11px] text-rose-600 pt-1 font-mono">
+              <div className="text-[11px] text-rose-600 dark:text-rose-400 pt-1 font-mono">
                 Recommendation: Scrutiny rejection anticipated.
               </div>
             </div>
           )}
 
           {ocrSuccess && (
-            <div className="border border-emerald-300 bg-emerald-50 rounded p-3 text-xs text-emerald-800 flex items-start gap-2">
+            <div className="border border-emerald-300 dark:border-emerald-900/60 bg-emerald-50 dark:bg-emerald-950/30 rounded p-3 text-xs text-emerald-800 dark:text-emerald-300 flex items-start gap-2">
               <span className="text-base leading-none">✓</span>
               <div>
                 <span className="font-semibold">AICTE Compliance Passed: </span>
@@ -221,7 +221,7 @@ export default function SubmitFdr() {
 
         {/* Right Column: Detailed Verification Form */}
         <div className="lg:col-span-7">
-          <div className="border border-hairline rounded bg-white p-6">
+          <div className="border border-hairline dark:border-slate-800 rounded-xl bg-white dark:bg-[#0f172a] p-6 shadow-xs">
             <FdrForm
               values={formValues}
               onChange={handleFieldChange}

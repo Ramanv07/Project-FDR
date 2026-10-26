@@ -102,8 +102,8 @@ export default function FdrReview() {
         <CompareColumns submitted={submitted} ocr={ocr} bank={bank} />
 
         {/* Scrutiny Remarks and Decision Buttons */}
-        <div className="border border-hairline rounded bg-white p-5 space-y-4">
-          <h2 className="text-sm font-medium text-gray-900 pb-2 border-b border-surface-200">
+        <div className="border border-hairline dark:border-slate-800 rounded-xl bg-white dark:bg-[#0f172a] p-5 space-y-4 shadow-xs">
+          <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-100 pb-2 border-b border-surface-200 dark:border-slate-800">
             Scrutiny observations & findings
           </h2>
 
@@ -119,7 +119,7 @@ export default function FdrReview() {
             />
           </FormField>
 
-          <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-hairline">
+          <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-hairline dark:border-slate-800">
             <Button
               variant="secondary"
               size="sm"

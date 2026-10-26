@@ -77,7 +77,7 @@ export default function MyFdrs() {
       accessor: 'fdrNumber',
       sortable: true,
       render: (r) => (
-        <span className="font-mono font-medium text-navy-800">{r.fdrNumber}</span>
+        <span className="font-mono font-medium text-navy-800 dark:text-blue-400">{r.fdrNumber}</span>
       ),
     },
     { header: 'Bank', accessor: 'bank', sortable: true },
@@ -130,7 +130,7 @@ export default function MyFdrs() {
         }
       />
 
-      <div className="border border-hairline rounded bg-white p-5">
+      <div className="border border-hairline dark:border-slate-800 rounded-2xl bg-white dark:bg-[#0f172a] p-5 shadow-xs">
         <FilterBar
           searchValue={search}
           onSearchChange={(v) => {

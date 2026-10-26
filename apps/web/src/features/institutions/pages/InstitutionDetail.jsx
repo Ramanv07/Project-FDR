@@ -111,23 +111,23 @@ export default function InstitutionDetail() {
       />
 
       {/* Institution Metadata Summary */}
-      <div className="border border-hairline rounded bg-white p-5 mb-6">
+      <div className="border border-hairline dark:border-slate-800 rounded-xl bg-white dark:bg-[#0f172a] p-5 mb-6 shadow-xs">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
           <div>
-            <span className="text-gray-500 block">Contact person</span>
-            <span className="font-medium text-gray-900">{institution.contactPerson}</span>
+            <span className="text-gray-500 dark:text-slate-400 block">Contact person</span>
+            <span className="font-medium text-gray-900 dark:text-slate-100">{institution.contactPerson}</span>
           </div>
           <div>
-            <span className="text-gray-500 block">Official email</span>
-            <span className="font-medium text-gray-900">{institution.email}</span>
+            <span className="text-gray-500 dark:text-slate-400 block">Official email</span>
+            <span className="font-medium text-gray-900 dark:text-slate-100">{institution.email}</span>
           </div>
           <div>
-            <span className="text-gray-500 block">Telephone</span>
-            <span className="font-medium text-gray-900">{institution.phone}</span>
+            <span className="text-gray-500 dark:text-slate-400 block">Telephone</span>
+            <span className="font-medium text-gray-900 dark:text-slate-100">{institution.phone}</span>
           </div>
           <div>
-            <span className="text-gray-500 block">Total security deposits</span>
-            <span className="font-medium text-navy-800 text-sm">
+            <span className="text-gray-500 dark:text-slate-400 block">Total security deposits</span>
+            <span className="font-medium text-navy-800 dark:text-blue-400 text-sm">
               {formatIndianCurrency(totalAmount)}
             </span>
           </div>
@@ -135,9 +135,9 @@ export default function InstitutionDetail() {
       </div>
 
       {/* Coverage Gap Section for this Institution */}
-      <div className="border border-hairline rounded bg-white p-5 mb-6">
-        <div className="flex items-center justify-between pb-3 border-b border-surface-200 mb-4">
-          <h2 className="text-sm font-medium text-gray-900">Coverage continuity audit</h2>
+      <div className="border border-hairline dark:border-slate-800 rounded-xl bg-white dark:bg-[#0f172a] p-5 mb-6 shadow-xs">
+        <div className="flex items-center justify-between pb-3 border-b border-surface-200 dark:border-slate-800 mb-4">
+          <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-100">Coverage continuity audit</h2>
           {hasGaps ? (
             <span className="inline-flex items-center gap-1 text-xs text-status-red font-medium">
               <AlertTriangle className="w-4 h-4" />
@@ -189,10 +189,10 @@ export default function InstitutionDetail() {
       </div>
 
       {/* FDR Table for this Institution */}
-      <div className="border border-hairline rounded bg-white p-5">
+      <div className="border border-hairline dark:border-slate-800 rounded-2xl bg-white dark:bg-[#0f172a] p-5 shadow-xs">
         <div className="flex items-center justify-between mb-3">
-          <h2 className="text-sm font-medium text-gray-900">Pledged fixed deposits ({fdrs.length})</h2>
-          <span className="text-xs text-gray-500">Click any row to review verification data</span>
+          <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-100">Pledged fixed deposits ({fdrs.length})</h2>
+          <span className="text-xs text-gray-500 dark:text-slate-400">Click any row to review verification data</span>
         </div>
 
         <DataTable

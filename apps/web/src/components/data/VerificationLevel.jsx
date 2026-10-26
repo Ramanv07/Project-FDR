@@ -27,8 +27,8 @@ export default function VerificationLevel({ level = 'submitted', showLabel = tru
                 isCompleted
                   ? isCurrent && idx === 3
                     ? 'bg-status-green'
-                    : 'bg-navy-700'
-                  : 'bg-surface-300'
+                    : 'bg-navy-700 dark:bg-blue-500'
+                  : 'bg-surface-300 dark:bg-slate-700'
               }`}
             />
           );
@@ -36,7 +36,7 @@ export default function VerificationLevel({ level = 'submitted', showLabel = tru
       </div>
 
       {showLabel && (
-        <span className="text-xs text-gray-700 font-medium">
+        <span className="text-xs text-gray-700 dark:text-slate-300 font-medium">
           {currentStep.label}
         </span>
       )}

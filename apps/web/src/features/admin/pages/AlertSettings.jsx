@@ -70,13 +70,13 @@ export default function AlertSettings() {
         description="Configure automated maturity notification schedules, escalation triggers, and dispatch channels"
       />
 
-      <form onSubmit={handleSave} className="space-y-6 bg-white border border-hairline rounded p-6">
+      <form onSubmit={handleSave} className="space-y-6 bg-white dark:bg-[#0f172a] border border-hairline dark:border-slate-800 rounded-xl p-6 shadow-xs">
         {/* Reminder Threshold Intervals */}
         <div>
-          <h2 className="text-sm font-medium text-gray-900 mb-1">
+          <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-100 mb-1">
             Maturity reminder thresholds (days prior to maturity)
           </h2>
-          <p className="text-xs text-gray-500 mb-3">
+          <p className="text-xs text-gray-500 dark:text-slate-400 mb-3">
             Automated alerts sent to institute principal and registered finance email.
           </p>
 

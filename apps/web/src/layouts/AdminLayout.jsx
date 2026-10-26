@@ -15,7 +15,7 @@ export default function AdminLayout() {
   ];
 
   return (
-    <div className="min-h-screen bg-surface-50 flex flex-col">
+    <div className="min-h-screen bg-surface-50 dark:bg-[#080d19] text-slate-900 dark:text-slate-100 flex flex-col transition-colors duration-200">
       <Topbar />
       <div className="flex flex-1">
         <Sidebar items={navItems} title="System Admin" />

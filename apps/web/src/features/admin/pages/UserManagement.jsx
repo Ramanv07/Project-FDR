@@ -72,13 +72,13 @@ export default function UserManagement() {
       accessor: 'role',
       sortable: true,
       render: (r) => (
-        <span className="capitalize font-medium text-navy-800">{r.role}</span>
+        <span className="capitalize font-medium text-navy-800 dark:text-blue-400">{r.role}</span>
       ),
     },
     {
       header: 'User ID',
       accessor: 'id',
-      render: (r) => <span className="font-mono text-gray-500">{r.id}</span>,
+      render: (r) => <span className="font-mono text-gray-500 dark:text-slate-400">{r.id}</span>,
     },
   ];
 
@@ -102,7 +102,7 @@ export default function UserManagement() {
         }
       />
 
-      <div className="border border-hairline rounded bg-white p-5">
+      <div className="border border-hairline dark:border-slate-800 rounded-2xl bg-white dark:bg-[#0f172a] p-5 shadow-xs">
         <DataTable
           columns={columns}
           data={users}

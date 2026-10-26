@@ -26,7 +26,7 @@ export default function HealthScore({ score = 100, reasons = [], fdrNumber = '' 
           {score}
         </span>
 
-        <div className="w-12 h-1.5 bg-surface-200 rounded-sm overflow-hidden">
+        <div className="w-12 h-1.5 bg-surface-200 dark:bg-slate-700 rounded-sm overflow-hidden">
           <div
             className={`h-full ${barColor}`}
             style={{ width: `${Math.max(0, Math.min(100, score))}%` }}
@@ -40,7 +40,7 @@ export default function HealthScore({ score = 100, reasons = [], fdrNumber = '' 
               e.stopPropagation();
               setShowModal(true);
             }}
-            className="text-xs text-navy-700 underline hover:text-navy-900"
+            className="text-xs text-navy-700 dark:text-blue-400 underline hover:text-navy-900 dark:hover:text-blue-300 font-medium"
           >
             Why?
           </button>
@@ -54,11 +54,11 @@ export default function HealthScore({ score = 100, reasons = [], fdrNumber = '' 
         description={fdrNumber ? `Factors affecting FDR #${fdrNumber}` : 'Risk score calculation details'}
       >
         <div className="space-y-3">
-          <p className="text-xs text-gray-600">
+          <p className="text-xs text-gray-600 dark:text-slate-300">
             Base score: 100 points. Points deducted based on verification gaps, timeline discrepancies, and maturity proximity.
           </p>
 
-          <ul className="space-y-2 text-xs text-gray-800 border-t border-hairline pt-3">
+          <ul className="space-y-2 text-xs text-gray-800 dark:text-slate-200 border-t border-hairline dark:border-slate-800 pt-3">
             {reasons.map((r, i) => (
               <li key={i} className="flex items-start gap-2">
                 <span className="text-status-red font-medium leading-none">•</span>

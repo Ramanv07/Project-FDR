@@ -22,15 +22,15 @@ export default function Button({
 
   const variantStyles = {
     primary:
-      'bg-gradient-to-b from-[#162e50] to-[#0d1e36] text-white hover:from-[#1c3861] hover:to-[#122744] border border-[#0d1e36] shadow-sm hover:shadow-md focus-visible:outline-[#162e50]',
+      'bg-gradient-to-b from-[#162e50] to-[#0d1e36] dark:from-[#1d4ed8] dark:to-[#1e40af] text-white hover:from-[#1c3861] hover:to-[#122744] dark:hover:from-[#2563eb] dark:hover:to-[#1d4ed8] border border-[#0d1e36] dark:border-[#1e40af] shadow-sm hover:shadow-md focus-visible:outline-[#162e50]',
     secondary:
-      'bg-white text-slate-800 border border-slate-200 hover:bg-slate-50 hover:border-slate-300 shadow-xs focus-visible:outline-slate-400',
+      'bg-white dark:bg-[#152238] text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-[#223554] hover:bg-slate-50 dark:hover:bg-[#1c2d4a] hover:border-slate-300 dark:hover:border-[#2e4770] shadow-xs focus-visible:outline-slate-400',
     accent:
       'bg-amber-600 hover:bg-amber-700 text-white border border-amber-700 shadow-sm hover:shadow focus-visible:outline-amber-600',
     danger:
       'bg-rose-600 hover:bg-rose-700 text-white border border-rose-700 shadow-xs focus-visible:outline-rose-600',
     ghost:
-      'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80 shadow-none focus-visible:outline-slate-300',
+      'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800/60 shadow-none focus-visible:outline-slate-300',
   }[variant] || variantStyles.primary;
 
   return (

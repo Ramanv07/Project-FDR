@@ -93,20 +93,20 @@ export default function FdrDetail() {
       />
 
       {/* Verification Level & Risk Header Banner */}
-      <div className="border border-hairline rounded-xl bg-white p-4 mb-6 flex flex-wrap items-center justify-between gap-4 card-glass">
+      <div className="border border-hairline dark:border-slate-800 rounded-xl bg-white dark:bg-[#0f172a] p-4 mb-6 flex flex-wrap items-center justify-between gap-4 card-glass shadow-xs">
         <div className="flex items-center gap-6">
           <div>
-            <span className="text-[11px] text-gray-400 block mb-1 font-semibold uppercase tracking-wider">Verification milestone</span>
+            <span className="text-[11px] text-gray-400 dark:text-slate-400 block mb-1 font-semibold uppercase tracking-wider">Verification milestone</span>
             <VerificationLevel level={fdr.trustLevel} />
           </div>
-          <div className="border-l border-hairline pl-6">
-            <span className="text-[11px] text-gray-400 block mb-1 font-semibold uppercase tracking-wider">Ledger status</span>
+          <div className="border-l border-hairline dark:border-slate-800 pl-6">
+            <span className="text-[11px] text-gray-400 dark:text-slate-400 block mb-1 font-semibold uppercase tracking-wider">Ledger status</span>
             <StatusBadge status={fdr.status} />
           </div>
         </div>
 
         <div className="flex items-center gap-3">
-          <span className="text-xs text-gray-500 font-medium">Compliance health:</span>
+          <span className="text-xs text-gray-500 dark:text-slate-400 font-medium">Compliance health:</span>
           <HealthScore score={score} reasons={reasons} fdrNumber={fdr.fdrNumber} />
         </div>
       </div>
@@ -119,41 +119,41 @@ export default function FdrDetail() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Left Column: Fixed Deposit Certificate Details */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="border border-hairline rounded bg-white p-5">
-            <h2 className="text-sm font-medium text-gray-900 mb-4 pb-2 border-b border-surface-200">
+          <div className="border border-hairline dark:border-slate-800 rounded-xl bg-white dark:bg-[#0f172a] p-5 shadow-xs">
+            <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-100 mb-4 pb-2 border-b border-surface-200 dark:border-slate-800">
               Deposit specifications
             </h2>
 
             <div className="grid grid-cols-2 gap-4 text-xs">
               <div>
-                <span className="text-gray-500 block">FDR number</span>
-                <span className="font-mono font-medium text-gray-900 text-sm">{fdr.fdrNumber}</span>
+                <span className="text-gray-500 dark:text-slate-400 block">FDR number</span>
+                <span className="font-mono font-medium text-gray-900 dark:text-slate-100 text-sm">{fdr.fdrNumber}</span>
               </div>
               <div>
-                <span className="text-gray-500 block">Principal amount</span>
-                <span className="font-medium text-gray-900 text-sm">
+                <span className="text-gray-500 dark:text-slate-400 block">Principal amount</span>
+                <span className="font-medium text-gray-900 dark:text-slate-100 text-sm">
                   {formatIndianCurrency(fdr.amount)}
                 </span>
               </div>
               <div>
-                <span className="text-gray-500 block">Issuing bank</span>
-                <span className="text-gray-900 font-medium">{fdr.bank}</span>
+                <span className="text-gray-500 dark:text-slate-400 block">Issuing bank</span>
+                <span className="text-gray-900 dark:text-slate-100 font-medium">{fdr.bank}</span>
               </div>
               <div>
-                <span className="text-gray-500 block">Branch location</span>
-                <span className="text-gray-800">{fdr.branch || 'Main Commercial Branch'}</span>
+                <span className="text-gray-500 dark:text-slate-400 block">Branch location</span>
+                <span className="text-gray-800 dark:text-slate-200">{fdr.branch || 'Main Commercial Branch'}</span>
               </div>
               <div>
-                <span className="text-gray-500 block">Date of issue</span>
-                <span className="text-gray-800">{formatDate(fdr.issueDate)}</span>
+                <span className="text-gray-500 dark:text-slate-400 block">Date of issue</span>
+                <span className="text-gray-800 dark:text-slate-200">{formatDate(fdr.issueDate)}</span>
               </div>
               <div>
-                <span className="text-gray-500 block">Maturity date</span>
-                <span className="text-gray-800">{formatDate(fdr.maturityDate)}</span>
+                <span className="text-gray-500 dark:text-slate-400 block">Maturity date</span>
+                <span className="text-gray-800 dark:text-slate-200">{formatDate(fdr.maturityDate)}</span>
               </div>
-              <div className="col-span-2 pt-2 border-t border-surface-200">
-                <span className="text-gray-500 block">Statutory lien holder</span>
-                <span className="text-navy-800 font-medium">{fdr.lienHolder || 'Member Secretary, AICTE, New Delhi'}</span>
+              <div className="col-span-2 pt-2 border-t border-surface-200 dark:border-slate-800">
+                <span className="text-gray-500 dark:text-slate-400 block">Statutory lien holder</span>
+                <span className="text-navy-800 dark:text-blue-400 font-medium">{fdr.lienHolder || 'Member Secretary, AICTE, New Delhi'}</span>
               </div>
             </div>
           </div>
@@ -167,8 +167,8 @@ export default function FdrDetail() {
 
         {/* Right Column: Audit Timeline & Scrutiny Chain */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="border border-hairline rounded bg-white p-5">
-            <h2 className="text-sm font-medium text-gray-900 mb-4 pb-2 border-b border-surface-200">
+          <div className="border border-hairline dark:border-slate-800 rounded-xl bg-white dark:bg-[#0f172a] p-5 shadow-xs">
+            <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-100 mb-4 pb-2 border-b border-surface-200 dark:border-slate-800">
               Verification & audit history
             </h2>
             <FdrTimeline events={fdr.timeline} />
@@ -176,19 +176,19 @@ export default function FdrDetail() {
 
           {/* Bank Response Status Box */}
           {fdr.bankResponse && (
-            <div className="border border-hairline rounded bg-white p-5">
-              <h2 className="text-sm font-medium text-gray-900 mb-2">Bank confirmation record</h2>
-              <div className="text-xs space-y-1.5 text-gray-700">
+            <div className="border border-hairline dark:border-slate-800 rounded-xl bg-white dark:bg-[#0f172a] p-5 shadow-xs">
+              <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-100 mb-2">Bank confirmation record</h2>
+              <div className="text-xs space-y-1.5 text-gray-700 dark:text-slate-300">
                 <div className="flex justify-between">
-                  <span className="text-gray-500">Bank verified sum:</span>
-                  <span className="font-medium">{formatIndianCurrency(fdr.bankResponse.amount)}</span>
+                  <span className="text-gray-500 dark:text-slate-400">Bank verified sum:</span>
+                  <span className="font-medium text-gray-900 dark:text-slate-100">{formatIndianCurrency(fdr.bankResponse.amount)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-500">Bank report:</span>
+                  <span className="text-gray-500 dark:text-slate-400">Bank report:</span>
                   <span className="capitalize font-medium text-status-red">{fdr.bankResponse.status}</span>
                 </div>
                 {fdr.bankResponse.remarks && (
-                  <p className="text-[11px] text-gray-500 pt-2 border-t border-hairline">
+                  <p className="text-[11px] text-gray-500 dark:text-slate-400 pt-2 border-t border-hairline dark:border-slate-800">
                     Note: {fdr.bankResponse.remarks}
                   </p>
                 )}

@@ -96,7 +96,7 @@ export default function InstitutionList() {
         description="Registry of approved colleges maintaining security deposits with AICTE"
       />
 
-      <div className="border border-hairline rounded bg-white p-5">
+      <div className="border border-hairline dark:border-slate-800 rounded-2xl bg-white dark:bg-[#0f172a] p-5 shadow-xs">
         <FilterBar
           searchValue={search}
           onSearchChange={setSearch}

@@ -12,7 +12,8 @@ import Spinner from '../../../components/feedback/Spinner';
 import { useToast } from '../../../components/ui/Toast';
 import { formatIndianCurrency, formatDate, hashPrefix } from '../../../lib/format';
 import { ROUTES } from '../../../lib/constants';
-import { ShieldCheck, AlertTriangle } from 'lucide-react';
+import { ShieldCheck, AlertTriangle, Landmark } from 'lucide-react';
+import ThemeToggle from '../../../components/ui/ThemeToggle';
 
 export default function MockBankConsole() {
   const { addToast } = useToast();
@@ -151,34 +152,37 @@ export default function MockBankConsole() {
   }
 
   return (
-    <div className="min-h-screen bg-surface-50 p-6 max-w-content mx-auto">
+    <div className="min-h-screen bg-surface-50 dark:bg-[#080d19] text-slate-900 dark:text-slate-100 p-6 max-w-content mx-auto transition-colors duration-200">
       {/* Prominent clearly labeled banner */}
-      <div className="p-5 bg-gradient-to-r from-blue-50/80 via-slate-50 to-amber-50/50 border border-slate-200 rounded-2xl mb-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xs">
+      <div className="p-5 bg-gradient-to-r from-blue-50/80 via-slate-50 to-amber-50/50 dark:from-[#0f1d36] dark:via-[#0c172b] dark:to-[#17223b] border border-slate-200 dark:border-slate-800 rounded-2xl mb-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xs">
         <div className="flex items-start gap-3.5">
-          <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center flex-shrink-0 shadow-xs">
+          <div className="w-10 h-10 rounded-xl bg-blue-600 dark:bg-blue-500 text-white flex items-center justify-center flex-shrink-0 shadow-xs">
             <Landmark className="w-5 h-5" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h2 className="font-bold text-sm text-slate-950 font-display">
+              <h2 className="font-bold text-sm text-slate-950 dark:text-white font-display">
                 RBI Scheduled Bank / NeSL Simulator Gateway
               </h2>
-              <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
+              <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
                 Sandbox CBS
               </span>
             </div>
-            <p className="mt-1 text-xs text-slate-600 leading-relaxed max-w-2xl">
+            <p className="mt-1 text-xs text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
               Emulates Core Banking System (CBS) APIs and NeSL electronic guarantee reconciliation.
               Confirming or reporting discrepancies issues authentic HMAC cryptographic signatures directly appended to the AICTE trust ledger.
             </p>
           </div>
         </div>
 
-        <Link to={ROUTES.OFFICER_DASHBOARD} className="flex-shrink-0">
-          <Button variant="primary" size="sm">
-            ← Return to AICTE Portal
-          </Button>
-        </Link>
+        <div className="flex items-center gap-2 flex-shrink-0">
+          <ThemeToggle size="sm" />
+          <Link to={ROUTES.OFFICER_DASHBOARD}>
+            <Button variant="primary" size="sm">
+              ← Return to AICTE Portal
+            </Button>
+          </Link>
+        </div>
       </div>
 
       <PageHeader
@@ -186,7 +190,7 @@ export default function MockBankConsole() {
         description="Incoming electronic lien verification inquiries dispatched by AICTE scrutiny officers"
       />
 
-      <div className="border border-slate-200 rounded-2xl bg-white p-6 shadow-xs">
+      <div className="border border-slate-200 dark:border-slate-800 rounded-2xl bg-white dark:bg-[#0f172a] p-6 shadow-xs">
         <DataTable
           columns={columns}
           data={requests}

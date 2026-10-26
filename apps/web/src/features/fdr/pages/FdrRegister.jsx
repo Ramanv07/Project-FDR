@@ -63,7 +63,7 @@ export default function FdrRegister() {
       header: 'FDR number',
       accessor: 'fdrNumber',
       sortable: true,
-      render: (r) => <span className="font-mono font-medium text-navy-800">{r.fdrNumber}</span>,
+      render: (r) => <span className="font-mono font-medium text-navy-800 dark:text-blue-400">{r.fdrNumber}</span>,
     },
     { header: 'Institution', accessor: 'institutionName', sortable: true },
     { header: 'Bank', accessor: 'bank', sortable: true },
@@ -116,7 +116,7 @@ export default function FdrRegister() {
         description="Comprehensive central ledger of all fixed deposit receipts across all registered technical institutions"
       />
 
-      <div className="border border-hairline rounded bg-white p-5">
+      <div className="border border-hairline dark:border-slate-800 rounded-2xl bg-white dark:bg-[#0f172a] p-5 shadow-xs">
         <FilterBar
           searchValue={search}
           onSearchChange={(v) => {

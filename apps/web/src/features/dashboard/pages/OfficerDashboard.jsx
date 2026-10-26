@@ -169,51 +169,51 @@ export default function OfficerDashboard() {
 
       {/* Row of Counts: Active, Expiring in 30 days, Matured, Renewed, Released, Pending verification */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 mb-6">
-        <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-xs hover:border-slate-300 transition-all">
-          <p className="text-[11px] font-semibold text-slate-500 mb-1">Active Deposits</p>
-          <span className="text-2xl font-bold text-slate-950 font-display tabular-nums">{counts.active}</span>
-          <p className="text-[10px] text-emerald-700 mt-1 font-semibold flex items-center gap-1">
+        <div className="bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-xl p-3.5 shadow-xs hover:border-slate-300 dark:hover:border-slate-700 transition-all">
+          <p className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 mb-1">Active Deposits</p>
+          <span className="text-2xl font-bold text-slate-950 dark:text-white font-display tabular-nums">{counts.active}</span>
+          <p className="text-[10px] text-emerald-700 dark:text-emerald-400 mt-1 font-semibold flex items-center gap-1">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
             Valid Cover
           </p>
         </div>
 
-        <div className="bg-white border border-amber-200 rounded-xl p-3.5 shadow-xs hover:border-amber-300 transition-all">
-          <p className="text-[11px] font-semibold text-amber-800 mb-1">Expiring in 30d</p>
-          <span className="text-2xl font-bold text-amber-600 font-display tabular-nums">
+        <div className="bg-white dark:bg-[#0f172a] border border-amber-200 dark:border-amber-900/60 rounded-xl p-3.5 shadow-xs hover:border-amber-300 dark:hover:border-amber-800 transition-all">
+          <p className="text-[11px] font-semibold text-amber-800 dark:text-amber-300 mb-1">Expiring in 30d</p>
+          <span className="text-2xl font-bold text-amber-600 dark:text-amber-400 font-display tabular-nums">
             {counts.expiring30}
           </span>
-          <p className="text-[10px] text-amber-700 mt-1 font-semibold flex items-center gap-1">
+          <p className="text-[10px] text-amber-700 dark:text-amber-400 mt-1 font-semibold flex items-center gap-1">
             <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
             Renewal Required
           </p>
         </div>
 
-        <div className="bg-white border border-rose-200 rounded-xl p-3.5 shadow-xs hover:border-rose-300 transition-all">
-          <p className="text-[11px] font-semibold text-rose-800 mb-1">Matured / Lapsed</p>
-          <span className="text-2xl font-bold text-rose-600 font-display tabular-nums">{counts.matured}</span>
-          <p className="text-[10px] text-rose-700 mt-1 font-semibold flex items-center gap-1">
+        <div className="bg-white dark:bg-[#0f172a] border border-rose-200 dark:border-rose-900/60 rounded-xl p-3.5 shadow-xs hover:border-rose-300 dark:hover:border-rose-800 transition-all">
+          <p className="text-[11px] font-semibold text-rose-800 dark:text-rose-300 mb-1">Matured / Lapsed</p>
+          <span className="text-2xl font-bold text-rose-600 dark:text-rose-400 font-display tabular-nums">{counts.matured}</span>
+          <p className="text-[10px] text-rose-700 dark:text-rose-400 mt-1 font-semibold flex items-center gap-1">
             <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
             Statutory Notice
           </p>
         </div>
 
-        <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-xs hover:border-slate-300 transition-all">
-          <p className="text-[11px] font-semibold text-slate-500 mb-1">Renewed (Chained)</p>
-          <span className="text-2xl font-bold text-slate-800 font-display tabular-nums">{counts.renewed}</span>
-          <p className="text-[10px] text-slate-500 mt-1 font-medium">No Gap Logged</p>
+        <div className="bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-xl p-3.5 shadow-xs hover:border-slate-300 dark:hover:border-slate-700 transition-all">
+          <p className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 mb-1">Renewed (Chained)</p>
+          <span className="text-2xl font-bold text-slate-800 dark:text-slate-200 font-display tabular-nums">{counts.renewed}</span>
+          <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 font-medium">No Gap Logged</p>
         </div>
 
-        <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-xs hover:border-slate-300 transition-all">
-          <p className="text-[11px] font-semibold text-slate-500 mb-1">Released Deposits</p>
-          <span className="text-2xl font-bold text-slate-800 font-display tabular-nums">{counts.released}</span>
-          <p className="text-[10px] text-slate-500 mt-1 font-medium">Mandate Closed</p>
+        <div className="bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-xl p-3.5 shadow-xs hover:border-slate-300 dark:hover:border-slate-700 transition-all">
+          <p className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 mb-1">Released Deposits</p>
+          <span className="text-2xl font-bold text-slate-800 dark:text-slate-200 font-display tabular-nums">{counts.released}</span>
+          <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 font-medium">Mandate Closed</p>
         </div>
 
-        <div className="bg-white border border-blue-200 rounded-xl p-3.5 shadow-xs hover:border-blue-300 transition-all">
-          <p className="text-[11px] font-semibold text-blue-900 mb-1">Pending Scrutiny</p>
-          <span className="text-2xl font-bold text-blue-800 font-display tabular-nums">{counts.pending}</span>
-          <p className="text-[10px] text-blue-700 mt-1 font-semibold flex items-center gap-1">
+        <div className="bg-white dark:bg-[#0f172a] border border-blue-200 dark:border-blue-900/60 rounded-xl p-3.5 shadow-xs hover:border-blue-300 dark:hover:border-blue-800 transition-all">
+          <p className="text-[11px] font-semibold text-blue-900 dark:text-blue-300 mb-1">Pending Scrutiny</p>
+          <span className="text-2xl font-bold text-blue-800 dark:text-blue-400 font-display tabular-nums">{counts.pending}</span>
+          <p className="text-[10px] text-blue-700 dark:text-blue-400 mt-1 font-semibold flex items-center gap-1">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
             Officer In-Tray
           </p>
@@ -232,13 +232,13 @@ export default function OfficerDashboard() {
       )}
 
       {/* Bar Chart of Maturities by Month */}
-      <div className="border border-slate-200 rounded-2xl bg-white p-6 mb-6 shadow-xs">
-        <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+      <div className="border border-slate-200 dark:border-slate-800 rounded-2xl bg-white dark:bg-[#0f172a] p-6 mb-6 shadow-xs">
+        <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-100 dark:border-slate-800">
           <div>
-            <h2 className="text-base font-bold text-slate-950 font-display">Upcoming Maturities Schedule</h2>
-            <p className="text-xs text-slate-500">Security deposits reaching maturity by calendar month across all jurisdictions</p>
+            <h2 className="text-base font-bold text-slate-950 dark:text-white font-display">Upcoming Maturities Schedule</h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Security deposits reaching maturity by calendar month across all jurisdictions</p>
           </div>
-          <span className="text-[11px] font-medium text-slate-400 bg-slate-50 px-2.5 py-1 rounded-md border border-slate-200">
+          <span className="text-[11px] font-medium text-slate-400 dark:text-slate-300 bg-slate-50 dark:bg-[#141f36] px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700">
             Total Deposit Units
           </span>
         </div>
@@ -246,11 +246,11 @@ export default function OfficerDashboard() {
       </div>
 
       {/* Top 10 Risk-Queue Rows Below */}
-      <div className="border border-slate-200 rounded-2xl bg-white p-6 shadow-xs">
-        <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+      <div className="border border-slate-200 dark:border-slate-800 rounded-2xl bg-white dark:bg-[#0f172a] p-6 shadow-xs">
+        <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-100 dark:border-slate-800">
           <div>
-            <h2 className="text-base font-bold text-slate-950 font-display">Priority High-Risk Scrutiny Queue</h2>
-            <p className="text-xs text-slate-500">Fixed deposits requiring immediate officer intervention (ordered by risk score)</p>
+            <h2 className="text-base font-bold text-slate-950 dark:text-white font-display">Priority High-Risk Scrutiny Queue</h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Fixed deposits requiring immediate officer intervention (ordered by risk score)</p>
           </div>
           <Button
             variant="ghost"

@@ -111,7 +111,7 @@ export default function ReleaseApprovals() {
         description="Sequential 3-tier authorization chain for returning pledged fixed deposits"
       />
 
-      <div className="border border-hairline rounded bg-white p-5">
+      <div className="border border-hairline dark:border-slate-800 rounded-2xl bg-white dark:bg-[#0f172a] p-5 shadow-xs">
         <DataTable
           columns={columns}
           data={requests}

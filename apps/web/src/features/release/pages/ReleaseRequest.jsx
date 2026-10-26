@@ -78,8 +78,8 @@ export default function ReleaseRequest() {
         description={`FDR #${fdr?.fdrNumber} • ${formatIndianCurrency(fdr?.amount)} • ${fdr?.institutionName}`}
       />
 
-      <div className="space-y-6 bg-white border border-hairline rounded p-6">
-        <div className="text-xs text-gray-600 leading-relaxed border-b border-surface-200 pb-4">
+      <div className="space-y-6 bg-white dark:bg-[#0f172a] border border-hairline dark:border-slate-800 rounded-xl p-6 shadow-xs">
+        <div className="text-xs text-gray-600 dark:text-slate-300 leading-relaxed border-b border-surface-200 dark:border-slate-800 pb-4">
           Under AICTE regulations, pledged Fixed Deposit Receipts may only be released following
           successful completion of the mandated programme tenure, renewal continuity, and statutory
           clearance.

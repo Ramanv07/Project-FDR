@@ -57,7 +57,7 @@ export default function LoginForm() {
 
       {/* Role Selector Tabs */}
       <div>
-        <label className="block text-xs font-semibold text-slate-700 mb-2">
+        <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-2">
           Select Portal Role
         </label>
         <div className="grid grid-cols-3 gap-2">
@@ -66,11 +66,11 @@ export default function LoginForm() {
             onClick={() => setDemoRole(ROLES.OFFICER)}
             className={`p-2 rounded-xl border text-xs font-semibold flex flex-col items-center gap-1.5 transition-all ${
               role === ROLES.OFFICER
-                ? 'bg-blue-50 border-blue-600 text-blue-900 shadow-xs ring-1 ring-blue-600'
-                : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100'
+                ? 'bg-blue-50 dark:bg-blue-950/70 border-blue-600 text-blue-900 dark:text-blue-300 shadow-xs ring-1 ring-blue-600'
+                : 'bg-slate-50 dark:bg-[#141f36] border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#1b2b4c]'
             }`}
           >
-            <ShieldCheck className="w-4 h-4 text-blue-600" />
+            <ShieldCheck className="w-4 h-4 text-blue-600 dark:text-blue-400" />
             <span>AICTE Officer</span>
           </button>
 
@@ -79,11 +79,11 @@ export default function LoginForm() {
             onClick={() => setDemoRole(ROLES.INSTITUTION)}
             className={`p-2 rounded-xl border text-xs font-semibold flex flex-col items-center gap-1.5 transition-all ${
               role === ROLES.INSTITUTION
-                ? 'bg-blue-50 border-blue-600 text-blue-900 shadow-xs ring-1 ring-blue-600'
-                : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100'
+                ? 'bg-blue-50 dark:bg-blue-950/70 border-blue-600 text-blue-900 dark:text-blue-300 shadow-xs ring-1 ring-blue-600'
+                : 'bg-slate-50 dark:bg-[#141f36] border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#1b2b4c]'
             }`}
           >
-            <Building2 className="w-4 h-4 text-emerald-600" />
+            <Building2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
             <span>College / Inst</span>
           </button>
 
@@ -92,11 +92,11 @@ export default function LoginForm() {
             onClick={() => setDemoRole(ROLES.ADMIN)}
             className={`p-2 rounded-xl border text-xs font-semibold flex flex-col items-center gap-1.5 transition-all ${
               role === ROLES.ADMIN
-                ? 'bg-blue-50 border-blue-600 text-blue-900 shadow-xs ring-1 ring-blue-600'
-                : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100'
+                ? 'bg-blue-50 dark:bg-blue-950/70 border-blue-600 text-blue-900 dark:text-blue-300 shadow-xs ring-1 ring-blue-600'
+                : 'bg-slate-50 dark:bg-[#141f36] border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#1b2b4c]'
             }`}
           >
-            <UserCog className="w-4 h-4 text-amber-600" />
+            <UserCog className="w-4 h-4 text-amber-600 dark:text-amber-400" />
             <span>System Admin</span>
           </button>
         </div>

@@ -116,42 +116,42 @@ export default function RenewFdr() {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Side: Existing (Old) FDR Details */}
-        <div className="lg:col-span-5 border border-hairline rounded bg-white p-5 space-y-4">
-          <h2 className="text-sm font-medium text-gray-900 pb-2 border-b border-surface-200">
+        <div className="lg:col-span-5 border border-hairline dark:border-slate-800 rounded-xl bg-white dark:bg-[#0f172a] p-5 space-y-4 shadow-xs">
+          <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-100 pb-2 border-b border-surface-200 dark:border-slate-800">
             Existing deposit on record
           </h2>
 
           <div className="space-y-3 text-xs">
             <div>
-              <span className="text-gray-500 block">FDR number</span>
-              <span className="font-mono font-medium text-gray-900">{oldFdr?.fdrNumber}</span>
+              <span className="text-gray-500 dark:text-slate-400 block">FDR number</span>
+              <span className="font-mono font-medium text-gray-900 dark:text-slate-100">{oldFdr?.fdrNumber}</span>
             </div>
             <div>
-              <span className="text-gray-500 block">Current amount</span>
-              <span className="font-medium text-gray-900">
+              <span className="text-gray-500 dark:text-slate-400 block">Current amount</span>
+              <span className="font-medium text-gray-900 dark:text-slate-100">
                 {formatIndianCurrency(oldFdr?.amount)}
               </span>
             </div>
             <div>
-              <span className="text-gray-500 block">Bank & branch</span>
-              <span className="text-gray-800">{oldFdr?.bank} ({oldFdr?.branch || 'Main'})</span>
+              <span className="text-gray-500 dark:text-slate-400 block">Bank & branch</span>
+              <span className="text-gray-800 dark:text-slate-200">{oldFdr?.bank} ({oldFdr?.branch || 'Main'})</span>
             </div>
-            <div className="grid grid-cols-2 gap-2 pt-2 border-t border-hairline">
+            <div className="grid grid-cols-2 gap-2 pt-2 border-t border-hairline dark:border-slate-800">
               <div>
-                <span className="text-gray-500 block">Issue date</span>
-                <span className="text-gray-800">{formatDate(oldFdr?.issueDate)}</span>
+                <span className="text-gray-500 dark:text-slate-400 block">Issue date</span>
+                <span className="text-gray-800 dark:text-slate-200">{formatDate(oldFdr?.issueDate)}</span>
               </div>
               <div>
-                <span className="text-gray-500 block font-medium text-navy-800">Maturity date</span>
-                <span className="text-navy-800 font-semibold">{formatDate(oldFdr?.maturityDate)}</span>
+                <span className="text-gray-500 dark:text-slate-400 block font-medium text-navy-800 dark:text-blue-400">Maturity date</span>
+                <span className="text-navy-800 dark:text-blue-400 font-semibold">{formatDate(oldFdr?.maturityDate)}</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Right Side: New Replacement FDR Form */}
-        <div className="lg:col-span-7 border border-hairline rounded bg-white p-6">
-          <h2 className="text-sm font-medium text-gray-900 mb-4 pb-2 border-b border-surface-200">
+        <div className="lg:col-span-7 border border-hairline dark:border-slate-800 rounded-xl bg-white dark:bg-[#0f172a] p-6 shadow-xs">
+          <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-100 mb-4 pb-2 border-b border-surface-200 dark:border-slate-800">
             Replacement FDR certificate details
           </h2>
 

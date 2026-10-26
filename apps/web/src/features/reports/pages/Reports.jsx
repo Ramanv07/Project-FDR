@@ -108,9 +108,9 @@ export default function Reports() {
       />
 
       {/* Report Configuration Bar */}
-      <div className="border border-hairline rounded bg-white p-4 mb-6 grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+      <div className="border border-hairline dark:border-slate-800 rounded-xl bg-white dark:bg-[#0f172a] p-4 mb-6 grid grid-cols-1 md:grid-cols-4 gap-4 items-end shadow-xs">
         <div>
-          <label className="block text-xs font-medium text-gray-700 mb-1">Report type</label>
+          <label className="block text-xs font-medium text-gray-700 dark:text-slate-300 mb-1">Report type</label>
           <Select
             value={reportType}
             onChange={setReportType}
@@ -124,7 +124,7 @@ export default function Reports() {
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-gray-700 mb-1">Bank filter</label>
+          <label className="block text-xs font-medium text-gray-700 dark:text-slate-300 mb-1">Bank filter</label>
           <Select
             value={bankFilter}
             onChange={setBankFilter}
@@ -137,7 +137,7 @@ export default function Reports() {
 
         {reportType === 'upcoming_maturities' && (
           <div>
-            <label className="block text-xs font-medium text-gray-700 mb-1">Maturity horizon</label>
+            <label className="block text-xs font-medium text-gray-700 dark:text-slate-300 mb-1">Maturity horizon</label>
             <Select
               value={daysFilter}
               onChange={setDaysFilter}
@@ -159,7 +159,7 @@ export default function Reports() {
       </div>
 
       {/* Table Preview */}
-      <div className="border border-hairline rounded bg-white p-5">
+      <div className="border border-hairline dark:border-slate-800 rounded-2xl bg-white dark:bg-[#0f172a] p-5 shadow-xs">
         <div className="flex items-center justify-between mb-3 text-xs">
           <span className="font-medium text-gray-800">
             Preview: {reportResult?.recordCount || 0} records extracted

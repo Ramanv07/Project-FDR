@@ -265,55 +265,55 @@ export default function WorkflowTracker({
   ];
 
   return (
-    <div className={`bg-white border border-slate-200 rounded-2xl p-5 shadow-xs transition-all ${className}`}>
+    <div className={`bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-xs transition-all ${className}`}>
       {/* Header bar with Interactive Deposit Switcher */}
-      <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-4 mb-4 border-b border-slate-200">
+      <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-4 mb-4 border-b border-slate-200 dark:border-slate-800">
         <div>
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-[11px] font-bold text-blue-950 uppercase tracking-wider bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full">
+            <span className="text-[11px] font-bold text-blue-950 dark:text-blue-300 uppercase tracking-wider bg-blue-50 dark:bg-blue-950/70 border border-blue-200 dark:border-blue-800 px-2.5 py-0.5 rounded-full">
               AICTE Regulatory Workflow Engine
             </span>
 
             {/* If allFdrs is provided, render an interactive dropdown so the user can inspect ANY deposit! */}
             {allFdrs.length > 0 ? (
-              <div className="flex items-center gap-1.5 bg-slate-50 border border-slate-300 px-2 py-0.5 rounded-lg">
-                <span className="text-[11px] text-slate-500 font-semibold">Inspect Deposit:</span>
+              <div className="flex items-center gap-1.5 bg-slate-50 dark:bg-[#141f36] border border-slate-300 dark:border-slate-700 px-2 py-0.5 rounded-lg">
+                <span className="text-[11px] text-slate-500 dark:text-slate-400 font-semibold">Inspect Deposit:</span>
                 <select
                   value={selectedFdrId}
                   onChange={handleFdrChange}
-                  className="bg-transparent text-xs font-mono font-bold text-slate-900 border-none focus:outline-none cursor-pointer"
+                  className="bg-transparent text-xs font-mono font-bold text-slate-900 dark:text-white border-none focus:outline-none cursor-pointer dark:bg-[#141f36]"
                 >
                   {allFdrs.map((f) => (
-                    <option key={f.id} value={f.id}>
+                    <option key={f.id} value={f.id} className="dark:bg-[#141f36] dark:text-white">
                       #{f.fdrNumber} — {f.institutionName?.slice(0, 24)} ({formatIndianCurrency(f.amount)})
                     </option>
                   ))}
                 </select>
               </div>
             ) : (
-              <span className="text-xs font-mono font-bold text-slate-900 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
+              <span className="text-xs font-mono font-bold text-slate-900 dark:text-white bg-slate-100 dark:bg-[#141f36] px-2 py-0.5 rounded border border-slate-200 dark:border-slate-800">
                 Deposit #{activeFdr?.fdrNumber || 'Draft'}
               </span>
             )}
           </div>
 
-          <p className="text-xs text-slate-500 mt-1 font-medium">
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">
             Five-stage statutory verification and lifecycle tracking • {activeFdr?.institutionName || 'AICTE Technical Institution'}
           </p>
         </div>
 
         {/* Right status pills */}
         <div className="flex flex-wrap items-center gap-2 text-xs">
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200">
-            <span className="text-slate-500 text-[11px]">Principal Deposit:</span>
-            <span className="font-bold font-mono text-slate-900">
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 dark:bg-[#141f36] border border-slate-200 dark:border-slate-800">
+            <span className="text-slate-500 dark:text-slate-400 text-[11px]">Principal Deposit:</span>
+            <span className="font-bold font-mono text-slate-900 dark:text-white">
               {formatIndianCurrency(activeFdr?.amount || 1000000)}
             </span>
           </div>
 
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200">
-            <span className="text-slate-500 text-[11px]">Assigned Tier:</span>
-            <span className="font-bold text-blue-900 font-mono">
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 dark:bg-[#141f36] border border-slate-200 dark:border-slate-800">
+            <span className="text-slate-500 dark:text-slate-400 text-[11px]">Assigned Tier:</span>
+            <span className="font-bold text-blue-900 dark:text-blue-400 font-mono">
               {activeFdr?.trustLevel === 'bank_confirmed' ? 'Tier T2 (Bank-Confirmed)' : 
                activeFdr?.trustLevel === 'api_verified' ? 'Tier T3 (NeSL API)' :
                activeFdr?.trustLevel === 'officer_reviewed' ? 'Tier T2 (Officer-Reviewed)' :
@@ -333,16 +333,16 @@ export default function WorkflowTracker({
               onClick={() => setActiveStage(stage.id)}
               className={`cursor-pointer rounded-xl p-3 border transition-all select-none relative ${
                 isSelected
-                  ? 'bg-blue-50/70 border-blue-600 ring-2 ring-blue-600/30 shadow-xs'
+                  ? 'bg-blue-50/70 dark:bg-blue-950/70 border-blue-600 dark:border-blue-500 ring-2 ring-blue-600/30 shadow-xs'
                   : stage.done
-                  ? 'bg-white border-slate-200 hover:border-slate-300 hover:shadow-2xs'
+                  ? 'bg-white dark:bg-[#141f36] border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-2xs'
                   : stage.active
-                  ? 'bg-amber-50/40 border-amber-300 hover:border-amber-400'
-                  : 'bg-slate-50/80 border-slate-200 hover:border-slate-300'
+                  ? 'bg-amber-50/40 dark:bg-amber-950/40 border-amber-300 dark:border-amber-800 hover:border-amber-400'
+                  : 'bg-slate-50/80 dark:bg-[#0c1424] border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
               }`}
             >
               <div className="flex items-center justify-between mb-2">
-                <span className="text-[11px] font-bold font-mono text-slate-700">
+                <span className="text-[11px] font-bold font-mono text-slate-700 dark:text-slate-300">
                   STAGE {stage.id}
                 </span>
                 <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-full border ${stage.statusColor}`}>
@@ -350,17 +350,17 @@ export default function WorkflowTracker({
                 </span>
               </div>
 
-              <h4 className="text-xs font-bold text-slate-900 leading-snug">
+              <h4 className="text-xs font-bold text-slate-900 dark:text-white leading-snug">
                 {stage.name.replace(/^[0-9]\.\s*/, '')}
               </h4>
-              <p className="text-[11px] text-slate-500 mt-1 leading-tight line-clamp-2">
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-tight line-clamp-2">
                 {stage.desc}
               </p>
 
               {/* Indicator dot */}
-              <div className="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-400">
+              <div className="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[10px] text-slate-400 dark:text-slate-500">
                 <span>{stage.substeps.length} checks</span>
-                <span className="font-semibold text-blue-700">
+                <span className="font-semibold text-blue-700 dark:text-blue-400">
                   {isSelected ? 'Viewing Details ↓' : 'Click to inspect'}
                 </span>
               </div>
@@ -371,18 +371,18 @@ export default function WorkflowTracker({
 
       {/* Expanded Stage Checklist Drawer with Real Data & Live Actions */}
       {activeStage && (
-        <div className="mt-4 p-5 bg-gradient-to-b from-slate-50 to-white border border-slate-200 rounded-xl">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-200">
+        <div className="mt-4 p-5 bg-gradient-to-b from-slate-50 to-white dark:from-[#111c33] dark:to-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-xl">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-200 dark:border-slate-800">
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-blue-900 font-display">
+                <span className="text-xs font-bold uppercase tracking-wider text-blue-900 dark:text-blue-300 font-display">
                   Stage {activeStage}: {stages.find(s => s.id === activeStage)?.name}
                 </span>
                 <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${stages.find(s => s.id === activeStage)?.statusColor}`}>
                   {stages.find(s => s.id === activeStage)?.statusLabel}
                 </span>
               </div>
-              <p className="text-xs text-slate-600 mt-0.5">
+              <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
                 Statutory audit records for Deposit #{activeFdr?.fdrNumber} ({activeFdr?.bank})
               </p>
             </div>
@@ -422,7 +422,7 @@ export default function WorkflowTracker({
               <button
                 type="button"
                 onClick={() => setActiveStage(null)}
-                className="text-xs font-semibold text-slate-500 hover:text-slate-800 px-2 py-1"
+                className="text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white px-2 py-1 transition-colors"
               >
                 Close
               </button>
@@ -431,22 +431,22 @@ export default function WorkflowTracker({
 
           {/* Special Interactive Section for Stage 4 (Release) */}
           {activeStage === 4 && (
-            <div className="mb-4 p-4 rounded-xl bg-blue-50/70 border border-blue-200">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-3 pb-3 border-b border-blue-200/80">
+            <div className="mb-4 p-4 rounded-xl bg-blue-50/70 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-3 pb-3 border-b border-blue-200/80 dark:border-blue-800">
                 <div>
-                  <h4 className="text-xs font-bold text-blue-950 flex items-center gap-1.5 font-display">
-                    <ShieldCheck className="w-4 h-4 text-blue-700" />
+                  <h4 className="text-xs font-bold text-blue-950 dark:text-blue-200 flex items-center gap-1.5 font-display">
+                    <ShieldCheck className="w-4 h-4 text-blue-700 dark:text-blue-400" />
                     Three-Level Statutory Lien Release Workflow Simulator
                   </h4>
-                  <p className="text-[11px] text-blue-800 mt-0.5 leading-relaxed">
+                  <p className="text-[11px] text-blue-800 dark:text-blue-300 mt-0.5 leading-relaxed">
                     Under AICTE regulations, security deposits remain under mandatory lien until maturity.
                     Early release or end-of-term refund requires a three-level Maker-Checker-Signatory hierarchy.
                   </p>
                 </div>
 
                 {isFullyReleased ? (
-                  <div className="flex items-center gap-2 text-xs font-bold text-emerald-800 bg-emerald-100 px-3 py-1.5 rounded-lg border border-emerald-300">
-                    <CheckCircle className="w-4 h-4 text-emerald-600" />
+                  <div className="flex items-center gap-2 text-xs font-bold text-emerald-800 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950/80 px-3 py-1.5 rounded-lg border border-emerald-300 dark:border-emerald-800">
+                    <CheckCircle className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                     Fully Authorized & e-Signed
                   </div>
                 ) : (
@@ -488,8 +488,8 @@ export default function WorkflowTracker({
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 <div className={`p-3 rounded-lg border text-xs ${
                   simulatedReleaseLevels.level1 || isFullyReleased
-                    ? 'bg-emerald-50 border-emerald-300 text-emerald-950'
-                    : 'bg-white border-slate-200 text-slate-700'
+                    ? 'bg-emerald-50 dark:bg-emerald-950/60 border-emerald-300 dark:border-emerald-800 text-emerald-950 dark:text-emerald-200'
+                    : 'bg-white dark:bg-[#141f36] border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300'
                 }`}>
                   <div className="flex items-center justify-between mb-1">
                     <span className="font-bold text-[11px]">Level 1: Maker</span>
@@ -498,13 +498,13 @@ export default function WorkflowTracker({
                     </span>
                   </div>
                   <p className="font-semibold text-xs">Scrutiny Officer</p>
-                  <p className="text-[10px] text-slate-500 mt-0.5">Audits compliance & student inquiry zero-complaint record</p>
+                  <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Audits compliance & student inquiry zero-complaint record</p>
                 </div>
 
                 <div className={`p-3 rounded-lg border text-xs ${
                   simulatedReleaseLevels.level2 || isFullyReleased
-                    ? 'bg-emerald-50 border-emerald-300 text-emerald-950'
-                    : 'bg-white border-slate-200 text-slate-700'
+                    ? 'bg-emerald-50 dark:bg-emerald-950/60 border-emerald-300 dark:border-emerald-800 text-emerald-950 dark:text-emerald-200'
+                    : 'bg-white dark:bg-[#141f36] border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300'
                 }`}>
                   <div className="flex items-center justify-between mb-1">
                     <span className="font-bold text-[11px]">Level 2: Checker</span>
@@ -513,13 +513,13 @@ export default function WorkflowTracker({
                     </span>
                   </div>
                   <p className="font-semibold text-xs">Regional Director</p>
-                  <p className="text-[10px] text-slate-500 mt-0.5">Clears territorial jurisdiction & statutory duration</p>
+                  <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Clears territorial jurisdiction & statutory duration</p>
                 </div>
 
                 <div className={`p-3 rounded-lg border text-xs ${
                   isFullyReleased
-                    ? 'bg-emerald-50 border-emerald-300 text-emerald-950'
-                    : 'bg-white border-slate-200 text-slate-700'
+                    ? 'bg-emerald-50 dark:bg-emerald-950/60 border-emerald-300 dark:border-emerald-800 text-emerald-950 dark:text-emerald-200'
+                    : 'bg-white dark:bg-[#141f36] border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300'
                 }`}>
                   <div className="flex items-center justify-between mb-1">
                     <span className="font-bold text-[11px]">Level 3: Signatory</span>
@@ -528,7 +528,7 @@ export default function WorkflowTracker({
                     </span>
                   </div>
                   <p className="font-semibold text-xs">Member Secretary, AICTE</p>
-                  <p className="text-[10px] text-slate-500 mt-0.5">Generates cryptographic release dispatch token to bank</p>
+                  <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Generates cryptographic release dispatch token to bank</p>
                 </div>
               </div>
             </div>
@@ -536,14 +536,14 @@ export default function WorkflowTracker({
 
           {/* Special Interactive Section for Stage 5 (Renewal) */}
           {activeStage === 5 && (
-            <div className="mb-4 p-4 rounded-xl bg-amber-50/60 border border-amber-200">
+            <div className="mb-4 p-4 rounded-xl bg-amber-50/60 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
-                  <h4 className="text-xs font-bold text-amber-950 flex items-center gap-1.5 font-display">
-                    <RefreshCw className="w-4 h-4 text-amber-700" />
+                  <h4 className="text-xs font-bold text-amber-950 dark:text-amber-200 flex items-center gap-1.5 font-display">
+                    <RefreshCw className="w-4 h-4 text-amber-700 dark:text-amber-400" />
                     Parent-Child Succession Chain Status
                   </h4>
-                  <p className="text-[11px] text-amber-900 mt-0.5">
+                  <p className="text-[11px] text-amber-900 dark:text-amber-300 mt-0.5">
                     {isChainRenewed
                       ? `Successfully chained to predecessor deposit. Zero coverage gap validated.`
                       : `Initial grant deposit (#${activeFdr?.fdrNumber}). When renewal occurs, this record chains with SHA-256 integrity.`}
@@ -570,25 +570,25 @@ export default function WorkflowTracker({
               ?.substeps.map((sub, idx) => (
                 <div
                   key={idx}
-                  className="p-3 bg-white border border-slate-200 rounded-xl flex items-start justify-between gap-3 shadow-2xs"
+                  className="p-3 bg-white dark:bg-[#141f36] border border-slate-200 dark:border-slate-800 rounded-xl flex items-start justify-between gap-3 shadow-2xs"
                 >
                   <div className="flex items-start gap-2.5">
                     <span className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-bold mt-0.5 flex-shrink-0 ${
-                      sub.done ? 'bg-emerald-600 text-white' : sub.warn ? 'bg-rose-600 text-white' : 'bg-slate-200 text-slate-600'
+                      sub.done ? 'bg-emerald-600 text-white' : sub.warn ? 'bg-rose-600 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300'
                     }`}>
                       {sub.done ? '✓' : sub.warn ? '!' : '·'}
                     </span>
                     <div>
-                      <span className="font-bold text-xs text-slate-900">{sub.label}</span>
+                      <span className="font-bold text-xs text-slate-900 dark:text-white">{sub.label}</span>
                       {sub.detail && (
-                        <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                        <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 leading-snug">
                           {sub.detail}
                         </p>
                       )}
                     </div>
                   </div>
 
-                  <span className="font-mono text-[10px] font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200 flex-shrink-0">
+                  <span className="font-mono text-[10px] font-semibold px-2 py-0.5 rounded bg-slate-100 dark:bg-[#0c1424] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 flex-shrink-0">
                     {sub.tag}
                   </span>
                 </div>

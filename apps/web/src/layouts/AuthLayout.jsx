@@ -1,9 +1,14 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import ThemeToggle from '../components/ui/ThemeToggle';
 
 export default function AuthLayout() {
   return (
-    <div className="min-h-screen bg-surface-50 flex flex-col justify-between p-4">
+    <div className="min-h-screen bg-surface-50 dark:bg-[#080d19] text-slate-900 dark:text-slate-100 flex flex-col justify-between p-4 relative transition-colors duration-200">
+      <div className="absolute top-4 right-4 z-50">
+        <ThemeToggle size="sm" />
+      </div>
+
       <div className="flex-1 flex items-center justify-center py-12">
         <Outlet />
       </div>

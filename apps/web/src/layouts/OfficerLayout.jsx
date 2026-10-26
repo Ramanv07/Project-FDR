@@ -20,7 +20,7 @@ export default function OfficerLayout() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] flex flex-col">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#080d19] text-slate-900 dark:text-slate-100 flex flex-col transition-colors duration-200">
       <Topbar />
       <div className="flex flex-1">
         <Sidebar items={navItems} title="Scrutiny Office" />

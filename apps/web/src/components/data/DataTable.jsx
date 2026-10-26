@@ -49,16 +49,16 @@ export default function DataTable({
   }
 
   return (
-    <div className={`w-full overflow-x-auto border border-slate-200 rounded-xl bg-white shadow-xs ${className}`}>
+    <div className={`w-full overflow-x-auto border border-slate-200 dark:border-slate-800 rounded-xl bg-white dark:bg-[#0f172a] shadow-xs ${className}`}>
       <table className="w-full text-left border-collapse table-compact">
         <thead>
-          <tr className="border-b border-slate-200 bg-slate-50/80">
+          <tr className="border-b border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-[#141f36]">
             {columns.map((col) => (
               <th
                 key={col.accessor || col.header}
                 onClick={() => handleHeaderClick(col)}
-                className={`text-table font-medium text-gray-600 select-none ${
-                  col.sortable ? 'cursor-pointer hover:text-gray-900' : ''
+                className={`text-table font-medium text-gray-600 dark:text-slate-400 select-none ${
+                  col.sortable ? 'cursor-pointer hover:text-gray-900 dark:hover:text-white' : ''
                 } ${col.align === 'right' ? 'text-right' : col.align === 'center' ? 'text-center' : 'text-left'}`}
                 style={{ width: col.width }}
               >
@@ -71,9 +71,9 @@ export default function DataTable({
                   {col.sortable && sortKey === col.accessor && (
                     <span>
                       {sortDirection === 'asc' ? (
-                        <ChevronUp className="w-3.5 h-3.5 text-navy-700" />
+                        <ChevronUp className="w-3.5 h-3.5 text-navy-700 dark:text-blue-400" />
                       ) : (
-                        <ChevronDown className="w-3.5 h-3.5 text-navy-700" />
+                        <ChevronDown className="w-3.5 h-3.5 text-navy-700 dark:text-blue-400" />
                       )}
                     </span>
                   )}
@@ -94,14 +94,14 @@ export default function DataTable({
                 }
               }}
               tabIndex={onRowClick ? 0 : undefined}
-              className={`border-b border-surface-200 transition-colors ${
-                onRowClick ? 'cursor-pointer hover:bg-surface-100 focus:bg-surface-100' : ''
+              className={`border-b border-surface-200 dark:border-slate-800/80 transition-colors ${
+                onRowClick ? 'cursor-pointer hover:bg-surface-100 dark:hover:bg-[#141f36] focus:bg-surface-100 dark:focus:bg-[#141f36]' : ''
               }`}
             >
               {columns.map((col) => (
                 <td
                   key={col.accessor || col.header}
-                  className={`text-table text-gray-800 ${
+                  className={`text-table text-gray-800 dark:text-slate-200 ${
                     col.align === 'right'
                       ? 'text-right'
                       : col.align === 'center'

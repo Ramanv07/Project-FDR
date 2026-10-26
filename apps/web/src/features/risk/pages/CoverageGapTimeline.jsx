@@ -65,28 +65,28 @@ export default function CoverageGapTimeline() {
           return (
             <div
               key={institution.id}
-              className={`border rounded bg-white p-5 ${
-                hasGaps ? 'border-status-red' : 'border-hairline'
+              className={`border rounded-xl bg-white dark:bg-[#0f172a] p-5 shadow-xs transition-colors ${
+                hasGaps ? 'border-status-red' : 'border-hairline dark:border-slate-800'
               }`}
             >
               {/* Institution Header with Gap Alert Status */}
-              <div className="flex flex-col md:flex-row md:items-center justify-between pb-3 border-b border-surface-200 gap-2 mb-4">
+              <div className="flex flex-col md:flex-row md:items-center justify-between pb-3 border-b border-surface-200 dark:border-slate-800 gap-2 mb-4">
                 <div>
-                  <h2 className="text-sm font-medium text-gray-900">{institution.name}</h2>
-                  <p className="text-xs text-gray-500">
+                  <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-100">{institution.name}</h2>
+                  <p className="text-xs text-gray-500 dark:text-slate-400">
                     AICTE ID: {institution.aicteId} • {institution.state}
                   </p>
                 </div>
 
                 {hasGaps ? (
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-red-50 text-status-red text-xs font-medium border border-red-200">
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-red-50 dark:bg-red-950/40 text-status-red text-xs font-medium border border-red-200 dark:border-red-900/60">
                     <AlertTriangle className="w-3.5 h-3.5" />
                     <span>
                       {gaps.length} coverage gap ({totalGapDays} days uncovered)
                     </span>
                   </div>
                 ) : (
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-green-50 text-status-green text-xs font-medium border border-green-200">
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-green-50 dark:bg-emerald-950/40 text-status-green text-xs font-medium border border-green-200 dark:border-emerald-900/60">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     <span>Continuous valid coverage</span>
                   </div>
@@ -95,7 +95,7 @@ export default function CoverageGapTimeline() {
 
               {/* Validity Periods and Gap Visualization */}
               <div className="space-y-3">
-                <p className="text-xs font-medium text-gray-700">FDR validity timelines:</p>
+                <p className="text-xs font-medium text-gray-700 dark:text-slate-300">FDR validity timelines:</p>
 
                 {covered.length === 0 ? (
                   <p className="text-xs text-gray-400 italic">No FDR records on ledger.</p>
