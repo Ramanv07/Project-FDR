@@ -20,11 +20,11 @@ export default function OfficerLayout() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#080d19] text-slate-900 dark:text-slate-100 flex flex-col transition-colors duration-200">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#060e18] text-slate-900 dark:text-slate-100 flex flex-col transition-colors duration-200">
       <Topbar />
       <div className="flex flex-1">
         <Sidebar items={navItems} title="Scrutiny Office" />
-        <main className="flex-1 px-6 py-6 lg:px-8 lg:py-8 max-w-content overflow-x-hidden">
+        <main className="flex-1 px-6 py-8 lg:px-10 lg:py-10 max-w-7xl mx-auto w-full overflow-x-hidden">
           <Outlet />
         </main>
       </div>

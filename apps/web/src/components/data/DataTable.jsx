@@ -49,21 +49,21 @@ export default function DataTable({
   }
 
   return (
-    <div className={`w-full overflow-x-auto border border-slate-200 dark:border-slate-800 rounded-xl bg-white dark:bg-[#0f172a] shadow-xs ${className}`}>
-      <table className="w-full text-left border-collapse table-compact">
+    <div className={`w-full overflow-x-auto border border-slate-200/50 dark:border-transparent rounded-2xl bg-white dark:bg-[#0a1727] shadow-xs ${className}`}>
+      <table className="w-full text-left border-collapse">
         <thead>
-          <tr className="border-b border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-[#141f36]">
+          <tr className="border-b border-slate-200/50 dark:border-[rgba(56,136,235,0.08)] bg-slate-50/60 dark:bg-[#0e2035]">
             {columns.map((col) => (
               <th
                 key={col.accessor || col.header}
                 onClick={() => handleHeaderClick(col)}
-                className={`text-table font-medium text-gray-600 dark:text-slate-400 select-none ${
-                  col.sortable ? 'cursor-pointer hover:text-gray-900 dark:hover:text-white' : ''
+                className={`py-3.5 px-4 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-[#8892a4] select-none ${
+                  col.sortable ? 'cursor-pointer hover:text-slate-900 dark:hover:text-white' : ''
                 } ${col.align === 'right' ? 'text-right' : col.align === 'center' ? 'text-center' : 'text-left'}`}
                 style={{ width: col.width }}
               >
                 <div
-                  className={`inline-flex items-center gap-1 ${
+                  className={`inline-flex items-center gap-1.5 ${
                     col.align === 'right' ? 'justify-end w-full' : ''
                   }`}
                 >
@@ -71,9 +71,9 @@ export default function DataTable({
                   {col.sortable && sortKey === col.accessor && (
                     <span>
                       {sortDirection === 'asc' ? (
-                        <ChevronUp className="w-3.5 h-3.5 text-navy-700 dark:text-blue-400" />
+                        <ChevronUp className="w-3.5 h-3.5 text-[#4a8de8]" />
                       ) : (
-                        <ChevronDown className="w-3.5 h-3.5 text-navy-700 dark:text-blue-400" />
+                        <ChevronDown className="w-3.5 h-3.5 text-[#4a8de8]" />
                       )}
                     </span>
                   )}
@@ -94,14 +94,14 @@ export default function DataTable({
                 }
               }}
               tabIndex={onRowClick ? 0 : undefined}
-              className={`border-b border-surface-200 dark:border-slate-800/80 transition-colors ${
-                onRowClick ? 'cursor-pointer hover:bg-surface-100 dark:hover:bg-[#141f36] focus:bg-surface-100 dark:focus:bg-[#141f36]' : ''
+              className={`border-b border-slate-100 dark:border-[rgba(74,141,232,0.04)] transition-colors ${
+                onRowClick ? 'cursor-pointer hover:bg-slate-50/70 dark:hover:bg-[#0f1829] focus:bg-slate-50/70 dark:focus:bg-[#0f1829]' : ''
               }`}
             >
               {columns.map((col) => (
                 <td
                   key={col.accessor || col.header}
-                  className={`text-table text-gray-800 dark:text-slate-200 ${
+                  className={`py-3.5 px-4 text-sm text-slate-800 dark:text-slate-200 ${
                     col.align === 'right'
                       ? 'text-right'
                       : col.align === 'center'

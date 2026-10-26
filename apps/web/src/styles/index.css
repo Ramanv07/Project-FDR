@@ -9,8 +9,8 @@
 
   body {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    font-size: 13.5px;
-    line-height: 1.5;
+    font-size: 14.5px;
+    line-height: 1.55;
     color: #0f172a;
     background-color: #f8fafc;
     -webkit-font-smoothing: antialiased;
@@ -18,22 +18,18 @@
     transition: background-color 0.2s ease, color 0.2s ease;
   }
 
-  /* When dark mode is active on html */
+  /* Dark mode root colors — Pure Oceanic Navy Blue (Zero Purple/Red undertone) */
   html.dark body {
-    background-color: #080d19;
+    background-color: #060e18;
     color: #f1f5f9;
   }
 
   html.dark .bg-surface-50 {
-    background-color: #080d19;
+    background-color: #060e18;
   }
 
   html.dark .bg-surface-100 {
-    background-color: #0f172a;
-  }
-
-  html.dark .border-surface-200 {
-    border-color: #1e293b;
+    background-color: #0a1727;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -46,9 +42,9 @@
     font-family: 'JetBrains Mono', monospace;
   }
 
-  /* Clear accessible focus */
+  /* Accessible focus in steel blue */
   :focus-visible {
-    outline: 2px solid #0284c7;
+    outline: 2px solid #3888eb;
     outline-offset: 2px;
   }
 
@@ -58,56 +54,49 @@
 }
 
 @layer components {
-  /* Official Tricolor accent ribbon */
+  /* Tricolor accent ribbon — removed per design rule */
   .tricolor-stripe {
-    height: 4px;
-    width: 100%;
-    background: linear-gradient(90deg, #ff9933 0%, #ff9933 33.33%, #ffffff 33.33%, #ffffff 66.66%, #138808 66.66%, #138808 100%);
+    display: none !important;
   }
 
   /* High-end enterprise card */
   .card-enterprise {
     background: #ffffff;
     border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
+    border-radius: 16px;
+    box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04);
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   html.dark .card-enterprise {
-    background: #0f172a;
-    border-color: #1e293b;
-    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+    background: #0a1727;
+    border-color: transparent !important;
+    box-shadow: none;
   }
 
   .card-enterprise-hover:hover {
     border-color: #cbd5e1;
-    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
     transform: translateY(-2px);
+  }
+
+  html.dark .card-enterprise-hover:hover {
+    border-color: transparent !important;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
   }
 
   /* Backward compatibility for panel-crisp and card-glass */
   .panel-crisp, .card-glass {
     background: #ffffff;
     border: 1px solid #e2e8f0;
-    border-radius: 10px;
+    border-radius: 14px;
     box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04);
   }
 
   html.dark .panel-crisp, html.dark .card-glass {
-    background: #0f172a;
-    border-color: #1e293b;
-    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
-  }
-
-  /* Hairline borders */
-  .border-hairline {
-    border-width: 1px;
-    border-color: #e2e8f0;
-  }
-
-  html.dark .border-hairline {
-    border-color: #1e293b;
+    background: #0a1727;
+    border-color: transparent !important;
+    box-shadow: none;
   }
 
   /* Modern FinTech Table */
@@ -118,8 +107,8 @@
   }
 
   .table-compact th {
-    padding: 12px 16px;
-    font-size: 11px;
+    padding: 14px 18px;
+    font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -132,22 +121,22 @@
   }
 
   html.dark .table-compact th {
-    background-color: #0c1424;
-    color: #94a3b8;
-    border-bottom: 1px solid #1e293b;
+    background-color: #0e2035;
+    color: #8295ac;
+    border-bottom: 1px solid rgba(56, 136, 235, 0.08);
   }
 
   .table-compact td {
-    padding: 13px 16px;
-    font-size: 13px;
-    line-height: 1.4;
+    padding: 15px 18px;
+    font-size: 14px;
+    line-height: 1.45;
     color: #1e293b;
     border-bottom: 1px solid #f1f5f9;
   }
 
   html.dark .table-compact td {
     color: #e2e8f0;
-    border-bottom: 1px solid #16233b;
+    border-bottom: 1px solid rgba(56, 136, 235, 0.05);
   }
 
   .table-compact tbody tr {
@@ -160,7 +149,7 @@
   }
 
   html.dark .table-compact tbody tr:hover {
-    background-color: #141f36;
+    background-color: #0e2035;
   }
 
   /* Modern Badges */
@@ -168,8 +157,8 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 3px 10px;
-    font-size: 12px;
+    padding: 4px 12px;
+    font-size: 12.5px;
     font-weight: 600;
     border-radius: 9999px;
     line-height: 1.3;
@@ -187,30 +176,30 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 3px 10px;
-    font-size: 11px;
+    padding: 4px 12px;
+    font-size: 12px;
     font-weight: 600;
     font-family: 'JetBrains Mono', monospace;
-    border-radius: 6px;
+    border-radius: 8px;
     background: #f1f5f9;
     border: 1px solid #cbd5e1;
     color: #334155;
   }
 
   html.dark .pill-trust {
-    background: #141f36;
-    border-color: #1e2e4a;
+    background: #0e2035;
+    border-color: transparent !important;
     color: #cbd5e1;
   }
 
   /* Section divider */
   .form-divider {
     border-top: 1px solid #e2e8f0;
-    margin: 24px 0 20px;
+    margin: 28px 0 24px;
   }
 
   html.dark .form-divider {
-    border-color: #1e293b;
+    border-color: rgba(56, 136, 235, 0.08);
   }
 }
 
@@ -245,86 +234,119 @@
 
 /* Dark Mode Scrollbars */
 html.dark ::-webkit-scrollbar-track {
-  background: #080d19;
+  background: #060e18;
 }
 
 html.dark ::-webkit-scrollbar-thumb {
-  background: #1e2e4a;
+  background: #112338;
 }
 
 html.dark ::-webkit-scrollbar-thumb:hover {
-  background: #2b3f66;
+  background: #183352;
 }
 
 /* Form Controls in Dark Mode */
 html.dark input,
 html.dark select,
 html.dark textarea {
-  background-color: #0c1424;
-  border-color: #1e2e4a;
-  color: #f8fafc;
+  background-color: #0a1727 !important;
+  border-color: rgba(56, 136, 235, 0.18) !important;
+  color: #f8fafc !important;
+  border-radius: 10px !important;
 }
 
 html.dark input:focus,
 html.dark select:focus,
 html.dark textarea:focus {
-  border-color: #0284c7;
+  border-color: #3888eb !important;
+  outline: none;
 }
 
 html.dark input::placeholder,
 html.dark textarea::placeholder {
-  color: #64748b;
+  color: #8295ac !important;
 }
 
 /* Dialog in Dark Mode */
 html.dark [role="dialog"] {
-  background-color: #0f172a;
-  border-color: #1e2e4a;
+  background-color: #0a1727 !important;
+  border-color: transparent !important;
   color: #f1f5f9;
 }
 
-/* Universal Dark Mode Surface & Border Overrides */
-html.dark .bg-white:not(.keep-white):not([data-keep-white]) {
-  background-color: #0f172a !important;
+/* =====================================================================
+   UNIVERSAL DARK MODE OVERRIDES — CRISP OCEANIC NAVY (ZERO PURPLE)
+   Page background: #060e18 (cold dark navy blue, green > red, 0% purple)
+   Card / Surface:  #0a1727 (crisp dark steel blue)
+   Raised / Sub:    #0e2035 (refined elevated blue)
+   Borders:         BORDERLESS cards (per design standard)
+   Accents:         Pure Blue (#3888eb), Sage (#62b082), Sand (#c7a464), Rose (#c77884)
+   ===================================================================== */
+
+/* Root backgrounds */
+html.dark .bg-surface-50,
+html.dark [class*="dark:bg-[#080c16]"],
+html.dark [class*="dark:bg-[#060e18]"],
+html.dark [class*="dark:bg-[#080d19]"],
+html.dark [class*="dark:bg-[#111113]"],
+html.dark [class*="dark:bg-[#0a0a0a]"] {
+  background-color: #060e18 !important;
 }
 
-html.dark .border-hairline {
-  border-color: #1e293b !important;
+/* Surface / Card backgrounds */
+html.dark .bg-white:not(.keep-white):not([data-keep-white]),
+html.dark .bg-surface-100,
+html.dark [class*="dark:bg-[#0d1526]"],
+html.dark [class*="dark:bg-[#0a1727]"],
+html.dark [class*="dark:bg-[#0f172a]"],
+html.dark [class*="dark:bg-[#1c1c1e]"],
+html.dark [class*="dark:bg-[#0c1424]"] {
+  background-color: #0a1727 !important;
 }
 
-html.dark .border-surface-200 {
-  border-color: #1e293b !important;
+/* Raised / Sub-surface backgrounds */
+html.dark .bg-slate-50:not(.keep-bg),
+html.dark .bg-slate-100:not(.keep-bg),
+html.dark [class*="dark:bg-[#0f1829]"],
+html.dark [class*="dark:bg-[#0e2035]"],
+html.dark [class*="dark:bg-[#2c2c2e]"],
+html.dark [class*="dark:bg-[#141f36]"],
+html.dark [class*="dark:bg-[#142036]"] {
+  background-color: #0e2035 !important;
 }
 
-html.dark .border-slate-200:not(.keep-border):not([data-keep-border]) {
-  border-color: #1e293b !important;
-}
-
+/* BORDERLESS CARDS: Remove heavy visible borders from cards & widgets in dark mode */
+html.dark .border-hairline,
+html.dark [class*="dark:border-slate-800"],
+html.dark [class*="dark:border-slate-700"],
+html.dark [class*="dark:border-slate-600"],
+html.dark [class*="dark:border-amber"],
+html.dark [class*="dark:border-rose"],
+html.dark [class*="dark:border-blue"],
+html.dark .border-slate-200:not(.keep-border):not([data-keep-border]),
 html.dark .border-slate-100:not(.keep-border) {
-  border-color: #16233b !important;
+  border-color: transparent !important;
+}
+
+/* Subtle hairline ONLY for dividers and table separators */
+html.dark .border-b:not(.border-none):not([class*="rounded-2xl"]):not([class*="rounded-xl"]) {
+  border-bottom-color: rgba(56, 136, 235, 0.08) !important;
+}
+
+html.dark .border-t:not(.border-none):not([class*="rounded-2xl"]):not([class*="rounded-xl"]) {
+  border-top-color: rgba(56, 136, 235, 0.08) !important;
 }
 
 html.dark .divide-surface-200 > :not([hidden]) ~ :not([hidden]) {
-  border-color: #1e293b !important;
+  border-color: rgba(56, 136, 235, 0.08) !important;
 }
 
-html.dark .bg-surface-50 {
-  background-color: #080d19 !important;
+/* Typography scale and contrast in dark mode */
+.text-table {
+  font-size: 14px !important;
+  line-height: 1.45 !important;
 }
 
-html.dark .bg-surface-100 {
-  background-color: #0c1424 !important;
-}
-
-html.dark .bg-slate-50:not(.keep-bg) {
-  background-color: #0c1424 !important;
-}
-
-html.dark .bg-slate-100:not(.keep-bg) {
-  background-color: #141f36 !important;
-}
-
-/* Typography contrast in dark mode */
 html.dark .text-gray-900,
 html.dark .text-slate-900,
 html.dark .text-slate-950 {
@@ -343,55 +365,96 @@ html.dark .text-slate-700 {
 
 html.dark .text-gray-600,
 html.dark .text-slate-600 {
-  color: #94a3b8 !important;
+  color: #8295ac !important;
 }
 
 html.dark .text-gray-500,
 html.dark .text-slate-500 {
-  color: #64748b !important;
+  color: #8295ac !important;
 }
 
 html.dark .text-navy-800,
 html.dark .text-navy-900,
 html.dark .text-navy-700 {
-  color: #60a5fa !important;
+  color: #3888eb !important;
 }
 
-/* Status tint backgrounds in dark mode */
-html.dark .bg-emerald-50 {
-  background-color: rgba(6, 78, 59, 0.35) !important;
-  color: #6ee7b7 !important;
-  border-color: rgba(16, 185, 129, 0.35) !important;
+/* Secondary & Status tints — pastel-leaning without harsh neon glare */
+html.dark .bg-emerald-50,
+html.dark [class*="dark:bg-emerald-950"],
+html.dark .bg-emerald-100 {
+  background-color: rgba(98, 176, 130, 0.12) !important;
+  color: #62b082 !important;
+  border-color: transparent !important;
 }
 
-html.dark .bg-amber-50 {
-  background-color: rgba(120, 53, 15, 0.35) !important;
-  color: #fcd34d !important;
-  border-color: rgba(245, 158, 11, 0.35) !important;
+html.dark .bg-amber-50,
+html.dark [class*="dark:bg-amber-950"],
+html.dark .bg-amber-100 {
+  background-color: rgba(199, 164, 100, 0.12) !important;
+  color: #c7a464 !important;
+  border-color: transparent !important;
 }
 
 html.dark .bg-rose-50,
-html.dark .bg-red-50 {
-  background-color: rgba(136, 19, 55, 0.35) !important;
-  color: #fda4af !important;
-  border-color: rgba(244, 63, 94, 0.35) !important;
+html.dark .bg-rose-100,
+html.dark .bg-red-50,
+html.dark [class*="dark:bg-red-950"] {
+  background-color: rgba(199, 120, 132, 0.12) !important;
+  color: #c77884 !important;
+  border-color: transparent !important;
 }
 
-html.dark .bg-blue-50 {
-  background-color: rgba(30, 58, 138, 0.35) !important;
-  color: #93c5fd !important;
-  border-color: rgba(59, 130, 246, 0.35) !important;
+html.dark .bg-blue-50,
+html.dark [class*="dark:bg-blue-950"],
+html.dark .bg-blue-100 {
+  background-color: rgba(56, 136, 235, 0.12) !important;
+  color: #3888eb !important;
+  border-color: transparent !important;
 }
 
-html.dark .bg-indigo-50 {
-  background-color: rgba(49, 46, 129, 0.35) !important;
-  color: #a5b4fc !important;
-  border-color: rgba(99, 102, 241, 0.35) !important;
+html.dark .bg-indigo-50,
+html.dark [class*="dark:bg-indigo-950"] {
+  background-color: rgba(56, 136, 235, 0.12) !important;
+  color: #5d9fee !important;
+  border-color: transparent !important;
 }
 
-html.dark .bg-teal-50 {
-  background-color: rgba(19, 78, 74, 0.35) !important;
-  color: #5eead4 !important;
-  border-color: rgba(20, 184, 166, 0.35) !important;
+html.dark .bg-teal-50,
+html.dark [class*="dark:bg-teal-950"] {
+  background-color: rgba(98, 176, 130, 0.12) !important;
+  color: #62b082 !important;
+  border-color: transparent !important;
 }
 
+/* Text status accents in dark mode */
+html.dark .text-blue-600,
+html.dark .text-blue-500,
+html.dark .text-blue-400 {
+  color: #3888eb !important;
+}
+
+html.dark .text-emerald-600,
+html.dark .text-emerald-500,
+html.dark .text-emerald-400 {
+  color: #62b082 !important;
+}
+
+html.dark .text-amber-600,
+html.dark .text-amber-500,
+html.dark .text-amber-400 {
+  color: #c7a464 !important;
+}
+
+html.dark .text-rose-600,
+html.dark .text-rose-500,
+html.dark .text-rose-400 {
+  color: #c77884 !important;
+}
+
+/* NO GLOWS */
+html.dark .shadow-glass,
+html.dark .shadow-glass-hover,
+html.dark [class*="shadow-glow"] {
+  box-shadow: none !important;
+}

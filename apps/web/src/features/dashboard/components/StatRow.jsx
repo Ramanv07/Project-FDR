@@ -2,22 +2,22 @@ import React from 'react';
 
 export default function StatRow({ stats = [] }) {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-8">
       {stats.map((s, idx) => (
         <div
           key={s.label || idx}
-          className="bg-white dark:bg-[#0f172a] border border-slate-200/90 dark:border-slate-800 rounded-xl p-4 shadow-xs hover:border-slate-300 dark:hover:border-slate-700 transition-all"
+          className="bg-white dark:bg-[#0a1727] rounded-2xl p-6 shadow-xs border border-slate-200/50 dark:border-transparent transition-all"
         >
-          <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1 tracking-tight">
+          <p className="text-xs sm:text-sm font-semibold text-slate-500 dark:text-[#8892a4] mb-2 tracking-tight">
             {s.label}
           </p>
           <div className="flex items-baseline justify-between">
-            <span className="text-2xl font-bold text-slate-950 dark:text-white font-display tabular-nums">
+            <span className="text-2xl sm:text-3xl font-bold text-slate-950 dark:text-white font-display tabular-nums">
               {s.value}
             </span>
           </div>
           {s.subtext && (
-            <p className="text-[11px] text-slate-400 dark:text-slate-500 mt-1.5 font-medium flex items-center gap-1">
+            <p className="text-xs text-slate-500 dark:text-[#8892a4] mt-2 font-medium flex items-center gap-1.5">
               {s.subtext}
             </p>
           )}

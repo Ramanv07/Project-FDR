@@ -13,6 +13,7 @@ import RequireRole from './guards/RequireRole';
 
 // Public & Basic Pages
 import Landing from '../features/public/pages/Landing';
+import LandingV2 from '../features/public/pages/LandingV2';
 import Login from '../features/auth/pages/Login';
 import Register from '../features/auth/pages/Register';
 import Profile from '../features/auth/pages/Profile';
@@ -51,6 +52,11 @@ export const router = createBrowserRouter([
   {
     path: ROUTES.HOME,
     element: <Landing />,
+  },
+  {
+    // DESIGN PROTOTYPE — delete this route once approved
+    path: '/v2',
+    element: <LandingV2 />,
   },
   {
     element: <AuthLayout />,

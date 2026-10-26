@@ -21,28 +21,22 @@ export default function Topbar() {
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-white dark:bg-[#0c1424] border-b border-slate-200 dark:border-slate-800 shadow-xs">
-      {/* Tricolor National Ribbon */}
-      <div className="tricolor-stripe" />
+    <header className="sticky top-0 z-40 bg-white dark:bg-[#060e18] border-b border-slate-200/50 dark:border-[rgba(56,136,235,0.08)] shadow-xs">
 
-      <div className="h-14 px-4 sm:px-6 flex items-center justify-between">
+      <div className="h-16 px-5 sm:px-8 flex items-center justify-between">
         {/* Left Branding */}
-        <div className="flex items-center gap-3">
-          <Link to={ROUTES.HOME} className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#122642] to-[#0a1728] text-amber-400 font-bold flex items-center justify-center text-xs shadow-xs border border-amber-500/30 group-hover:scale-105 transition-transform">
+        <div className="flex items-center gap-3.5">
+          <Link to={ROUTES.HOME} className="flex items-center gap-3 group">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#122642] to-[#0a1728] text-amber-400 font-bold flex items-center justify-center text-sm shadow-xs border border-amber-500/30 group-hover:scale-105 transition-transform">
               🏛️
             </div>
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="font-bold text-slate-900 dark:text-white tracking-tight text-sm font-display">
+                <span className="font-bold text-slate-900 dark:text-white tracking-tight text-base font-display">
                   AICTE FDR Ledger
                 </span>
-                <span className="hidden sm:inline-flex items-center gap-1 text-[10px] font-semibold uppercase px-1.5 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  SHA-256 Validated
-                </span>
               </div>
-              <p className="text-[10px] text-slate-500 dark:text-slate-400 hidden md:block">
+              <p className="text-xs text-slate-500 dark:text-[#8295ac] hidden md:block">
                 National Security Deposit Regulatory Custody Vault
               </p>
             </div>
@@ -50,17 +44,17 @@ export default function Topbar() {
         </div>
 
         {/* Right Controls */}
-        <div className="flex items-center gap-2 sm:gap-3 text-xs">
+        <div className="flex items-center gap-3 text-sm">
           {/* Quick Role Switcher */}
-          <div className="hidden sm:flex items-center bg-slate-100 dark:bg-[#142036] p-0.5 rounded-lg border border-slate-200 dark:border-slate-700">
-            <span className="text-[11px] font-semibold text-slate-400 dark:text-slate-500 px-2">Role:</span>
+          <div className="hidden sm:flex items-center bg-slate-100 dark:bg-[#0a1727] p-1 rounded-xl border border-transparent">
+            <span className="text-xs font-semibold text-slate-400 dark:text-[#8295ac] px-2.5">Role:</span>
             <button
               type="button"
               onClick={() => handleRoleSwitch(ROLES.OFFICER)}
-              className={`px-2.5 py-1 rounded-md text-xs font-semibold transition-all ${
+              className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
                 role === ROLES.OFFICER
-                  ? 'bg-white dark:bg-[#1f3050] text-slate-900 dark:text-white shadow-xs border border-slate-200/60 dark:border-slate-600'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  ? 'bg-white dark:bg-[#0e2035] text-slate-900 dark:text-[#3888eb] shadow-xs'
+                  : 'text-slate-600 dark:text-[#8295ac] hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               Officer
@@ -68,10 +62,10 @@ export default function Topbar() {
             <button
               type="button"
               onClick={() => handleRoleSwitch(ROLES.INSTITUTION)}
-              className={`px-2.5 py-1 rounded-md text-xs font-semibold transition-all ${
+              className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
                 role === ROLES.INSTITUTION
-                  ? 'bg-white dark:bg-[#1f3050] text-slate-900 dark:text-white shadow-xs border border-slate-200/60 dark:border-slate-600'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  ? 'bg-white dark:bg-[#0e2035] text-slate-900 dark:text-[#3888eb] shadow-xs'
+                  : 'text-slate-600 dark:text-[#8295ac] hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               Institution
@@ -79,10 +73,10 @@ export default function Topbar() {
             <button
               type="button"
               onClick={() => handleRoleSwitch(ROLES.ADMIN)}
-              className={`px-2.5 py-1 rounded-md text-xs font-semibold transition-all ${
+              className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
                 role === ROLES.ADMIN
-                  ? 'bg-white dark:bg-[#1f3050] text-slate-900 dark:text-white shadow-xs border border-slate-200/60 dark:border-slate-600'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  ? 'bg-white dark:bg-[#0e2035] text-slate-900 dark:text-[#3888eb] shadow-xs'
+                  : 'text-slate-600 dark:text-[#8295ac] hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               Admin
@@ -95,14 +89,14 @@ export default function Topbar() {
           {/* Mock Bank Simulator Button */}
           <Link
             to={ROUTES.MOCK_BANK}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-[#142036] hover:bg-slate-100 dark:hover:bg-[#1c2d4a] text-slate-700 dark:text-slate-200 font-medium transition-colors"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-slate-200/50 dark:border-transparent bg-slate-50 dark:bg-[#0a1727] hover:bg-slate-100 dark:hover:bg-[#0e2035] text-slate-700 dark:text-[#8295ac] hover:dark:text-white font-medium transition-colors text-xs"
             title="Core Banking Gateway Simulator"
           >
-            <Landmark className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-            <span className="hidden md:inline">Bank Console</span>
+            <Landmark className="w-4 h-4 text-[#3888eb]" />
+            <span className="hidden md:inline">Bank Simulator</span>
           </Link>
 
-          <div className="h-4 w-px bg-slate-200 dark:bg-slate-700 hidden sm:block" />
+          <div className="h-5 w-px bg-slate-200/60 dark:bg-[rgba(56,136,235,0.12)] hidden sm:block" />
 
           {/* User Profile */}
           <Link

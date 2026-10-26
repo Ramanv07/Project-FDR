@@ -152,7 +152,7 @@ export default function MockBankConsole() {
   }
 
   return (
-    <div className="min-h-screen bg-surface-50 dark:bg-[#080d19] text-slate-900 dark:text-slate-100 p-6 max-w-content mx-auto transition-colors duration-200">
+    <div className="min-h-screen bg-surface-50 dark:bg-[#060e18] text-slate-900 dark:text-slate-100 p-6 max-w-content mx-auto transition-colors duration-200">
       {/* Prominent clearly labeled banner */}
       <div className="p-5 bg-gradient-to-r from-blue-50/80 via-slate-50 to-amber-50/50 dark:from-[#0f1d36] dark:via-[#0c172b] dark:to-[#17223b] border border-slate-200 dark:border-slate-800 rounded-2xl mb-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xs">
         <div className="flex items-start gap-3.5">

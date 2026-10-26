@@ -125,18 +125,18 @@ export default function InstitutionDashboard() {
 
       {/* Primary Deposit Statutory Workflow State */}
       {fdrs.length > 0 && (
-        <div className="mb-6">
+        <div className="mb-8">
           <WorkflowTracker fdr={fdrs[0]} allFdrs={fdrs} />
         </div>
       )}
 
-      <div className="border border-slate-200 dark:border-slate-800 rounded-2xl bg-white dark:bg-[#0f172a] p-6 shadow-xs">
-        <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-100 dark:border-slate-800">
+      <div className="rounded-2xl bg-white dark:bg-[#0a1727] p-7 shadow-xs border border-slate-200/40 dark:border-transparent">
+        <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-100 dark:border-[rgba(56,136,235,0.08)]">
           <div>
-            <h2 className="text-base font-bold text-slate-950 dark:text-white font-display">Institution Security Deposit Ledger</h2>
-            <p className="text-xs text-slate-500 dark:text-slate-400">Active and archived FDR guarantees pledged to AICTE New Delhi</p>
+            <h2 className="text-lg font-bold text-slate-950 dark:text-white font-display">Institution Security Deposit Ledger</h2>
+            <p className="text-sm text-slate-500 dark:text-[#8295ac] mt-1">Active and archived FDR guarantees pledged to AICTE New Delhi</p>
           </div>
-          <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 dark:bg-[#141f36] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+          <span className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-[#0e2035] text-slate-600 dark:text-[#8295ac] border border-transparent">
             {fdrs.length} deposits recorded
           </span>
         </div>
