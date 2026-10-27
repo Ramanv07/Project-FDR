@@ -15,7 +15,12 @@ import {
   FilePlus,
   Landmark,
   Shield,
+  GraduationCap,
+  Lock,
 } from 'lucide-react';
+import { useAuth } from '../../features/auth/useAuth';
+import { useTheme } from '../../context/ThemeContext';
+import { ROLES } from '../../lib/constants';
 
 // Map label to icon automatically if not provided
 const getIconForLabel = (label = '') => {
@@ -39,21 +44,79 @@ const getIconForLabel = (label = '') => {
   return <Shield className="w-4 h-4" />;
 };
 
-export default function Sidebar({ items = [], title = 'AICTE Portal' }) {
+const ROLE_IDENTITIES = {
+  [ROLES.OFFICER]: {
+    name: 'AICTE Scrutiny Bureau',
+    sub: 'Regional Directorate • New Delhi',
+    iconBg: 'bg-zinc-100 dark:bg-[#1c1e24] border-zinc-200 dark:border-zinc-700/60 text-sky-500',
+    icon: <Landmark className="w-5 h-5 text-sky-500" />,
+    darkCanvas: '#0e1013',
+    lightCanvas: '#fbfcfd',
+    borderColor: 'border-zinc-200/80 dark:border-zinc-800/80',
+    headerBg: 'bg-white/90 dark:bg-[#131519]/90',
+    activeLink: 'bg-zinc-100 dark:bg-white/[0.07] text-zinc-950 dark:text-white font-semibold border-l-2 border-l-sky-500',
+    dotColor: 'rgba(255, 255, 255, 0.045)',
+  },
+  [ROLES.INSTITUTION]: {
+    name: 'Technical Institution',
+    sub: 'Approved College Registrar',
+    iconBg: 'bg-zinc-100 dark:bg-[#1c1e24] border-zinc-200 dark:border-zinc-700/60 text-emerald-500',
+    icon: <GraduationCap className="w-5 h-5 text-emerald-500" />,
+    darkCanvas: '#0e1013',
+    lightCanvas: '#fbfcfd',
+    borderColor: 'border-zinc-200/80 dark:border-zinc-800/80',
+    headerBg: 'bg-white/90 dark:bg-[#131519]/90',
+    activeLink: 'bg-zinc-100 dark:bg-white/[0.07] text-zinc-950 dark:text-white font-semibold border-l-2 border-l-emerald-500',
+    dotColor: 'rgba(255, 255, 255, 0.045)',
+  },
+  [ROLES.ADMIN]: {
+    name: 'Vault Governance',
+    sub: 'Cryptographic Merkle Sentinel',
+    iconBg: 'bg-zinc-100 dark:bg-[#1c1e24] border-zinc-200 dark:border-zinc-700/60 text-amber-500',
+    icon: <Lock className="w-5 h-5 text-amber-500" />,
+    darkCanvas: '#0e1013',
+    lightCanvas: '#fbfcfd',
+    borderColor: 'border-zinc-200/80 dark:border-zinc-800/80',
+    headerBg: 'bg-white/90 dark:bg-[#131519]/90',
+    activeLink: 'bg-zinc-100 dark:bg-white/[0.07] text-zinc-950 dark:text-white font-semibold border-l-2 border-l-amber-500',
+    dotColor: 'rgba(255, 255, 255, 0.045)',
+  },
+};
+
+export default function Sidebar({ items = [], title }) {
+  const { role } = useAuth();
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+
+  const identity = ROLE_IDENTITIES[role] || ROLE_IDENTITIES[ROLES.OFFICER];
+  const displayTitle = title || identity.name;
+
   return (
-    <aside className="hidden md:flex w-64 flex-shrink-0 bg-white dark:bg-[#02060d] border-r border-slate-200/50 dark:border-[rgba(56,189,248,0.08)] min-h-[calc(100vh-56px)] flex-col justify-between select-none transition-colors duration-200">
-      <div>
-        {/* Sidebar Context Header */}
-        <div className="p-5 border-b border-slate-100 dark:border-[rgba(56,189,248,0.08)] bg-slate-50/50 dark:bg-[#050c16]">
+    <aside
+      data-sidebar="true"
+      className={`hidden md:flex w-64 flex-shrink-0 border-r ${identity.borderColor} h-screen sticky top-0 flex-col justify-between select-none transition-colors duration-200 relative overflow-hidden overflow-y-auto`}
+      style={{
+        backgroundColor: isDark ? identity.darkCanvas : identity.lightCanvas,
+        backgroundImage: isDark
+          ? `radial-gradient(${identity.dotColor} 1.1px, transparent 1.1px)`
+          : 'radial-gradient(rgba(100, 116, 139, 0.14) 1.1px, transparent 1.1px)',
+        backgroundSize: '20px 20px',
+      }}
+    >
+      <div className="relative z-10">
+        {/* Sidebar Context Header — Custom Dynamic Role Identity */}
+        <div className={`p-4 border-b ${identity.borderColor} ${identity.headerBg} backdrop-blur-md`}>
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-[#0F2444] text-amber-400 font-bold flex items-center justify-center text-sm shadow-xs border border-amber-500/20">
-              🏛️
+            <div className={`w-10 h-10 rounded-xl ${identity.iconBg} font-bold flex items-center justify-center text-lg shadow-xs border flex-shrink-0`}>
+              {identity.icon}
             </div>
-            <div>
-              <p className="text-sm font-bold text-slate-900 dark:text-white tracking-wide font-display">
-                {title}
+            <div className="min-w-0">
+              <p className="text-sm font-bold text-slate-900 dark:text-white tracking-tight font-display truncate">
+                {displayTitle}
               </p>
-              <p className="text-xs text-slate-500 dark:text-[#8daecf] font-medium">Regulatory Console</p>
+              <p className="text-xs text-slate-500 dark:text-[#8daecf] font-medium truncate mt-0.5">
+                {identity.sub}
+              </p>
             </div>
           </div>
         </div>
@@ -65,7 +128,7 @@ export default function Sidebar({ items = [], title = 'AICTE Portal' }) {
               return (
                 <div
                   key={`div-${index}-${item.label}`}
-                  className="px-3.5 pt-4 pb-1.5 text-xs uppercase font-bold text-slate-400 dark:text-[#5a7b9c] tracking-wider"
+                  className="px-3.5 pt-4 pb-1.5 text-[11px] uppercase font-bold text-slate-400 dark:text-[#5a7b9c] tracking-wider"
                 >
                   {item.label}
                 </div>
@@ -81,17 +144,17 @@ export default function Sidebar({ items = [], title = 'AICTE Portal' }) {
                 className={({ isActive }) =>
                   `flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all ${
                     isActive
-                      ? 'bg-blue-50/80 dark:bg-[#071223] text-blue-800 dark:text-[#38bdf8] font-semibold border border-transparent'
-                      : 'text-slate-600 dark:text-[#8daecf] hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-[#050c16] border border-transparent'
+                      ? identity.activeLink
+                      : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/[0.04] border border-transparent'
                   }`
                 }
               >
                 <div className="flex items-center gap-3 truncate">
-                  <span className="flex-shrink-0 text-slate-500 dark:text-[#8daecf]">{icon}</span>
+                  <span className="flex-shrink-0 text-zinc-400 dark:text-zinc-500">{icon}</span>
                   <span className="truncate">{item.label}</span>
                 </div>
                 {item.badge != null && (
-                  <span className="text-xs px-2 py-0.5 rounded-full font-bold bg-amber-100 dark:bg-[#071223] text-amber-800 dark:text-[#f59e0b] tabular-nums">
+                  <span className="text-xs px-2 py-0.5 rounded-full font-bold bg-zinc-100 dark:bg-[#1c1e24] text-zinc-800 dark:text-zinc-200 tabular-nums">
                     {item.badge}
                   </span>
                 )}
@@ -102,13 +165,13 @@ export default function Sidebar({ items = [], title = 'AICTE Portal' }) {
       </div>
 
       {/* Sidebar Footer Info */}
-      <div className="p-5 border-t border-slate-100 dark:border-[rgba(56,189,248,0.08)] bg-slate-50/60 dark:bg-[#050c16]">
-        <div className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300 font-medium mb-1.5">
-          <ShieldCheck className="w-4 h-4 text-[#10b981] flex-shrink-0" />
-          <span>Statutory Compliance Valid</span>
+      <div className={`relative z-10 p-4 border-t ${identity.borderColor} ${identity.headerBg} backdrop-blur-md`}>
+        <div className="flex items-center gap-2 text-xs text-zinc-700 dark:text-zinc-300 font-medium mb-1">
+          <ShieldCheck className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+          <span>Statutory Compliance Active</span>
         </div>
-        <p className="text-xs text-slate-400 dark:text-[#5a7b9c] leading-relaxed">
-          AICTE FDR Trust Ledger • Govt. of India
+        <p className="text-[11px] text-zinc-400 dark:text-zinc-500 leading-relaxed">
+          AICTE FDR Trust Ledger • ISO 27001
         </p>
       </div>
     </aside>

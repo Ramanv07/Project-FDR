@@ -265,12 +265,12 @@ export default function WorkflowTracker({
   ];
 
   return (
-    <div className={`bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-xs transition-all ${className}`}>
+    <div className={`bg-white dark:bg-[#16181d] border border-zinc-200/80 dark:border-zinc-800/80 rounded-2xl p-5 shadow-xs transition-all ${className}`}>
       {/* Header bar with Interactive Deposit Switcher */}
-      <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-4 mb-4 border-b border-slate-200 dark:border-slate-800">
+      <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-4 mb-4 border-b border-zinc-200/80 dark:border-zinc-800/80">
         <div>
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-[11px] font-bold text-blue-950 dark:text-blue-300 uppercase tracking-wider bg-blue-50 dark:bg-blue-950/70 border border-blue-200 dark:border-blue-800 px-2.5 py-0.5 rounded-full">
+            <span className="text-xs font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-wider">
               AICTE Regulatory Workflow Engine
             </span>
 

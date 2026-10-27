@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import LoginForm from '../components/LoginForm';
 import { ROUTES } from '../../../lib/constants';
-import { Shield, Lock, ArrowLeft, Building2 } from 'lucide-react';
+import { Shield, Lock, ArrowLeft, Building2, Landmark } from 'lucide-react';
 
 export default function Login() {
   return (
@@ -11,7 +11,7 @@ export default function Login() {
       <div className="p-8">
         <div className="text-center mb-6">
           <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0B1E36] to-[#16355C] text-amber-400 font-bold flex items-center justify-center text-xl shadow-md border border-amber-500/30 mx-auto mb-3">
-            🏛️
+            <Landmark className="w-6 h-6 text-amber-400" />
           </div>
           <h1 className="text-xl font-bold text-slate-950 dark:text-white font-display">
             Regulatory Portal Access

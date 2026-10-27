@@ -22,16 +22,16 @@ export default function Button({
 
   const variantStyles = {
     primary:
-      'bg-gradient-to-b from-[#162e50] to-[#0d1e36] dark:from-[#0284c7] dark:to-[#0369a1] text-white hover:from-[#1c3861] hover:to-[#122744] dark:hover:from-[#0ea5e9] dark:hover:to-[#0284c7] border border-[#0d1e36] dark:border-[#0284c7] shadow-sm hover:shadow-md focus-visible:outline-[#162e50]',
+      'bg-zinc-900 dark:bg-white text-white dark:text-zinc-950 hover:bg-zinc-800 dark:hover:bg-zinc-100 border border-zinc-900 dark:border-white shadow-xs focus-visible:outline-zinc-900',
     secondary:
-      'bg-white dark:bg-[#071223] text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-[rgba(56,189,248,0.16)] hover:bg-slate-50 dark:hover:bg-[#0a182e] hover:border-slate-300 shadow-xs focus-visible:outline-slate-400',
+      'bg-white dark:bg-[#1a1d23] text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-800/80 hover:bg-zinc-50 dark:hover:bg-[#22252c] shadow-xs focus-visible:outline-zinc-400',
     accent:
-      'bg-amber-600 hover:bg-amber-700 dark:bg-[#b89150] dark:hover:bg-[#c9a15c] text-white border border-amber-700 dark:border-[#96743b] shadow-sm hover:shadow focus-visible:outline-amber-600',
+      'bg-amber-600 hover:bg-amber-500 text-white border border-amber-600 shadow-xs focus-visible:outline-amber-600',
     danger:
-      'bg-rose-600 hover:bg-rose-700 dark:bg-[#b85b68] dark:hover:bg-[#c96978] text-white border border-rose-700 dark:border-[#994753] shadow-xs focus-visible:outline-rose-600',
+      'bg-rose-600 hover:bg-rose-500 text-white border border-rose-600 shadow-xs focus-visible:outline-rose-600',
     ghost:
-      'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-[#071223] shadow-none focus-visible:outline-slate-300',
-  }[variant] || variantStyles.primary;
+      'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-[#1a1d23] shadow-none focus-visible:outline-zinc-400',
+  }[variant] || '';
 
   return (
     <button

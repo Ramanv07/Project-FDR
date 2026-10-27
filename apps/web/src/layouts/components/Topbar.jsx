@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../features/auth/useAuth';
 import { ROUTES, ROLES } from '../../lib/constants';
 import { ShieldCheck, Landmark, User, LogOut, ChevronRight, Activity } from 'lucide-react';
@@ -8,6 +8,16 @@ import ThemeToggle from '../../components/ui/ThemeToggle';
 export default function Topbar() {
   const { user, role, logout, switchRole } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Sync active role indicator accurately with current route
+  const currentRole = location.pathname.startsWith('/admin')
+    ? ROLES.ADMIN
+    : location.pathname.startsWith('/institution')
+    ? ROLES.INSTITUTION
+    : location.pathname.startsWith('/officer')
+    ? ROLES.OFFICER
+    : role;
 
   const handleRoleSwitch = (newRole) => {
     switchRole(newRole);
@@ -20,23 +30,22 @@ export default function Topbar() {
     }
   };
 
-  return (
-    <header className="sticky top-0 z-40 bg-white dark:bg-[#02060d] border-b border-slate-200/50 dark:border-[rgba(56,189,248,0.08)] shadow-xs">
+  const topbarTheme = 'bg-white dark:bg-[#111215] border-zinc-200/80 dark:border-zinc-800/80 text-zinc-900 dark:text-zinc-100';
 
-      <div className="h-16 px-3 sm:px-6 flex items-center justify-between gap-2">
+  return (
+    <header className="sticky top-2 sm:top-3.5 z-40 px-3 sm:px-6 w-full flex justify-center pointer-events-none transition-all duration-200">
+      <div className="pointer-events-auto w-full max-w-7xl mx-auto rounded-full bg-white/85 dark:bg-[#16181d]/90 backdrop-blur-md border border-zinc-200/80 dark:border-zinc-800/80 shadow-md dark:shadow-2xl px-3 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-2 text-zinc-900 dark:text-zinc-100">
         {/* Left Branding */}
         <div className="flex items-center gap-2.5 min-w-0">
           <Link to={ROUTES.HOME} className="flex items-center gap-2.5 group min-w-0">
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-[#122642] to-[#0a1728] text-amber-400 font-bold flex items-center justify-center text-sm shadow-xs border border-amber-500/30 group-hover:scale-105 transition-transform flex-shrink-0">
-              🏛️
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br from-[#18191c] to-[#0d0e11] text-amber-400 font-bold flex items-center justify-center shadow-xs border border-amber-500/30 group-hover:scale-105 transition-transform flex-shrink-0">
+              <Landmark className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-amber-400" />
             </div>
             <div className="min-w-0">
-              <div className="flex items-center gap-1.5">
-                <span className="font-bold text-slate-900 dark:text-white tracking-tight text-sm sm:text-base font-display truncate">
-                  AICTE FDR Ledger
-                </span>
-              </div>
-              <p className="text-xs text-slate-500 dark:text-[#8daecf] hidden md:block truncate">
+              <span className="font-bold text-zinc-950 dark:text-white tracking-tight text-sm sm:text-base font-display truncate block">
+                AICTE FDR Ledger
+              </span>
+              <p className="text-[11px] text-zinc-400 dark:text-zinc-400 hidden md:block truncate">
                 National Security Deposit Regulatory Custody Vault
               </p>
             </div>
@@ -44,17 +53,17 @@ export default function Topbar() {
         </div>
 
         {/* Right Controls */}
-        <div className="flex items-center gap-3 text-sm">
-          {/* Quick Role Switcher */}
-          <div className="hidden sm:flex items-center bg-slate-100 dark:bg-[#050c16] p-1 rounded-xl border border-transparent">
-            <span className="text-xs font-semibold text-slate-400 dark:text-[#5a7b9c] px-2.5">Role:</span>
+        <div className="flex items-center gap-2 sm:gap-3 text-sm">
+          {/* Quick Role Switcher (Pill Style) */}
+          <div className="hidden sm:flex items-center bg-zinc-100 dark:bg-[#111215] p-1 rounded-full border border-zinc-200/70 dark:border-zinc-800/80">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 px-2.5">Role:</span>
             <button
               type="button"
               onClick={() => handleRoleSwitch(ROLES.OFFICER)}
-              className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
-                role === ROLES.OFFICER
-                  ? 'bg-white dark:bg-[#071223] text-slate-900 dark:text-[#38bdf8] shadow-xs'
-                  : 'text-slate-600 dark:text-[#8daecf] hover:text-slate-900 dark:hover:text-white'
+              className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${
+                currentRole === ROLES.OFFICER
+                  ? 'bg-white dark:bg-[#22252c] text-sky-600 dark:text-sky-300 shadow-xs font-bold'
+                  : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
               }`}
             >
               Officer
@@ -62,10 +71,10 @@ export default function Topbar() {
             <button
               type="button"
               onClick={() => handleRoleSwitch(ROLES.INSTITUTION)}
-              className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
-                role === ROLES.INSTITUTION
-                  ? 'bg-white dark:bg-[#071223] text-slate-900 dark:text-[#38bdf8] shadow-xs'
-                  : 'text-slate-600 dark:text-[#8daecf] hover:text-slate-900 dark:hover:text-white'
+              className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${
+                currentRole === ROLES.INSTITUTION
+                  ? 'bg-white dark:bg-[#1c2e24] text-emerald-600 dark:text-emerald-400 shadow-xs font-bold'
+                  : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
               }`}
             >
               Institution
@@ -73,10 +82,10 @@ export default function Topbar() {
             <button
               type="button"
               onClick={() => handleRoleSwitch(ROLES.ADMIN)}
-              className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
-                role === ROLES.ADMIN
-                  ? 'bg-white dark:bg-[#071223] text-slate-900 dark:text-[#38bdf8] shadow-xs'
-                  : 'text-slate-600 dark:text-[#8daecf] hover:text-slate-900 dark:hover:text-white'
+              className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${
+                currentRole === ROLES.ADMIN
+                  ? 'bg-white dark:bg-[#2e2619] text-amber-600 dark:text-amber-400 shadow-xs font-bold'
+                  : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
               }`}
             >
               Admin
@@ -86,31 +95,31 @@ export default function Topbar() {
           {/* Dark Mode Toggle Button */}
           <ThemeToggle size="sm" />
 
-          {/* Mock Bank Simulator Button */}
+          {/* Mock Bank Simulator Button (Pill Style) */}
           <Link
             to={ROUTES.MOCK_BANK}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-slate-200/50 dark:border-transparent bg-slate-50 dark:bg-[#050c16] hover:bg-slate-100 dark:hover:bg-[#071223] text-slate-700 dark:text-[#8daecf] hover:dark:text-white font-medium transition-colors text-xs"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-200/80 dark:border-zinc-700/70 bg-zinc-50 dark:bg-[#1a1d23] hover:bg-zinc-100 dark:hover:bg-[#24272f] text-zinc-700 dark:text-zinc-300 hover:dark:text-white font-medium transition-colors text-xs"
             title="Core Banking Gateway Simulator"
           >
-            <Landmark className="w-4 h-4 text-[#38bdf8]" />
+            <Landmark className="w-3.5 h-3.5 text-sky-500 dark:text-sky-400" />
             <span className="hidden md:inline">Bank Simulator</span>
           </Link>
 
-          <div className="h-5 w-px bg-slate-200/60 dark:bg-[rgba(56,189,248,0.12)] hidden sm:block" />
+          <div className="h-5 w-px bg-zinc-200 dark:bg-zinc-800 hidden sm:block" />
 
-          {/* User Profile */}
+          {/* User Profile (Pill Style) */}
           <Link
             to={ROUTES.PROFILE}
-            className="flex items-center gap-2 p-1 pl-1.5 pr-2.5 rounded-lg hover:bg-slate-50 dark:hover:bg-[#142036] transition-colors border border-transparent hover:border-slate-200 dark:hover:border-slate-700"
+            className="flex items-center gap-2 p-1 pl-1.5 pr-2.5 rounded-full hover:bg-zinc-100 dark:hover:bg-[#1f2128] transition-colors border border-transparent hover:border-zinc-200 dark:hover:border-zinc-700/60"
           >
-            <div className="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 flex items-center justify-center font-bold text-xs">
+            <div className="w-6 h-6 rounded-full bg-zinc-200 dark:bg-zinc-700 text-zinc-800 dark:text-zinc-200 flex items-center justify-center font-bold text-xs">
               {user?.name ? user.name[0].toUpperCase() : 'U'}
             </div>
             <div className="text-left hidden lg:block">
-              <p className="text-xs font-semibold text-slate-800 dark:text-slate-200 leading-tight">
+              <p className="text-xs font-semibold text-zinc-800 dark:text-zinc-200 leading-tight">
                 {user?.name || 'Staff Officer'}
               </p>
-              <p className="text-[10px] text-slate-400 capitalize">{role}</p>
+              <p className="text-[10px] text-zinc-400 capitalize">{role}</p>
             </div>
           </Link>
 
@@ -118,7 +127,7 @@ export default function Topbar() {
           <button
             type="button"
             onClick={logout}
-            className="p-1.5 text-slate-400 hover:text-rose-600 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors"
+            className="p-2 text-zinc-400 hover:text-rose-500 rounded-full hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors"
             title="Sign out of portal"
           >
             <LogOut className="w-4 h-4" />

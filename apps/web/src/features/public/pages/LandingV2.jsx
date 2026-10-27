@@ -71,23 +71,30 @@ export default function LandingV2() {
         /* ══════════════════ LAYER 2: CONTENT ══════════════════ */
         .v3-content { position: relative; z-index: 2; }
 
-        /* ══════════════════ HEADER ══════════════════ */
+        /* ══════════════════ FLOATING PILL NAVBAR ══════════════════ */
+        .v3-header-wrap {
+          position: sticky; top: 20px; z-index: 50; width: 100%;
+          max-width: 1140px; margin: 0 auto; padding: 0 20px;
+          pointer-events: none;
+        }
         .v3-header {
-          position: sticky; top: 0; z-index: 50; height: 62px;
-          display: flex; align-items: center;
-          backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+          pointer-events: auto; width: 100%; height: 58px;
+          border-radius: 9999px; display: flex; align-items: center;
+          backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+          transition: all .25s ease;
         }
         .v3.dark .v3-header {
-          background: rgba(2, 6, 13, 0.90);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+          background: rgba(5, 12, 22, 0.78);
+          border: 1px solid rgba(255, 255, 255, 0.09);
+          box-shadow: 0 12px 36px -4px rgba(0, 0, 0, 0.55);
         }
         .v3.light .v3-header {
-          background: rgba(255, 255, 255, 0.92);
-          border-bottom: 1px solid #e2e8f0;
+          background: rgba(255, 255, 255, 0.90);
+          border: 1px solid #e2e8f0;
+          box-shadow: 0 6px 24px -2px rgba(15, 23, 42, 0.07);
         }
         .v3-header-inner {
-          max-width: 1260px; width: 100%; margin: 0 auto;
-          padding: 0 28px; display: flex; align-items: center; justify-content: space-between;
+          width: 100%; padding: 0 18px; display: flex; align-items: center; justify-content: space-between; gap: 12px;
         }
 
         /* ══════════════════ CARDS (NO GLOW, CLEAN SLEEK BORDERS) ══════════════════ */
@@ -333,12 +340,13 @@ export default function LandingV2() {
         }
 
         @media (max-width: 768px) {
-          .v3-header { height: 56px; }
-          .v3-header-inner { padding: 0 14px; }
+          .v3-header-wrap { top: 10px; padding: 0 12px; }
+          .v3-header { height: 52px; border-radius: 9999px; }
+          .v3-header-inner { padding: 0 12px; }
           .v3-bank-btn { display: none !important; }
           .v3-btn-full { display: none !important; }
           .v3-btn-short { display: inline !important; }
-          .v3-hero { padding: 44px 16px 32px !important; }
+          .v3-hero { padding: 36px 16px 32px !important; }
           .v3-hero-cta {
             flex-direction: column !important;
             width: 100% !important;
@@ -365,11 +373,13 @@ export default function LandingV2() {
         }
 
         @media (max-width: 420px) {
+          .v3-header-wrap { top: 8px; padding: 0 8px; }
+          .v3-header { height: 48px; }
           .v3-header-inner { padding: 0 10px; }
           .v3-brand-title { font-size: 13px !important; }
-          .v3-brand-logo { width: 32px; height: 32px; font-size: 15px; }
-          .v3-signin-btn { padding: 6px 11px !important; font-size: 12.5px !important; }
-          .v3-hero { padding: 32px 12px 24px !important; }
+          .v3-brand-logo { width: 30px; height: 30px; font-size: 14px; }
+          .v3-signin-btn { padding: 5px 10px !important; font-size: 12px !important; }
+          .v3-hero { padding: 28px 10px 22px !important; }
           .t-hero { font-size: clamp(1.65rem, 6.5vw, 2.2rem) !important; }
           .v3-kpi-grid { gap: 6px !important; }
           .v3-kpi-card { padding: 12px 10px !important; }
@@ -392,33 +402,33 @@ export default function LandingV2() {
         {/* Layer 2 — Content */}
         <div className="v3-content">
 
-          {/* ══ HEADER ══ */}
-          <header className="v3-header">
-            <div className="v3-header-inner">
-              <div className="v3-brand">
-                <div className="v3-brand-logo">🏛️</div>
-                <div className="v3-brand-text">
-                  <span className="c-primary v3-brand-title">AICTE FDR Ledger</span>
-                  <span className="c-muted v3-brand-sub">National Security Deposit Regulatory Vault</span>
+          {/* ══ FLOATING PILL NAVBAR ══ */}
+          <div className="v3-header-wrap">
+            <header className="v3-header">
+              <div className="v3-header-inner">
+                <div className="v3-brand">
+                  <div className="v3-brand-logo">
+                    <Landmark size={18} className={isDark ? 'text-[#38bdf8]' : 'text-[#2563eb]'} />
+                  </div>
+                  <div className="v3-brand-text">
+                    <span className="c-primary v3-brand-title">AICTE FDR Ledger</span>
+                    <span className="c-muted v3-brand-sub">National Security Deposit Regulatory Vault</span>
+                  </div>
+                </div>
+                <div className="v3-actions">
+                  <ThemeToggle size="sm" />
+                  <Link to={ROUTES.MOCK_BANK} className="btn btn-ghost btn-sm v3-bank-btn" style={{ textDecoration:'none', borderRadius:9999 }}>
+                    <Landmark size={13} /> <span>Bank Simulator</span>
+                  </Link>
+                  <Link to={ROUTES.LOGIN} className="btn btn-primary btn-sm v3-signin-btn" style={{ textDecoration:'none', borderRadius:9999 }}>
+                    <Lock size={13} />
+                    <span className="v3-btn-full">Portal Sign In</span>
+                    <span className="v3-btn-short">Sign In</span>
+                  </Link>
                 </div>
               </div>
-              <div className="v3-actions">
-                <div className="c-muted v3-status-badge">
-                  <span className="v3-status-dot" />
-                  <span>System Operational</span>
-                </div>
-                <ThemeToggle size="sm" />
-                <Link to={ROUTES.MOCK_BANK} className="btn btn-ghost btn-sm v3-bank-btn" style={{ textDecoration:'none' }}>
-                  <Landmark size={13} /> <span>Bank Simulator</span>
-                </Link>
-                <Link to={ROUTES.LOGIN} className="btn btn-primary btn-sm v3-signin-btn" style={{ textDecoration:'none' }}>
-                  <Lock size={13} />
-                  <span className="v3-btn-full">Portal Sign In</span>
-                  <span className="v3-btn-short">Sign In</span>
-                </Link>
-              </div>
-            </div>
-          </header>
+            </header>
+          </div>
 
           {/* ══ HERO ══ */}
           <section className="v3-hero">
@@ -588,11 +598,13 @@ export default function LandingV2() {
               }}>
                 <div style={{ display:'flex', alignItems:'center', gap:12 }}>
                   <div style={{
-                    width:34, height:34, borderRadius:10, fontSize:15,
+                    width:34, height:34, borderRadius:10,
                     background: isDark ? 'rgba(56, 189, 248, 0.10)' : 'rgba(37, 99, 235, 0.08)',
                     border: isDark ? '1px solid rgba(56, 189, 248, 0.20)' : '1px solid #cbd5e1',
                     display:'flex', alignItems:'center', justifyContent:'center'
-                  }}>🏛️</div>
+                  }}>
+                    <Landmark size={17} className={isDark ? 'text-[#38bdf8]' : 'text-[#2563eb]'} />
+                  </div>
                   <div>
                     <div className="c-primary" style={{ fontSize:14, fontWeight:700 }}>All India Council for Technical Education (AICTE)</div>
                     <div className="c-muted" style={{ fontSize:11.5, marginTop:2 }}>Nelson Mandela Marg, Vasant Kunj, New Delhi - 110070</div>

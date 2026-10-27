@@ -17,11 +17,11 @@ export default function InstitutionLayout() {
   ];
 
   return (
-    <div className="min-h-screen bg-surface-50 dark:bg-[#02060d] text-slate-900 dark:text-slate-100 flex flex-col transition-colors duration-200">
-      <Topbar />
-      <div className="flex flex-1">
-        <Sidebar items={navItems} title="Institution" />
-        <main className="flex-1 px-3.5 py-5 sm:px-6 sm:py-8 lg:px-10 lg:py-10 max-w-7xl mx-auto w-full overflow-x-hidden">
+    <div className="min-h-screen bg-[#f4f5f7] dark:bg-[#0d0e11] text-zinc-900 dark:text-zinc-100 flex transition-colors duration-200">
+      <Sidebar items={navItems} title="Institution" />
+      <div className="flex-1 flex flex-col min-w-0">
+        <Topbar />
+        <main className="flex-1 px-3.5 py-4 sm:px-6 sm:py-6 lg:px-8 max-w-7xl mx-auto w-full overflow-x-hidden">
           <Outlet />
         </main>
       </div>

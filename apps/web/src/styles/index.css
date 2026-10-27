@@ -275,50 +275,55 @@ html.dark textarea::placeholder {
 
 /* Dialog in Dark Mode */
 html.dark [role="dialog"] {
-  background-color: #050c16 !important;
-  border: 1px solid rgba(56, 189, 248, 0.14) !important;
-  color: #f0f7ff;
+  background-color: #16181d !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #f4f4f5;
 }
 
 /* =====================================================================
-   UNIVERSAL DARK MODE OVERRIDES — DEEP OCEANIC TRUE BLUE (ZERO PURPLE)
-   Page background: #02060d (pure cold dark navy, 0% purple)
-   Card / Surface:  #050c16 (crisp dark steel blue)
-   Raised / Sub:    #071223 (refined elevated blue)
-   Borders:         Subtle cyan hairline rgba(56, 189, 248, 0.10)
-   Accents:         Pure Blue (#0284c7, #38bdf8), Sage (#10b981), Sand (#f59e0b)
+   UNIVERSAL DARK MODE OVERRIDES — SHADES OF GREY & CHARCOAL (EXCLUDING SIDEBAR)
+   Page background: #0d0e11 (deep matte charcoal)
+   Card / Surface:  #16181d (refined charcoal grey)
+   Raised / Sub:    #1f2128 (elevated graphite charcoal)
+   Borders:         Subtle neutral hairline rgba(255, 255, 255, 0.08)
    ===================================================================== */
 
-/* Root backgrounds */
+/* Root backgrounds (excluding sidebar) */
 html.dark .bg-surface-50,
-html.dark [class*="dark:bg-[#080c16]"],
-html.dark [class*="dark:bg-[#060e18]"],
-html.dark [class*="dark:bg-[#080d19]"],
-html.dark [class*="dark:bg-[#111113]"],
-html.dark [class*="dark:bg-[#0a0a0a]"] {
-  background-color: #02060d !important;
+html.dark [class*="dark:bg-[#02060d]"]:not([data-sidebar]):not([class*="sidebar"]):not(aside),
+html.dark [class*="dark:bg-[#020d08]"]:not([data-sidebar]):not([class*="sidebar"]):not(aside),
+html.dark [class*="dark:bg-[#0d0902]"]:not([data-sidebar]):not([class*="sidebar"]):not(aside),
+html.dark [class*="dark:bg-[#080c16]"]:not([data-sidebar]):not([class*="sidebar"]):not(aside),
+html.dark [class*="dark:bg-[#060e18]"]:not([data-sidebar]):not([class*="sidebar"]):not(aside),
+html.dark [class*="dark:bg-[#080d19]"]:not([data-sidebar]):not([class*="sidebar"]):not(aside),
+html.dark [class*="dark:bg-[#111113]"]:not([data-sidebar]):not([class*="sidebar"]):not(aside),
+html.dark [class*="dark:bg-[#0a0a0a]"]:not([data-sidebar]):not([class*="sidebar"]):not(aside) {
+  background-color: #0d0e11 !important;
 }
 
-/* Surface / Card backgrounds */
-html.dark .bg-white:not(.keep-white):not([data-keep-white]),
-html.dark .bg-surface-100,
-html.dark [class*="dark:bg-[#0d1526]"],
-html.dark [class*="dark:bg-[#0a1727]"],
-html.dark [class*="dark:bg-[#0f172a]"],
-html.dark [class*="dark:bg-[#1c1c1e]"],
-html.dark [class*="dark:bg-[#0c1424]"] {
-  background-color: #050c16 !important;
+/* Surface / Card backgrounds (excluding sidebar) */
+html.dark .bg-white:not(.keep-white):not([data-keep-white]):not([data-sidebar]):not([class*="sidebar"]):not(aside),
+html.dark .bg-surface-100:not([data-sidebar]):not([class*="sidebar"]):not(aside),
+html.dark [class*="dark:bg-[#050c16]"]:not([data-sidebar]):not([class*="sidebar"]):not(aside),
+html.dark [class*="dark:bg-[#041911]"]:not([data-sidebar]):not([class*="sidebar"]):not(aside),
+html.dark [class*="dark:bg-[#171004]"]:not([data-sidebar]):not([class*="sidebar"]):not(aside),
+html.dark [class*="dark:bg-[#0d1526]"]:not([data-sidebar]):not([class*="sidebar"]):not(aside),
+html.dark [class*="dark:bg-[#0a1727]"]:not([data-sidebar]):not([class*="sidebar"]):not(aside),
+html.dark [class*="dark:bg-[#0f172a]"]:not([data-sidebar]):not([class*="sidebar"]):not(aside),
+html.dark [class*="dark:bg-[#1c1c1e]"]:not([data-sidebar]):not([class*="sidebar"]):not(aside),
+html.dark [class*="dark:bg-[#0c1424]"]:not([data-sidebar]):not([class*="sidebar"]):not(aside) {
+  background-color: #16181d !important;
 }
 
-/* Raised / Sub-surface backgrounds */
-html.dark .bg-slate-50:not(.keep-bg),
-html.dark .bg-slate-100:not(.keep-bg),
-html.dark [class*="dark:bg-[#0f1829]"],
-html.dark [class*="dark:bg-[#0e2035]"],
-html.dark [class*="dark:bg-[#2c2c2e]"],
-html.dark [class*="dark:bg-[#141f36]"],
-html.dark [class*="dark:bg-[#142036]"] {
-  background-color: #071223 !important;
+/* Raised / Sub-surface backgrounds (excluding sidebar) */
+html.dark .bg-slate-50:not(.keep-bg):not([data-sidebar]):not([class*="sidebar"]):not(aside),
+html.dark .bg-slate-100:not(.keep-bg):not([data-sidebar]):not([class*="sidebar"]):not(aside),
+html.dark [class*="dark:bg-[#0f1829]"]:not([data-sidebar]):not([class*="sidebar"]):not(aside),
+html.dark [class*="dark:bg-[#0e2035]"]:not([data-sidebar]):not([class*="sidebar"]):not(aside),
+html.dark [class*="dark:bg-[#2c2c2e]"]:not([data-sidebar]):not([class*="sidebar"]):not(aside),
+html.dark [class*="dark:bg-[#141f36]"]:not([data-sidebar]):not([class*="sidebar"]):not(aside),
+html.dark [class*="dark:bg-[#142036]"]:not([data-sidebar]):not([class*="sidebar"]):not(aside) {
+  background-color: #1f2128 !important;
 }
 
 /* CARDS BORDER: subtle clean non-glowing hairline in dark mode */

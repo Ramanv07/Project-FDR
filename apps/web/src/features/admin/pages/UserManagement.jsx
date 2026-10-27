@@ -65,20 +65,35 @@ export default function UserManagement() {
   };
 
   const columns = [
-    { header: 'Full name', accessor: 'name', sortable: true },
-    { header: 'Email address', accessor: 'email', sortable: true },
+    {
+      header: 'Full name',
+      accessor: 'name',
+      sortable: true,
+      render: (r) => <span className="font-semibold text-zinc-900 dark:text-zinc-100">{r.name}</span>,
+    },
+    {
+      header: 'Email address',
+      accessor: 'email',
+      sortable: true,
+      render: (r) => <span className="text-zinc-500 dark:text-zinc-400">{r.email}</span>,
+    },
     {
       header: 'Assigned role',
       accessor: 'role',
       sortable: true,
-      render: (r) => (
-        <span className="capitalize font-medium text-navy-800 dark:text-blue-400">{r.role}</span>
-      ),
+      render: (r) => {
+        const roleColor = {
+          [ROLES.INSTITUTION]: 'text-emerald-600 dark:text-emerald-400 font-medium',
+          [ROLES.OFFICER]: 'text-sky-600 dark:text-sky-400 font-medium',
+          [ROLES.ADMIN]: 'text-amber-600 dark:text-amber-400 font-medium',
+        }[r.role] || 'text-zinc-700 dark:text-zinc-300';
+        return <span className={`capitalize ${roleColor}`}>{r.role}</span>;
+      },
     },
     {
       header: 'User ID',
       accessor: 'id',
-      render: (r) => <span className="font-mono text-gray-500 dark:text-slate-400">{r.id}</span>,
+      render: (r) => <span className="font-mono text-xs text-zinc-400 dark:text-zinc-500">{r.id}</span>,
     },
   ];
 
@@ -102,7 +117,7 @@ export default function UserManagement() {
         }
       />
 
-      <div className="border border-hairline dark:border-slate-800 rounded-2xl bg-white dark:bg-[#0f172a] p-5 shadow-xs">
+      <div className="border border-zinc-200/80 dark:border-zinc-800/80 rounded-2xl bg-white dark:bg-[#16181d] p-5 shadow-xs">
         <DataTable
           columns={columns}
           data={users}

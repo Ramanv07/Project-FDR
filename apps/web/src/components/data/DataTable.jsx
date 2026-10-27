@@ -49,16 +49,16 @@ export default function DataTable({
   }
 
   return (
-    <div className={`w-full overflow-x-auto border border-slate-200/50 dark:border-transparent rounded-2xl bg-white dark:bg-[#0a1727] shadow-xs ${className}`}>
+    <div className={`w-full overflow-x-auto border border-zinc-200/80 dark:border-zinc-800/80 rounded-2xl bg-white dark:bg-[#16181d] shadow-xs ${className}`}>
       <table className="w-full text-left border-collapse">
         <thead>
-          <tr className="border-b border-slate-200/50 dark:border-[rgba(56,136,235,0.08)] bg-slate-50/60 dark:bg-[#0e2035]">
+          <tr className="border-b border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50 dark:bg-[#121316]">
             {columns.map((col) => (
               <th
                 key={col.accessor || col.header}
                 onClick={() => handleHeaderClick(col)}
-                className={`py-3.5 px-4 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-[#8892a4] select-none ${
-                  col.sortable ? 'cursor-pointer hover:text-slate-900 dark:hover:text-white' : ''
+                className={`py-3.5 px-4 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 select-none ${
+                  col.sortable ? 'cursor-pointer hover:text-zinc-900 dark:hover:text-white' : ''
                 } ${col.align === 'right' ? 'text-right' : col.align === 'center' ? 'text-center' : 'text-left'}`}
                 style={{ width: col.width }}
               >
@@ -94,8 +94,8 @@ export default function DataTable({
                 }
               }}
               tabIndex={onRowClick ? 0 : undefined}
-              className={`border-b border-slate-100 dark:border-[rgba(74,141,232,0.04)] transition-colors ${
-                onRowClick ? 'cursor-pointer hover:bg-slate-50/70 dark:hover:bg-[#0f1829] focus:bg-slate-50/70 dark:focus:bg-[#0f1829]' : ''
+              className={`border-b border-zinc-100 dark:border-zinc-800/60 transition-colors ${
+                onRowClick ? 'cursor-pointer hover:bg-zinc-50/70 dark:hover:bg-[#1f2128] focus:bg-zinc-50/70 dark:focus:bg-[#1f2128]' : ''
               }`}
             >
               {columns.map((col) => (

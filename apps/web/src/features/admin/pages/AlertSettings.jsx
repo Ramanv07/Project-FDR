@@ -70,7 +70,7 @@ export default function AlertSettings() {
         description="Configure automated maturity notification schedules, escalation triggers, and dispatch channels"
       />
 
-      <form onSubmit={handleSave} className="space-y-6 bg-white dark:bg-[#0f172a] border border-hairline dark:border-slate-800 rounded-xl p-6 shadow-xs">
+      <form onSubmit={handleSave} className="space-y-6 bg-white dark:bg-[#16181d] border border-zinc-200/80 dark:border-zinc-800/80 rounded-2xl p-6 shadow-xs">
         {/* Reminder Threshold Intervals */}
         <div>
           <h2 className="text-sm font-semibold text-gray-900 dark:text-slate-100 mb-1">

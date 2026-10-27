@@ -11,6 +11,7 @@ import FdrForm from '../components/FdrForm';
 import { useToast } from '../../../components/ui/Toast';
 import { BANKS, ROUTES } from '../../../lib/constants';
 import { readPdfOcr } from '../../../lib/fdrOcrReader';
+import { AlertTriangle } from 'lucide-react';
 
 export default function SubmitFdr() {
   const navigate = useNavigate();
@@ -183,7 +184,7 @@ export default function SubmitFdr() {
           {ocrDefect && (
             <div className="border border-rose-300 dark:border-rose-900/60 bg-rose-50 dark:bg-rose-950/30 rounded p-4 text-xs space-y-1.5">
               <div className="font-semibold text-rose-800 dark:text-rose-300 flex items-center gap-1.5 text-sm">
-                <span>⚠️</span> Non-Compliant FDR Detected by OCR
+                <AlertTriangle className="w-4 h-4 text-rose-500" /> Non-Compliant FDR Detected by OCR
               </div>
               <ul className="list-disc pl-4 space-y-1 text-rose-700 dark:text-rose-300">
                 {ocrDefect.map((reason, idx) => (

@@ -175,7 +175,7 @@ export default function AuditLedger() {
       )}
 
       {/* Audit Log Table */}
-      <div className="border border-hairline dark:border-slate-800 rounded-2xl bg-white dark:bg-[#0f172a] p-5 shadow-xs">
+      <div className="border border-zinc-200/80 dark:border-zinc-800/80 rounded-2xl bg-white dark:bg-[#16181d] p-5 shadow-xs">
         <div className="flex items-center justify-between mb-3 text-xs">
           <span className="font-medium text-gray-800 dark:text-slate-200">
             Hash chain records ({entries.length} entries)

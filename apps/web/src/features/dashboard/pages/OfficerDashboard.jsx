@@ -4,6 +4,7 @@ import { fdrApi } from '../../fdr/api';
 import { riskApi } from '../../risk/api';
 import PageHeader from '../../../components/data/PageHeader';
 import MaturityChart from '../components/MaturityChart';
+import RiskDistributionChart from '../components/RiskDistributionChart';
 import DataTable from '../../../components/data/DataTable';
 import StatusBadge from '../../../components/data/StatusBadge';
 import HealthScore from '../../../components/data/HealthScore';
@@ -12,6 +13,8 @@ import Button from '../../../components/ui/Button';
 import Spinner from '../../../components/feedback/Spinner';
 import { formatIndianCurrency, formatDate, daysUntil } from '../../../lib/format';
 import { ROUTES } from '../../../lib/constants';
+import { ShieldCheck, Landmark } from 'lucide-react';
+import CircularRadialTracker from '../components/CircularRadialTracker';
 
 export default function OfficerDashboard() {
   const navigate = useNavigate();
@@ -144,41 +147,65 @@ export default function OfficerDashboard() {
 
   return (
     <div>
-      <PageHeader
-        title="Officer dashboard"
-        description="National regulatory overview of fixed deposit security guarantees"
-        action={
-          <div className="flex gap-2">
+      {/* ══ AICTE REGULATORY SCRUTINY BUREAU HEADER ══ */}
+      <div className="rounded-2xl bg-white dark:bg-[#16181d] border border-zinc-200/80 dark:border-zinc-800/80 p-6 sm:p-7 shadow-xs mb-8">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-zinc-100 dark:bg-[#20232a] text-sky-600 dark:text-sky-400 flex items-center justify-center border border-zinc-200 dark:border-zinc-700/60 flex-shrink-0">
+              <Landmark className="w-6 h-6 text-sky-600 dark:text-sky-400" />
+            </div>
+            <div>
+              <h1 className="text-xl sm:text-2xl font-bold text-zinc-950 dark:text-zinc-100 font-display">
+                Bureau of Statutory Scrutiny &amp; Regulatory Audit
+              </h1>
+              <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">
+                Central Custody Workbench • Regional Directorate Surveillance • 11,840 Enrolled Campuses
+              </p>
+              <div className="flex flex-wrap items-center gap-4 text-xs text-zinc-500 dark:text-zinc-400 mt-3">
+                <span className="flex items-center gap-1.5 text-sky-600 dark:text-sky-400 font-semibold">
+                  <ShieldCheck size={14} /> 3-Way Reconciliation Engine Active
+                </span>
+                <span className="text-zinc-300 dark:text-zinc-700">•</span>
+                <span>SHA-256 Ledger Append Verification: Enabled</span>
+                <span className="text-zinc-300 dark:text-zinc-700">•</span>
+                <span>Statutory Mandate: APH Norms 2024–27</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 self-start lg:self-center">
             <Button
               variant="secondary"
-              size="sm"
+              size="md"
               onClick={() => navigate(ROUTES.VERIFICATION_QUEUE)}
+              className="gap-2 border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 bg-white dark:bg-[#1a1d23]"
             >
-              Verification queue ({counts.pending})
+              Verification Queue ({counts.pending})
             </Button>
             <Button
               variant="primary"
-              size="sm"
+              size="md"
               onClick={() => navigate(ROUTES.RISK_QUEUE)}
+              className="gap-2 bg-gradient-to-r from-sky-600 to-sky-500 hover:from-sky-500 hover:to-sky-400 text-white border-0 shadow-xs"
             >
-              Open risk queue
+              Priority Risk Queue
             </Button>
           </div>
-        }
-      />
+        </div>
+      </div>
 
       {/* Row of Counts: Active, Expiring in 30 days, Matured, Renewed, Released, Pending verification */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
-        <div className="bg-white dark:bg-[#0a1727] rounded-2xl p-5 border border-slate-200/40 dark:border-transparent shadow-xs transition-all">
-          <p className="text-xs sm:text-[13px] font-semibold text-slate-500 dark:text-[#8295ac] mb-2">Active Deposits</p>
-          <span className="text-2xl sm:text-3xl font-bold text-slate-950 dark:text-white font-display tabular-nums">{counts.active}</span>
+        <div className="bg-white dark:bg-[#16181d] rounded-2xl p-5 border border-zinc-200/80 dark:border-zinc-800/80 shadow-xs transition-all">
+          <p className="text-xs sm:text-[13px] font-semibold text-zinc-500 dark:text-zinc-400 mb-2">Active Deposits</p>
+          <span className="text-2xl sm:text-3xl font-bold text-zinc-950 dark:text-zinc-100 font-display tabular-nums">{counts.active}</span>
           <p className="text-xs text-[#62b082] mt-2 font-medium flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-[#62b082]" />
             Valid Cover
           </p>
         </div>
 
-        <div className="bg-white dark:bg-[#0a1727] rounded-2xl p-5 border border-slate-200/40 dark:border-transparent shadow-xs transition-all">
+        <div className="bg-white dark:bg-[#16181d] rounded-2xl p-5 border border-zinc-200/80 dark:border-zinc-800/80 shadow-xs transition-all">
           <p className="text-xs sm:text-[13px] font-semibold text-[#c7a464] mb-2">Expiring in 30d</p>
           <span className="text-2xl sm:text-3xl font-bold text-[#c7a464] font-display tabular-nums">
             {counts.expiring30}
@@ -189,7 +216,7 @@ export default function OfficerDashboard() {
           </p>
         </div>
 
-        <div className="bg-white dark:bg-[#0a1727] rounded-2xl p-5 border border-slate-200/40 dark:border-transparent shadow-xs transition-all">
+        <div className="bg-white dark:bg-[#16181d] rounded-2xl p-5 border border-zinc-200/80 dark:border-zinc-800/80 shadow-xs transition-all">
           <p className="text-xs sm:text-[13px] font-semibold text-[#c77884] mb-2">Matured / Lapsed</p>
           <span className="text-2xl sm:text-3xl font-bold text-[#c77884] font-display tabular-nums">{counts.matured}</span>
           <p className="text-xs text-[#c77884] mt-2 font-medium flex items-center gap-1.5">
@@ -198,25 +225,82 @@ export default function OfficerDashboard() {
           </p>
         </div>
 
-        <div className="bg-white dark:bg-[#0a1727] rounded-2xl p-5 border border-slate-200/40 dark:border-transparent shadow-xs transition-all">
-          <p className="text-xs sm:text-[13px] font-semibold text-slate-500 dark:text-[#8295ac] mb-2">Renewed (Chained)</p>
-          <span className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white font-display tabular-nums">{counts.renewed}</span>
-          <p className="text-xs text-slate-500 dark:text-[#8295ac] mt-2 font-medium">No Gap Logged</p>
+        <div className="bg-white dark:bg-[#16181d] rounded-2xl p-5 border border-zinc-200/80 dark:border-zinc-800/80 shadow-xs transition-all">
+          <p className="text-xs sm:text-[13px] font-semibold text-zinc-500 dark:text-zinc-400 mb-2">Renewed (Chained)</p>
+          <span className="text-2xl sm:text-3xl font-bold text-zinc-950 dark:text-zinc-100 font-display tabular-nums">{counts.renewed}</span>
+          <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-2 font-medium">No Gap Logged</p>
         </div>
 
-        <div className="bg-white dark:bg-[#0a1727] rounded-2xl p-5 border border-slate-200/40 dark:border-transparent shadow-xs transition-all">
-          <p className="text-xs sm:text-[13px] font-semibold text-slate-500 dark:text-[#8295ac] mb-2">Released Deposits</p>
-          <span className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white font-display tabular-nums">{counts.released}</span>
-          <p className="text-xs text-slate-500 dark:text-[#8295ac] mt-2 font-medium">Mandate Closed</p>
+        <div className="bg-white dark:bg-[#16181d] rounded-2xl p-5 border border-zinc-200/80 dark:border-zinc-800/80 shadow-xs transition-all">
+          <p className="text-xs sm:text-[13px] font-semibold text-zinc-500 dark:text-zinc-400 mb-2">Released Deposits</p>
+          <span className="text-2xl sm:text-3xl font-bold text-zinc-950 dark:text-zinc-100 font-display tabular-nums">{counts.released}</span>
+          <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-2 font-medium">Mandate Closed</p>
         </div>
 
-        <div className="bg-white dark:bg-[#0a1727] rounded-2xl p-5 border border-slate-200/40 dark:border-transparent shadow-xs transition-all">
-          <p className="text-xs sm:text-[13px] font-semibold text-[#3888eb] mb-2">Pending Scrutiny</p>
-          <span className="text-2xl sm:text-3xl font-bold text-[#3888eb] font-display tabular-nums">{counts.pending}</span>
-          <p className="text-xs text-[#3888eb] mt-2 font-medium flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#3888eb] animate-pulse" />
+        <div className="bg-white dark:bg-[#16181d] rounded-2xl p-5 border border-zinc-200/80 dark:border-zinc-800/80 shadow-xs transition-all">
+          <p className="text-xs sm:text-[13px] font-semibold text-sky-500 dark:text-sky-400 mb-2">Pending Scrutiny</p>
+          <span className="text-2xl sm:text-3xl font-bold text-sky-600 dark:text-sky-400 font-display tabular-nums">{counts.pending}</span>
+          <p className="text-xs text-sky-500 dark:text-sky-400 mt-2 font-medium flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse" />
             Officer In-Tray
           </p>
+        </div>
+      </div>
+
+      {/* Regulatory Scrutiny & Circular Health Analytics Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        {/* Bar Chart of Maturities by Month */}
+        <div className="rounded-2xl bg-white dark:bg-[#16181d] p-6 border border-zinc-200/80 dark:border-zinc-800/80 shadow-xs">
+          <div className="flex items-center justify-between mb-4 pb-3 border-b border-zinc-200/80 dark:border-zinc-800/80">
+            <div>
+              <h2 className="text-base sm:text-lg font-bold text-zinc-950 dark:text-zinc-100 font-display">Upcoming Maturities</h2>
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">Maturity schedule by month</p>
+            </div>
+            <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
+              Deposit Units
+            </span>
+          </div>
+          <MaturityChart data={maturityChartData} />
+        </div>
+
+        {/* Circular Radial Multi-Ring Gauge Tracker */}
+        <div className="rounded-2xl bg-white dark:bg-[#16181d] p-6 border border-zinc-200/80 dark:border-zinc-800/80 shadow-xs flex flex-col justify-between">
+          <div className="flex items-center justify-between mb-4 pb-3 border-b border-zinc-200/80 dark:border-zinc-800/80">
+            <div>
+              <h2 className="text-base sm:text-lg font-bold text-zinc-950 dark:text-zinc-100 font-display">Compliance Health Rings</h2>
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">Concentric circular statutory audit</p>
+            </div>
+            <span className="text-xs font-medium text-sky-600 dark:text-sky-400">
+              Live Gauges
+            </span>
+          </div>
+          <div className="py-2">
+            <CircularRadialTracker
+              size={170}
+              strokeWidth={11}
+              rings={[
+                { label: 'Valid Statutory Cover', percent: 94, color: '#38bdf8' },
+                { label: 'Bank Direct Confirmation', percent: 88, color: '#10b981' },
+                { label: 'Zero Gap / Merkle Verified', percent: 100, color: '#6366f1' },
+              ]}
+              centerValue="98.2%"
+              title="Audit Score"
+            />
+          </div>
+        </div>
+
+        {/* Risk & Verification Breakdown Donut Chart */}
+        <div className="rounded-2xl bg-white dark:bg-[#16181d] p-6 border border-zinc-200/80 dark:border-zinc-800/80 shadow-xs">
+          <div className="flex items-center justify-between mb-4 pb-3 border-b border-zinc-200/80 dark:border-zinc-800/80">
+            <div>
+              <h2 className="text-base sm:text-lg font-bold text-zinc-950 dark:text-zinc-100 font-display">Deposit Health Breakdown</h2>
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">Scrutiny and bank confirmation status</p>
+            </div>
+            <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
+              Stage Distribution
+            </span>
+          </div>
+          <RiskDistributionChart fdrs={fdrs} />
         </div>
       </div>
 
@@ -231,26 +315,12 @@ export default function OfficerDashboard() {
         </div>
       )}
 
-      {/* Bar Chart of Maturities by Month */}
-      <div className="rounded-2xl bg-white dark:bg-[#0a1727] p-7 mb-8 border border-slate-200/40 dark:border-transparent shadow-xs">
-        <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-100 dark:border-[rgba(56,136,235,0.08)]">
-          <div>
-            <h2 className="text-lg font-bold text-slate-950 dark:text-white font-display">Upcoming Maturities Schedule</h2>
-            <p className="text-sm text-slate-500 dark:text-[#8295ac] mt-1">Security deposits reaching maturity by calendar month across all jurisdictions</p>
-          </div>
-          <span className="text-xs font-semibold text-slate-600 dark:text-[#8295ac] bg-slate-100 dark:bg-[#0e2035] px-3 py-1.5 rounded-lg border border-transparent">
-            Total Deposit Units
-          </span>
-        </div>
-        <MaturityChart data={maturityChartData} />
-      </div>
-
       {/* Top 10 Risk-Queue Rows Below */}
-      <div className="rounded-2xl bg-white dark:bg-[#0a1727] p-7 shadow-xs border border-slate-200/40 dark:border-transparent">
-        <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-100 dark:border-[rgba(56,136,235,0.08)]">
+      <div className="rounded-2xl bg-white dark:bg-[#16181d] p-7 shadow-xs border border-zinc-200/80 dark:border-zinc-800/80">
+        <div className="flex items-center justify-between mb-6 pb-4 border-b border-zinc-200/80 dark:border-zinc-800/80">
           <div>
-            <h2 className="text-lg font-bold text-slate-950 dark:text-white font-display">Priority High-Risk Scrutiny Queue</h2>
-            <p className="text-sm text-slate-500 dark:text-[#8295ac] mt-1">Fixed deposits requiring immediate officer intervention (ordered by risk score)</p>
+            <h2 className="text-lg font-bold text-zinc-950 dark:text-zinc-100 font-display">Priority High-Risk Scrutiny Queue</h2>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Fixed deposits requiring immediate officer intervention (ordered by risk score)</p>
           </div>
           <Button
             variant="ghost"

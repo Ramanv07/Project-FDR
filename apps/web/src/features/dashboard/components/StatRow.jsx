@@ -6,13 +6,13 @@ export default function StatRow({ stats = [] }) {
       {stats.map((s, idx) => (
         <div
           key={s.label || idx}
-          className="bg-white dark:bg-[#0a1727] rounded-2xl p-6 shadow-xs border border-slate-200/50 dark:border-transparent transition-all"
+          className="bg-white dark:bg-[#16181d] rounded-2xl p-6 shadow-xs border border-zinc-200/80 dark:border-zinc-800/80 transition-all"
         >
-          <p className="text-xs sm:text-sm font-semibold text-slate-500 dark:text-[#8892a4] mb-2 tracking-tight">
+          <p className="text-xs sm:text-sm font-semibold text-zinc-500 dark:text-zinc-400 mb-2 tracking-tight">
             {s.label}
           </p>
           <div className="flex items-baseline justify-between">
-            <span className="text-2xl sm:text-3xl font-bold text-slate-950 dark:text-white font-display tabular-nums">
+            <span className="text-2xl sm:text-3xl font-bold text-zinc-950 dark:text-zinc-100 font-display tabular-nums">
               {s.value}
             </span>
           </div>

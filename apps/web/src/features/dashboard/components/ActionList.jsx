@@ -6,15 +6,15 @@ export default function ActionList({ actions = [] }) {
   if (!actions || actions.length === 0) return null;
 
   return (
-    <div className="mb-6 border border-hairline dark:border-slate-800 rounded-xl bg-white dark:bg-[#0f172a] p-4 shadow-xs">
+    <div className="mb-6 border border-zinc-200/80 dark:border-zinc-800/80 rounded-2xl bg-white dark:bg-[#16181d] p-4 shadow-xs">
       <div className="flex items-center gap-2 mb-3">
-        <AlertCircle className="w-4 h-4 text-status-amber" />
-        <h2 className="text-xs font-semibold text-gray-900 dark:text-white uppercase tracking-wide">
+        <AlertCircle className="w-4 h-4 text-amber-500" />
+        <h2 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 uppercase tracking-wide">
           Action required ({actions.length})
         </h2>
       </div>
 
-      <div className="divide-y divide-surface-200 dark:divide-slate-800">
+      <div className="divide-y divide-zinc-200 dark:divide-zinc-800/60">
         {actions.map((act, idx) => (
           <div
             key={idx}
