@@ -1,34 +1,12 @@
 import React from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../../features/auth/useAuth';
-import { ROUTES, ROLES } from '../../lib/constants';
-import { ShieldCheck, Landmark, User, LogOut, ChevronRight, Activity } from 'lucide-react';
+import { ROUTES } from '../../lib/constants';
+import { Landmark, LogOut } from 'lucide-react';
 import ThemeToggle from '../../components/ui/ThemeToggle';
 
 export default function Topbar() {
-  const { user, role, logout, switchRole } = useAuth();
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  // Sync active role indicator accurately with current route
-  const currentRole = location.pathname.startsWith('/admin')
-    ? ROLES.ADMIN
-    : location.pathname.startsWith('/institution')
-    ? ROLES.INSTITUTION
-    : location.pathname.startsWith('/officer')
-    ? ROLES.OFFICER
-    : role;
-
-  const handleRoleSwitch = (newRole) => {
-    switchRole(newRole);
-    if (newRole === ROLES.INSTITUTION) {
-      navigate(ROUTES.INSTITUTION_DASHBOARD);
-    } else if (newRole === ROLES.ADMIN) {
-      navigate(ROUTES.USER_MANAGEMENT);
-    } else {
-      navigate(ROUTES.OFFICER_DASHBOARD);
-    }
-  };
+  const { user, role, logout } = useAuth();
 
   const topbarTheme = 'bg-white dark:bg-[#111215] border-zinc-200/80 dark:border-zinc-800/80 text-zinc-900 dark:text-zinc-100';
 
@@ -53,45 +31,7 @@ export default function Topbar() {
         </div>
 
         {/* Right Controls */}
-        <div className="flex items-center gap-2 sm:gap-3 text-sm">
-          {/* Quick Role Switcher (Pill Style) */}
-          <div className="hidden sm:flex items-center bg-zinc-100 dark:bg-[#111215] p-1 rounded-full border border-zinc-200/70 dark:border-zinc-800/80">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 px-2.5">Role:</span>
-            <button
-              type="button"
-              onClick={() => handleRoleSwitch(ROLES.OFFICER)}
-              className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${
-                currentRole === ROLES.OFFICER
-                  ? 'bg-white dark:bg-[#22252c] text-sky-600 dark:text-sky-300 shadow-xs font-bold'
-                  : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
-              }`}
-            >
-              Officer
-            </button>
-            <button
-              type="button"
-              onClick={() => handleRoleSwitch(ROLES.INSTITUTION)}
-              className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${
-                currentRole === ROLES.INSTITUTION
-                  ? 'bg-white dark:bg-[#1c2e24] text-emerald-600 dark:text-emerald-400 shadow-xs font-bold'
-                  : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
-              }`}
-            >
-              Institution
-            </button>
-            <button
-              type="button"
-              onClick={() => handleRoleSwitch(ROLES.ADMIN)}
-              className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${
-                currentRole === ROLES.ADMIN
-                  ? 'bg-white dark:bg-[#2e2619] text-amber-600 dark:text-amber-400 shadow-xs font-bold'
-                  : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
-              }`}
-            >
-              Admin
-            </button>
-          </div>
-
+        <div className="flex items-center gap-2.5 sm:gap-3 text-sm">
           {/* Dark Mode Toggle Button */}
           <ThemeToggle size="sm" />
 
