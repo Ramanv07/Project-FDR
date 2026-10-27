@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,8 +8,13 @@
     box-sizing: border-box;
   }
 
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
   body {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: 'Jost', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 14.5px;
     line-height: 1.55;
     color: #0f172a;
@@ -18,22 +24,22 @@
     transition: background-color 0.2s ease, color 0.2s ease;
   }
 
-  /* Dark mode root colors — Pure Oceanic Navy Blue (Zero Purple/Red undertone) */
+  /* Dark mode root colors — Deep Oceanic True Blue (#02060d, zero purple) */
   html.dark body {
-    background-color: #060e18;
-    color: #f1f5f9;
+    background-color: #02060d;
+    color: #e2eefb;
   }
 
   html.dark .bg-surface-50 {
-    background-color: #060e18;
+    background-color: #02060d;
   }
 
   html.dark .bg-surface-100 {
-    background-color: #0a1727;
+    background-color: #050c16;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Jost', sans-serif;
     font-weight: 700;
     letter-spacing: -0.02em;
   }
@@ -69,9 +75,9 @@
   }
 
   html.dark .card-enterprise {
-    background: #0a1727;
-    border-color: transparent !important;
-    box-shadow: none;
+    background: #050c16;
+    border-color: rgba(255, 255, 255, 0.07) !important;
+    box-shadow: none !important;
   }
 
   .card-enterprise-hover:hover {
@@ -81,8 +87,8 @@
   }
 
   html.dark .card-enterprise-hover:hover {
-    border-color: transparent !important;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.14) !important;
+    box-shadow: none !important;
   }
 
   /* Backward compatibility for panel-crisp and card-glass */
@@ -94,9 +100,9 @@
   }
 
   html.dark .panel-crisp, html.dark .card-glass {
-    background: #0a1727;
-    border-color: transparent !important;
-    box-shadow: none;
+    background: #050c16;
+    border-color: rgba(255, 255, 255, 0.07) !important;
+    box-shadow: none !important;
   }
 
   /* Modern FinTech Table */
@@ -121,9 +127,9 @@
   }
 
   html.dark .table-compact th {
-    background-color: #0e2035;
-    color: #8295ac;
-    border-bottom: 1px solid rgba(56, 136, 235, 0.08);
+    background-color: #071223;
+    color: #8daecf;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.08);
   }
 
   .table-compact td {
@@ -135,8 +141,8 @@
   }
 
   html.dark .table-compact td {
-    color: #e2e8f0;
-    border-bottom: 1px solid rgba(56, 136, 235, 0.05);
+    color: #e2eefb;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.05);
   }
 
   .table-compact tbody tr {
@@ -149,7 +155,7 @@
   }
 
   html.dark .table-compact tbody tr:hover {
-    background-color: #0e2035;
+    background-color: #071223;
   }
 
   /* Modern Badges */
@@ -187,8 +193,8 @@
   }
 
   html.dark .pill-trust {
-    background: #0e2035;
-    border-color: transparent !important;
+    background: #071223;
+    border-color: rgba(56, 189, 248, 0.12) !important;
     color: #cbd5e1;
   }
 
@@ -249,38 +255,38 @@ html.dark ::-webkit-scrollbar-thumb:hover {
 html.dark input,
 html.dark select,
 html.dark textarea {
-  background-color: #0a1727 !important;
-  border-color: rgba(56, 136, 235, 0.18) !important;
-  color: #f8fafc !important;
+  background-color: #050c16 !important;
+  border-color: rgba(56, 189, 248, 0.16) !important;
+  color: #f0f7ff !important;
   border-radius: 10px !important;
 }
 
 html.dark input:focus,
 html.dark select:focus,
 html.dark textarea:focus {
-  border-color: #3888eb !important;
+  border-color: #0284c7 !important;
   outline: none;
 }
 
 html.dark input::placeholder,
 html.dark textarea::placeholder {
-  color: #8295ac !important;
+  color: #5a7b9c !important;
 }
 
 /* Dialog in Dark Mode */
 html.dark [role="dialog"] {
-  background-color: #0a1727 !important;
-  border-color: transparent !important;
-  color: #f1f5f9;
+  background-color: #050c16 !important;
+  border: 1px solid rgba(56, 189, 248, 0.14) !important;
+  color: #f0f7ff;
 }
 
 /* =====================================================================
-   UNIVERSAL DARK MODE OVERRIDES — CRISP OCEANIC NAVY (ZERO PURPLE)
-   Page background: #060e18 (cold dark navy blue, green > red, 0% purple)
-   Card / Surface:  #0a1727 (crisp dark steel blue)
-   Raised / Sub:    #0e2035 (refined elevated blue)
-   Borders:         BORDERLESS cards (per design standard)
-   Accents:         Pure Blue (#3888eb), Sage (#62b082), Sand (#c7a464), Rose (#c77884)
+   UNIVERSAL DARK MODE OVERRIDES — DEEP OCEANIC TRUE BLUE (ZERO PURPLE)
+   Page background: #02060d (pure cold dark navy, 0% purple)
+   Card / Surface:  #050c16 (crisp dark steel blue)
+   Raised / Sub:    #071223 (refined elevated blue)
+   Borders:         Subtle cyan hairline rgba(56, 189, 248, 0.10)
+   Accents:         Pure Blue (#0284c7, #38bdf8), Sage (#10b981), Sand (#f59e0b)
    ===================================================================== */
 
 /* Root backgrounds */
@@ -290,7 +296,7 @@ html.dark [class*="dark:bg-[#060e18]"],
 html.dark [class*="dark:bg-[#080d19]"],
 html.dark [class*="dark:bg-[#111113]"],
 html.dark [class*="dark:bg-[#0a0a0a]"] {
-  background-color: #060e18 !important;
+  background-color: #02060d !important;
 }
 
 /* Surface / Card backgrounds */
@@ -301,7 +307,7 @@ html.dark [class*="dark:bg-[#0a1727]"],
 html.dark [class*="dark:bg-[#0f172a]"],
 html.dark [class*="dark:bg-[#1c1c1e]"],
 html.dark [class*="dark:bg-[#0c1424]"] {
-  background-color: #0a1727 !important;
+  background-color: #050c16 !important;
 }
 
 /* Raised / Sub-surface backgrounds */
@@ -312,10 +318,10 @@ html.dark [class*="dark:bg-[#0e2035]"],
 html.dark [class*="dark:bg-[#2c2c2e]"],
 html.dark [class*="dark:bg-[#141f36]"],
 html.dark [class*="dark:bg-[#142036]"] {
-  background-color: #0e2035 !important;
+  background-color: #071223 !important;
 }
 
-/* BORDERLESS CARDS: Remove heavy visible borders from cards & widgets in dark mode */
+/* CARDS BORDER: subtle clean non-glowing hairline in dark mode */
 html.dark .border-hairline,
 html.dark [class*="dark:border-slate-800"],
 html.dark [class*="dark:border-slate-700"],
@@ -325,20 +331,20 @@ html.dark [class*="dark:border-rose"],
 html.dark [class*="dark:border-blue"],
 html.dark .border-slate-200:not(.keep-border):not([data-keep-border]),
 html.dark .border-slate-100:not(.keep-border) {
-  border-color: transparent !important;
+  border-color: rgba(255, 255, 255, 0.07) !important;
 }
 
 /* Subtle hairline ONLY for dividers and table separators */
 html.dark .border-b:not(.border-none):not([class*="rounded-2xl"]):not([class*="rounded-xl"]) {
-  border-bottom-color: rgba(56, 136, 235, 0.08) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.06) !important;
 }
 
 html.dark .border-t:not(.border-none):not([class*="rounded-2xl"]):not([class*="rounded-xl"]) {
-  border-top-color: rgba(56, 136, 235, 0.08) !important;
+  border-top-color: rgba(255, 255, 255, 0.06) !important;
 }
 
 html.dark .divide-surface-200 > :not([hidden]) ~ :not([hidden]) {
-  border-color: rgba(56, 136, 235, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
 }
 
 /* Typography scale and contrast in dark mode */

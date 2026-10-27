@@ -15,11 +15,11 @@ export default function AdminLayout() {
   ];
 
   return (
-    <div className="min-h-screen bg-surface-50 dark:bg-[#060e18] text-slate-900 dark:text-slate-100 flex flex-col transition-colors duration-200">
+    <div className="min-h-screen bg-surface-50 dark:bg-[#02060d] text-slate-900 dark:text-slate-100 flex flex-col transition-colors duration-200">
       <Topbar />
       <div className="flex flex-1">
         <Sidebar items={navItems} title="System Admin" />
-        <main className="flex-1 px-6 py-8 lg:px-10 lg:py-10 max-w-7xl mx-auto w-full overflow-x-hidden">
+        <main className="flex-1 px-3.5 py-5 sm:px-6 sm:py-8 lg:px-10 lg:py-10 max-w-7xl mx-auto w-full overflow-x-hidden">
           <Outlet />
         </main>
       </div>

@@ -25,9 +25,9 @@ export default {
           400: '#6c8ebd',
           500: '#486da3',
           600: '#355483',
-          700: '#142742',
-          800: '#0d1a2d',
-          900: '#070f1a',
+          700: '#071223',
+          800: '#050c16',
+          900: '#02060d',
         },
         surface: {
           50: '#f8fafc',
@@ -44,8 +44,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
-        display: ['Outfit', '"Plus Jakarta Sans"', 'sans-serif'],
+        sans: ['Jost', '"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['Jost', 'Outfit', '"Plus Jakarta Sans"', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
       },
       fontSize: {
