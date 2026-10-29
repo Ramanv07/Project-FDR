@@ -92,6 +92,10 @@ export const ROUTES = {
   COVERAGE_GAP: '/officer/coverage-gaps',
   RELEASE_APPROVALS: '/officer/release-approvals',
   REPORTS: '/officer/reports',
+  REGIONAL_DASHBOARD: '/officer/regional-offices',
+
+  // Assistant
+  AI_ASSISTANT: '/assistant',
 
   // Admin
   USER_MANAGEMENT: '/admin/users',

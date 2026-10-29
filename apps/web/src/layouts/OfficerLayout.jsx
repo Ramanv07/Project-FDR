@@ -3,10 +3,13 @@ import { Outlet } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Topbar from './components/Topbar';
 import { ROUTES } from '../lib/constants';
+import AiChatWidget from '../features/assistant/components/AiChatWidget';
 
 export default function OfficerLayout() {
   const navItems = [
     { to: ROUTES.OFFICER_DASHBOARD, label: 'Officer dashboard' },
+    { divider: true, label: 'Regional Directorate' },
+    { to: ROUTES.REGIONAL_DASHBOARD, label: '12 Regional Offices' },
     { divider: true, label: 'Registers' },
     { to: ROUTES.FDR_REGISTER, label: 'FDR register' },
     { to: ROUTES.INSTITUTION_LIST, label: 'Institutions' },
@@ -15,6 +18,8 @@ export default function OfficerLayout() {
     { to: ROUTES.VERIFICATION_QUEUE, label: 'Verification queue' },
     { to: ROUTES.COVERAGE_GAP, label: 'Coverage gap timeline' },
     { to: ROUTES.RELEASE_APPROVALS, label: 'Release approvals' },
+    { divider: true, label: 'AI & Intelligence' },
+    { to: ROUTES.AI_ASSISTANT, label: 'AICTE Sahayak (AI)' },
     { divider: true, label: 'Analysis' },
     { to: ROUTES.REPORTS, label: 'Reports & export' },
   ];
@@ -28,6 +33,7 @@ export default function OfficerLayout() {
           <Outlet />
         </main>
       </div>
+      <AiChatWidget />
     </div>
   );
 }

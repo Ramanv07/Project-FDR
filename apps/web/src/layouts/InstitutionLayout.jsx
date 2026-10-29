@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Topbar from './components/Topbar';
 import { ROUTES } from '../lib/constants';
+import AiChatWidget from '../features/assistant/components/AiChatWidget';
 
 export default function InstitutionLayout() {
   const navItems = [
@@ -12,6 +13,8 @@ export default function InstitutionLayout() {
     { to: ROUTES.MY_FDRS, label: 'My FDRs' },
     { divider: true, label: 'Deposits' },
     { to: '/institution/fdrs', label: 'Renew or release' },
+    { divider: true, label: 'AI Assistance' },
+    { to: ROUTES.AI_ASSISTANT, label: 'AICTE Sahayak (AI)' },
     { divider: true, label: 'Settings' },
     { to: ROUTES.PROFILE, label: 'Institute profile' },
   ];
@@ -25,6 +28,7 @@ export default function InstitutionLayout() {
           <Outlet />
         </main>
       </div>
+      <AiChatWidget />
     </div>
   );
 }

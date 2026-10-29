@@ -17,6 +17,8 @@ import {
   Shield,
   GraduationCap,
   Lock,
+  Bot,
+  Compass,
 } from 'lucide-react';
 import { useAuth } from '../../features/auth/useAuth';
 import { useTheme } from '../../context/ThemeContext';
@@ -29,6 +31,10 @@ const getIconForLabel = (label = '') => {
     return <LayoutDashboard className="w-4 h-4" />;
   if (l.includes('fdr register') || l.includes('my fdrs'))
     return <FileSpreadsheet className="w-4 h-4" />;
+  if (l.includes('regional'))
+    return <Compass className="w-4 h-4 text-amber-500" />;
+  if (l.includes('assistant') || l.includes('sahayak'))
+    return <Bot className="w-4 h-4 text-amber-400" />;
   if (l.includes('submit')) return <FilePlus className="w-4 h-4" />;
   if (l.includes('institution') || l.includes('institute'))
     return <Building2 className="w-4 h-4" />;

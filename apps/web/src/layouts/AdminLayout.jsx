@@ -3,12 +3,16 @@ import { Outlet } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Topbar from './components/Topbar';
 import { ROUTES } from '../lib/constants';
+import AiChatWidget from '../features/assistant/components/AiChatWidget';
 
 export default function AdminLayout() {
   const navItems = [
     { to: ROUTES.USER_MANAGEMENT, label: 'User management' },
     { to: ROUTES.ALERT_SETTINGS, label: 'Alert settings' },
     { to: ROUTES.AUDIT_LEDGER, label: 'Audit ledger' },
+    { divider: true, label: 'National Directorate' },
+    { to: ROUTES.REGIONAL_DASHBOARD, label: '12 Regional Offices' },
+    { to: ROUTES.AI_ASSISTANT, label: 'AICTE Sahayak (AI)' },
     { divider: true, label: 'Direct Access' },
     { to: ROUTES.OFFICER_DASHBOARD, label: 'Officer view' },
     { to: ROUTES.MOCK_BANK, label: 'Mock bank console' },
@@ -23,6 +27,7 @@ export default function AdminLayout() {
           <Outlet />
         </main>
       </div>
+      <AiChatWidget />
     </div>
   );
 }

@@ -41,6 +41,10 @@ import CoverageGapTimeline from '../features/risk/pages/CoverageGapTimeline';
 import ReleaseApprovals from '../features/release/pages/ReleaseApprovals';
 import Reports from '../features/reports/pages/Reports';
 
+// Regional Directorate & AI Assistant
+import RegionalDashboard from '../features/regional/pages/RegionalDashboard';
+import AssistantPage from '../features/assistant/pages/AssistantPage';
+
 // Admin Pages
 import UserManagement from '../features/admin/pages/UserManagement';
 import AlertSettings from '../features/admin/pages/AlertSettings';
@@ -103,6 +107,7 @@ export const router = createBrowserRouter([
       { path: 'fdr/:id', element: <FdrDetail /> },
       { path: 'fdr/:id/renew', element: <RenewFdr /> },
       { path: 'fdr/:id/release', element: <ReleaseRequest /> },
+      { path: 'assistant', element: <AssistantPage /> },
     ],
   },
 
@@ -119,6 +124,8 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <Navigate to={ROUTES.OFFICER_DASHBOARD} replace /> },
       { path: 'dashboard', element: <OfficerDashboard /> },
+      { path: 'regional-offices', element: <RegionalDashboard /> },
+      { path: 'assistant', element: <AssistantPage /> },
       { path: 'fdr-register', element: <FdrRegister /> },
       { path: 'institutions', element: <InstitutionList /> },
       { path: 'institution/:id', element: <InstitutionDetail /> },
@@ -144,9 +151,22 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <Navigate to={ROUTES.USER_MANAGEMENT} replace /> },
       { path: 'users', element: <UserManagement /> },
+      { path: 'regional-offices', element: <RegionalDashboard /> },
+      { path: 'assistant', element: <AssistantPage /> },
       { path: 'alerts', element: <AlertSettings /> },
       { path: 'audit', element: <AuditLedger /> },
     ],
+  },
+
+  // Top-level Assistant direct route
+  {
+    path: ROUTES.AI_ASSISTANT,
+    element: (
+      <RequireAuth>
+        <OfficerLayout />
+      </RequireAuth>
+    ),
+    children: [{ index: true, element: <AssistantPage /> }],
   },
 
   {
